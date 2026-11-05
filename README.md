@@ -1,143 +1,197 @@
-# `AetherUI` (`@aether-ui/react`) — Enterprise AI-First UI Component Library
+<p align="center">
+  <img src="./assets/readme/hero.svg" width="100%" alt="AetherUI — React components for AI workspaces. Classic 双层托盘与 Clean 单层表面，两种设计语言。">
+</p>
 
-> **141 Production Elements · 76 Dual-Style Components (Classic & Clean) · 22 Full App Screens · 11 Marketing Blocks · 24 Interactive Illustrations · 8 Motion Primitives**
+<p align="center">
+  面向 AI 工作台、Agent 协作与企业应用的 React 组件库与设计系统。
+  <br>
+  从任务审批到执行追踪，让复杂的工作流拥有清晰、一致的界面。
+</p>
 
-本项目已构建为标准的企业级 React 组件库（**`AetherUI`** / **`@aether-ui/react`**），同时内置可视化组件工作台（Showcase）、Design System 规范包、命令行安装工具（CLI）以及 **一键品牌定制引擎（`src/brand.config.js`）**，支持其他项目通过 **NPM 包依赖引入**、**按需子路径引入** 或 **CLI 独立源码复制** 三种方式无缝接入。
+<p align="center">
+  <a href="#快速开始">快速开始</a> &nbsp; · &nbsp;
+  <a href="./design-system/README.md">设计规范</a> &nbsp; · &nbsp;
+  <a href="#在项目中使用">接入指南</a>
+</p>
 
----
+<br>
 
-## ⚡ 后期一键品牌自定义 (`src/brand.config.js` & `npm run rebrand`)
+![Agent Run 实际界面：左侧工作区导航、中间任务计划与工具调用、右侧人工审批及文稿差异。截图使用内置演示数据。](./assets/readme/agent-run.jpg)
 
-如果你后期需要将组件库改为团队或产品的专属名称，只需修改 [`src/brand.config.js`](./src/brand.config.js) 或运行一行命令，即可自动同步全站 Logo、网页标题、NPM 包名、CLI 命令名与代码复制模板：
+<p align="center"><sub>Agent Run · 计划、执行、审批与结果审阅，在同一个工作区内展开。截图为内置演示。</sub></p>
+
+## 一套系统，两种表达
+
+**Classic** 用双层托盘与轻微高光建立层次，适合强调操作反馈的工作台。**Clean** 用单层表面、细边缘与透明度文字收敛视觉，适合信息密集的生产力界面。76 个核心组件均提供两种变体，并配有明暗主题样式。
+
+![同一组 Agent Inbox 任务的两种实际渲染：左侧为 Classic 浅色双层托盘，右侧为 Clean 深色单层表面。](./assets/readme/dual-style.jpg)
+
+| 设计维度 | Classic | Clean |
+| :--- | :--- | :--- |
+| 表面结构 | 下沉托盘 + 内层卡片 | 单层卡片 + 细边缘 |
+| 文字层级 | 实色灰阶 | 透明度灰阶 |
+| 基准密度 | 14px 字号 / 20px 行高 | 13px 字号 / 20px 行高 |
+| 浅色强调色 | `#2F6BFF` | `#0060E2` |
+
+同心圆角、分级表面、等宽数字与统一缓动曲线，构成两种风格共享的设计基础。完整定义见 [设计语言规范](./design-system/README.md) 与 [Design Tokens](./design-system/tokens/design-tokens.json)。
+
+## 组件与场景
+
+目录包含 **141 个 UI 元素**，覆盖单个控件到完整应用页面。
+
+| 资产 | 数量 | 代表内容 |
+| :--- | ---: | :--- |
+| Components | 76 | Chat Composer、Agent Inbox、Approval Card、Data Table |
+| Screens | 22 | Agent Run、AI Chat、CRM、Analytics、Settings |
+| Blocks | 11 | AI Workspace、Task Board、Pricing Plans |
+| Illustrations | 24 | Voice Orb、Model Wheel、Integration Beam |
+| Motion | 8 | Blur Crossfade、Number Ticker、Text Reveal |
+
+**围绕 Agent 的工作过程组织界面：**
+
+- **输入与上下文** — 提示词编辑、模型选择、来源引用、记忆与上下文窗口。
+- **规划与协作** — 任务计划、队列、代理树、并行尝试和交接。
+- **审批与控制** — 操作审批、权限请求、自主程度与执行中干预。
+- **追踪与审阅** — 工具调用、时间瀑布、成本拆解、检查点和内容差异。
+
+可在本地工作台检索全部元素、切换风格与主题、查看 Props 和源码，并预览不同舞台宽度。交互设计说明见 [AI Agent UI Patterns](./design-system/guidelines/AI-AGENT-UI-PATTERNS.md)。
+
+## 快速开始
+
+先启动工作台，浏览组件与内置交互演示。
 
 ```bash
-npm run rebrand -- --name "AetherUI" --pkg "@aether-ui/react" --cli "aether-ui"
+git clone https://github.com/opxqo/AetherUI.git
+cd AetherUI
+npm ci
+npm run dev
 ```
 
----
-
-## 🚀 方式一：作为企业级 NPM 包跨项目引入 (`@aether-ui/react`)
-
-在当前目录执行 `npm link`（或在外部项目的 `package.json` 中通过 `"@aether-ui/react": "file:../affectui"` 引入）：
+打开终端输出的本地地址，通常为 [localhost:5173](http://localhost:5173)。使用 `⌘K` / `Ctrl+K` 搜索，或从 Components、Screens、Blocks 进入目录。
 
 ```bash
-# 1. 在本仓库根目录注册全局链接
-npm link
-
-# 2. 在你的其他业务项目中链接使用
-cd /path/to/your-project
-npm link @aether-ui/react
+npm run build       # 构建展示站
+npm run preview     # 预览构建结果
 ```
 
-### 1. 引入全局样式与命名组件（Classic 经典双层托盘风格）
+本地验证环境为 Node.js 22.22.3；CLI 需要支持 `module.registerHooks` 的 Node.js 版本。组件包声明的 React / React DOM peer 版本为 `>=19.0.0`。
 
-```tsx
+## 在项目中使用
+
+### 本地包接入
+
+在目标 React 项目中安装本地目录，路径按实际位置调整：
+
+```bash
+npm install ../AetherUI
+```
+
+引入样式，再选择组件。以下示例使用 Classic 变体：
+
+```jsx
 import "@aether-ui/react/styles.css";
-import {
-  AgentInbox,
-  AgentCheckpoints,
-  ChatComposer,
-  ThinkingState,
-  WritingAssistant,
-  Toaster,
-  toast,
-} from "@aether-ui/react";
+import { AgentInbox } from "@aether-ui/react/ui/agent-inbox";
 
-export default function App() {
+const tasks = [
+  {
+    id: "release-review",
+    title: "审核发布说明",
+    description: "变更已整理，等待人工确认。",
+    agent: "Release assistant",
+    status: "waiting",
+  },
+];
+
+export default function ReleaseReview() {
   return (
-    <div>
-      {/* 零配置开箱即用（自动加载内置交互演示状态） */}
-      <ThinkingState />
-
-      {/* 传入受控业务 Props 驱动 */}
-      <AgentCheckpoints
-        title="Deploy Pipeline"
-        task="Ship v2.4 to production"
-        checkpoints={[
-          { id: "c1", title: "Run unit tests", at: 4200 },
-          { id: "c2", parent: "c1", title: "Build container image", at: 18500 },
-        ]}
-        head="c2"
-        onRewind={(cp) => console.log("Rewind to:", cp)}
-      />
-
-      <Toaster position="bottom-right" />
-    </div>
+    <AgentInbox
+      title="发布工作区"
+      tasks={tasks}
+      onApprove={(task) => console.log("Approve", task.id)}
+      onReject={(task) => console.log("Reject", task.id)}
+    />
   );
 }
 ```
 
-### 2. 切换至 Clean 亚像素极简风格（`@affectui/react/clean`）
+切换 Clean 变体，只需调整组件导入：
 
-```tsx
-import "@affectui/react/styles.css";
-import {
-  AgentInbox,
-  AgentCheckpoints,
-  ChatComposer,
-} from "@affectui/react/clean";
+```jsx
+import { AgentInbox } from "@aether-ui/react/ui/clean/agent-inbox";
+
+// 也可使用聚合入口
+import { AgentInbox as ClassicAgentInbox } from "@aether-ui/react";
+import { AgentInbox as CleanAgentInbox } from "@aether-ui/react/clean";
 ```
 
-### 3. 按需 Tree-Shaking 子路径或 `@/components/ui/*` 引入
+回调需要连接业务逻辑；示例中的日志不会执行真实审批。多数包装组件在无业务 Props 时显示内置演示，也提供 `*Raw` 与 `*Demo` 导出。
 
-```tsx
-// 通过包体子路径按需引入单个组件
-import { AgentInbox } from "@affectui/react/ui/agent-inbox";
-import { AgentInbox as AgentInboxClean } from "@affectui/react/ui/clean/agent-inbox";
+### CLI 与源码导出
 
-// 或在本项目内部使用别名引入
-import { AgentInbox } from "@/components/ui/agent-inbox";
-```
-
----
-
-## 🛠️ 方式二：使用内置 CLI 工具按需复制到外部项目 (`npx affectui`)
-
-提供与 `shadcn/ui` 体验一致的命令行工具 [`bin/affectui.mjs`](./bin/affectui.mjs)：
+在 AetherUI 目录内运行：
 
 ```bash
-# 1. 列出全部 141 个组件、页面、区块、插画与动效
-npm run cli -- list
 npm run cli -- list --kind component
-
-# 2. 在终端查看任意组件的 Props API 与用法示例
 npm run cli -- info agent-inbox
-
-# 3. 将指定组件的 .tsx 源码与 .d.ts 类型声明一键导出到任意目录
-npm run cli -- add agent-inbox --dir ../my-other-app/src/components/ui
-npm run cli -- add agent-inbox --clean --dir ../my-other-app/src/components/ui
-
-# 4. 将 AffectUI Design Tokens (CSS 变量 / JSON / Tailwind Preset) 初始化到目标项目
-npm run cli -- init --dir ../my-other-app/src/styles
+npm run cli -- add agent-inbox --clean --dir ../my-app/src/components/ui
+npm run cli -- init --dir ../my-app/src/styles
 ```
 
----
+`add` 导出组件源码与类型声明；`init` 导出 CSS 变量、JSON Tokens 与 Tailwind preset。**部分导出源码仍依赖 `@/affectui-engine/...` 内部模块，CLI 目前不会递归复制这些依赖。** 跨项目接入优先使用完整本地包。
 
-## 🎨 方式三：接入 Design System 与 Tailwind Preset
+### Design Tokens
 
-- **完整设计语言规范文档**：[`design-system/README.md`](./design-system/README.md)
-- **9 大 AI Agent 交互范式指南**：[`design-system/guidelines/AI-AGENT-UI-PATTERNS.md`](./design-system/guidelines/AI-AGENT-UI-PATTERNS.md)
-- **AI 编程助手 System Prompt 模板**：[`design-system/PROMPT-TEMPLATE.md`](./design-system/PROMPT-TEMPLATE.md)
-- **Tailwind CSS 预设接入**：
-  ```js
-  // tailwind.config.js
-  import affectuiPreset from "@affectui/react/tailwind";
+只接入视觉基础时，可以单独导入 Tokens：
 
-  export default {
-    presets: [affectuiPreset],
-    content: ["./src/**/*.{js,ts,jsx,tsx}"],
-  };
-  ```
+```css
+@import "@aether-ui/react/tokens.css";
+```
 
----
+需要 Tailwind 配置时，可从 `@aether-ui/react/tailwind` 导入 preset；请按宿主项目的 Tailwind 版本验证配置格式。
 
-## 🖥️ 本地交互式组件工作台 (Interactive Showcase)
+## 规范与工程入口
+
+| 入口 | 内容 |
+| :--- | :--- |
+| [Design System](./design-system/README.md) | 表面、字体、色彩、圆角与动效规范 |
+| [Agent UI Patterns](./design-system/guidelines/AI-AGENT-UI-PATTERNS.md) | AI 工作流的交互设计指南 |
+| [Prompt Template](./design-system/PROMPT-TEMPLATE.md) | 给 AI 编程助手使用的设计约束 |
+| [Brand Config](./src/brand.config.js) | 展示名称、包名、CLI 名称与品牌文案 |
+| [Catalog](./src/affectui-engine/catalog.js) | 元素目录、变体、文档与源码加载入口 |
+| [组件入口](./src/index.js) · [Clean 入口](./src/clean.js) | 组件导出列表 |
+
+<details>
+<summary><strong>目录结构与维护命令</strong></summary>
+
+```text
+src/
+├── components/ui/     组件包装与类型声明，含 clean/ 变体
+├── affectui-engine/   底层组件、样式、演示与文档模块
+├── showcase/          本地可视化工作台
+├── brand.config.js    品牌配置
+└── styles.css         全量组件样式入口
+design-system/         设计规范、Tokens 与 Prompt 模板
+bin/                   CLI
+scripts/               组件生成与品牌配置脚本
+assets/readme/         仓库首页视觉素材
+```
 
 ```bash
-npm run dev
-# 访问 http://localhost:5173/
+# 更新品牌配置、package.json 元数据与 HTML 标题
+npm run rebrand -- --name "YourUI" --pkg "@your-team/react" --cli "your-ui"
+
+# 重新生成组件包装与类型声明；该命令也会修改底层模块
+npm run build:tokens
 ```
 
-- 支持 **All (141) / Components (76) / Screens (22) / Blocks (11) / Illustrations (24) / Motion (8)** 分类检索与 `⌘K` 快捷搜索
-- 支持顶部一键切换 **Classic / Clean** 双视觉模态与 **Light / Dark** 主题
-- 支持 **Stage 894 / 1440 / 768 / 380 / Fullscreen** 多视口预览与一键复制完整 `.tsx` 源码
+</details>
+
+## 当前状态
+
+本地展示站可构建运行，141 个元素的目录与源码加载入口已具备。当前适合设计参考、交互原型和浏览器端集成验证。
+
+- 类型声明由文档生成，仍有 `any` 和重复字段，尚未形成完整的类型检查保障。
+- 根入口包含浏览器 DOM 依赖，SSR / 服务端渲染接入需要进一步适配。
+- `npm run build` 构建的是展示站；生产组件验收、独立包构建与 CI 尚待完善。
+
+欢迎通过 [Issues](https://github.com/opxqo/AetherUI/issues) 提交具体场景、复现步骤与改进建议。

@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="424" viewBox="0 0 1200 424" role="img" aria-labelledby="title description">
+  <title id="title">AetherUI — React components for AI workspaces</title>
+  <desc id="description">AetherUI 设计语言示意：Classic 浅色双层托盘与 Clean 深色单层表面。141 个元素、76 个双风格组件、22 个应用页面。</desc>
+  <defs>
+    <linearGradient id="canvas" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fcfcfc"/>
+      <stop offset="1" stop-color="#f0f1f3"/>
+    </linearGradient>
+  </defs>
+  <rect x="0.5" y="0.5" width="1199" height="423" rx="24" fill="url(#canvas)" stroke="#e5e5e5"/>
+  <g id="identity" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
+    <path d="M58 49 69 30 80 49M62 43h14" fill="none" stroke="#2f6bff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="94" y="46" fill="#6b6b6b" font-size="17" font-weight="500" letter-spacing="2">THE AI WORKSPACE COLLECTION</text>
+    <text x="54" y="175" fill="#171717" font-size="104" font-weight="650" letter-spacing="-6">AetherUI</text>
+    <text x="60" y="225" fill="#404040" font-size="26" letter-spacing="-.5">React components for AI workspaces.</text>
+    <text x="60" y="264" fill="#737373" font-size="20">Clear states. Considered surfaces.</text>
+  </g>
+  <g id="classic-surface" transform="translate(674 65)" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
+    <rect x="0" y="3" width="310" height="174" rx="20" fill="#171717" opacity=".035"/>
+    <rect width="310" height="174" rx="20" fill="#e9e9eb" stroke="#dedee1"/>
+    <rect x="6" y="6" width="298" height="162" rx="14" fill="#fff" stroke="#ececec"/>
+    <text x="26" y="43" fill="#171717" font-size="20" font-weight="600">Classic</text>
+    <text x="26" y="72" fill="#737373" font-size="18">Layered. Tactile.</text>
+    <path d="M27 101h256" stroke="#ececec"/>
+    <circle cx="36" cy="132" r="9" fill="#2f6bff"/>
+    <path d="m32 132 3 3 5-6" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="55" y="139" fill="#404040" font-size="18">Review complete</text>
+  </g>
+  <g id="clean-surface" transform="translate(860 216)" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
+    <rect x="0" y="5" width="280" height="150" rx="14" fill="#171717" opacity=".07"/>
+    <rect width="280" height="150" rx="14" fill="#19191b" stroke="#363638"/>
+    <path d="M14 .5h252" stroke="#fff" stroke-opacity=".1"/>
+    <text x="24" y="39" fill="#ededed" font-size="20" font-weight="600">Clean</text>
+    <text x="24" y="68" fill="#aaa" font-size="18">Precise. Focused.</text>
+    <path d="M24 92h232" stroke="#fff" stroke-opacity=".1"/>
+    <circle cx="30" cy="119" r="4" fill="#7aa2ff"/>
+    <text x="46" y="126" fill="#c4c4c4" font-size="18">Ready for the next step</text>
+  </g>
+  <path d="M60 324h710" stroke="#dddde0"/>
+  <g id="collection-metadata" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
+    <text x="60" y="372" fill="#171717" font-size="30" font-weight="600">141</text>
+    <text x="124" y="370" fill="#737373" font-size="18">elements</text>
+    <path d="M258 349v26" stroke="#d6d6d9"/>
+    <text x="288" y="372" fill="#171717" font-size="30" font-weight="600">76</text>
+    <text x="337" y="370" fill="#737373" font-size="18">dual-style components</text>
+    <path d="M574 349v26" stroke="#d6d6d9"/>
+    <text x="604" y="372" fill="#171717" font-size="30" font-weight="600">22</text>
+    <text x="653" y="370" fill="#737373" font-size="18">app screens</text>
+  </g>
+</svg>
