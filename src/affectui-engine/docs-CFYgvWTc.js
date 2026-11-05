@@ -1,0 +1,13 @@
+var e={requirements:[`React 19`,`@hugeicons/react`,`@hugeicons/core-free-icons`,`App Shell, Settings / Profile (its sidebar), Settings / General (its rows) and Button (installed with it)`],whenToUse:[`The security page of a workspace's settings`,`Admin pages with domains, single sign-on and network rules`],whenNotToUse:[`A single member's password or devices – put those under Settings / Profile`,`The workspace's name and address – use Settings / General`],usage:`import { SettingsSecurityScreen } from "@/components/ui/settings-security";
+
+export default function Page() {
+  return (
+    <SettingsSecurityScreen
+      security={settings}
+      onSave={(security) => saveSecurity(security)}
+      onVerifyDomain={(domain) => api.checkTxtRecord(domain)}
+      onSignOutAll={() => api.revokeSessions()}
+      onNavigate={(label) => router.push(routes[label])}
+    />
+  );
+}`,props:[{name:`security`,type:`SecurityValues`,description:`Domains, join by domain, SSO, metadata URL, two-step verification, session length and IP ranges – the sample workspace when left out`},{name:`onSave`,type:`(security: SecurityValues) => void`,description:`Called with all settings whenever something changes – switches and lists at once, the metadata URL on blur`},{name:`onVerifyDomain`,type:`(domain: string) => Promise<boolean>`,description:`Checks the domain's TXT record; resolve true once it is found. The demo waits a moment and says yes`},{name:`onSignOutAll`,type:`() => void`,description:`Called once signing everyone out is confirmed`},{name:`onNavigate`,type:`(label: string) => void`,description:`Called with the label of a sidebar item`},{name:`workspace`,type:`string`,description:`Workspace name in the sidebar`},{name:`user`,type:`{ name: string; avatar?: string }`,description:`Account at the bottom of the sidebar`},{name:`className`,type:`string`,description:`Extra class on the root`}],accessibility:[`Switches use role="switch" with aria-checked; a switch that needs a verified domain is disabled and says why`,`Adding a domain or range is a small form: Enter adds, Escape cancels; wrong input answers with a toast`,`Copy buttons turn into a check for a moment; read-only fields select their text on focus`,`Remove buttons show on hover and on keyboard focus, always on touch screens`],responsive:[`Fills its container – give it the full viewport height in your app`,`Below 600px each control moves under its label; switches and the domain rows stay on one line`,`Dark mode built in: switches when an ancestor (usually <html>) has the class dark or data-theme="dark"; colors are CSS variables on .ui-as`]};export{e as docs};

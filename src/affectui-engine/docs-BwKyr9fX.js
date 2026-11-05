@@ -1,0 +1,13 @@
+var e={requirements:[`React 19`,`@hugeicons/react`,`@hugeicons/core-free-icons`,`App Shell, Settings / Profile (its sidebar), Settings / General and Settings / Security (their rows, switches and badges), Button and Segmented Control (installed with it)`],whenToUse:[`The privacy page of a person's settings in an AI product`,`Pages that list sessions or shared links someone may want to revoke`],whenNotToUse:[`Workspace-wide sign-in rules – use Settings / Security`,`Which notifications go where – use Settings / Notifications`],usage:`import { SettingsPrivacyScreen } from "@/components/ui/settings-privacy";
+
+export default function Page() {
+  return (
+    <SettingsPrivacyScreen
+      privacy={settings}
+      onSave={(privacy) => savePrivacy(privacy)}
+      onExport={() => api.startExport()}
+      onDeleteChats={() => api.deleteAllChats()}
+      onNavigate={(label) => router.push(routes[label])}
+    />
+  );
+}`,props:[{name:`privacy`,type:`PrivacyValues`,description:`The switches, this browser's cookies, product emails, sessions (device, name, meta, current) and shared chats (title, scope, shared, views) – the sample person when left out`},{name:`onSave`,type:`(privacy: PrivacyValues) => void`,description:`Called with all settings whenever something changes, signing out a session and stopping a share included`},{name:`onExport`,type:`() => void`,description:`Called when an export of every chat and file is requested`},{name:`onDeleteChats`,type:`() => void`,description:`Called once deleting every chat is confirmed`},{name:`onNavigate`,type:`(label: string) => void`,description:`Called with the label of a sidebar item`},{name:`workspace`,type:`string`,description:`Workspace name in the sidebar`},{name:`user`,type:`{ name: string; avatar?: string }`,description:`Account at the bottom of the sidebar`},{name:`className`,type:`string`,description:`Extra class on the root`}],accessibility:[`Switches use role="switch" with aria-checked; Manage cookies has aria-expanded and opens its choices right below`,`The shared chats' filter is a tab list; stopping a share is a button named after the chat`,`The current device can't be signed out from here – it carries a This device badge instead of a button`,`Deleting every chat asks once more before it happens`],responsive:[`Fills its container – give it the full viewport height in your app`,`Below 600px controls move under their labels; sessions and shared chats keep their action beside them`,`Dark mode built in: switches when an ancestor (usually <html>) has the class dark or data-theme="dark"; colors are CSS variables on .ui-as`]};export{e as docs};

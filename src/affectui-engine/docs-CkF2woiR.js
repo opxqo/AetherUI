@@ -1,0 +1,12 @@
+var e={requirements:[`React 19`,`@hugeicons/react`,`@hugeicons/core-free-icons`,`App Shell, Settings / Profile (its sidebar) and Button (installed with it)`],whenToUse:[`The general page of a workspace's settings`,`Any settings page with a free-text field the assistant reads, like a company or team context`],whenNotToUse:[`Your own profile – use Settings / Profile`,`Plans, payment and invoices – use Settings / Billing`],usage:`import { SettingsGeneralScreen } from "@/components/ui/settings-general";
+
+export default function Page() {
+  return (
+    <SettingsGeneralScreen
+      workspace={{ name: "Acme", slug: "acme", context: "" }}
+      onSave={(workspace) => saveWorkspace(workspace)}
+      onDelete={() => deleteWorkspace()}
+      onNavigate={(label) => router.push(routes[label])}
+    />
+  );
+}`,props:[{name:`workspace`,type:`{ name: string; slug: string; context: string; icon?: string }`,description:`The workspace – the sample workspace when left out`},{name:`onSave`,type:`(workspace: WorkspaceValues) => void`,description:`Called with the whole workspace whenever something is saved – text on blur, the icon at once`},{name:`onDelete`,type:`() => void`,description:`Called once the deletion is confirmed by typing the workspace's name`},{name:`onNavigate`,type:`(label: string) => void`,description:`Called with the label of a settings page, or "Back to app"`},{name:`user`,type:`{ name: string; avatar?: string }`,description:`Account at the bottom of the sidebar`},{name:`className`,type:`string`,description:`Extra class on the root`}],accessibility:[`Every field has a visible label; the icon's remove button and the field size button carry their own labels`,`Deleting asks for the workspace's name first; the button stays disabled until it matches`,`Saves are announced in a status toast`],responsive:[`Fills its container – give it the full viewport height in your app`,`Below 600px each control moves under its label, full width`,`Dark mode built in: switches when an ancestor (usually <html>) has the class dark or data-theme="dark"; colors are CSS variables on .ui-as`]};export{e as docs};

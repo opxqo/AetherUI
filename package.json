@@ -1,0 +1,67 @@
+{
+  "name": "@aether-ui/react",
+  "version": "1.0.0",
+  "description": "AetherUI — Enterprise AI-First React UI Component Library & Design System",
+  "type": "module",
+  "main": "./src/index.js",
+  "module": "./src/index.js",
+  "types": "./src/index.d.ts",
+  "bin": {
+    "aether-ui": "./bin/cli.mjs"
+  },
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "import": "./src/index.js",
+      "default": "./src/index.js"
+    },
+    "./clean": {
+      "types": "./src/clean.d.ts",
+      "import": "./src/clean.js",
+      "default": "./src/clean.js"
+    },
+    "./ui/*": {
+      "types": "./src/components/ui/*.d.ts",
+      "import": "./src/components/ui/*.js",
+      "default": "./src/components/ui/*.js"
+    },
+    "./ui/clean/*": {
+      "types": "./src/components/ui/clean/*.d.ts",
+      "import": "./src/components/ui/clean/*.js",
+      "default": "./src/components/ui/clean/*.js"
+    },
+    "./brand": "./src/brand.config.js",
+    "./catalog": "./src/affectui-engine/catalog.js",
+    "./styles.css": "./src/styles.css",
+    "./tokens.css": "./design-system/tokens/variables.css",
+    "./tokens.json": "./design-system/tokens/design-tokens.json",
+    "./tailwind": "./design-system/tokens/tailwind.preset.js"
+  },
+  "files": [
+    "src",
+    "design-system",
+    "public",
+    "bin"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "build:tokens": "node scripts/build-enterprise-library.mjs",
+    "rebrand": "node ./scripts/rebrand.mjs",
+    "cli": "node ./bin/cli.mjs",
+    "preview": "vite preview"
+  },
+  "peerDependencies": {
+    "react": ">=19.0.0",
+    "react-dom": ">=19.0.0"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "prettier": "^3.5.0",
+    "vite": "^6.2.0"
+  }
+}

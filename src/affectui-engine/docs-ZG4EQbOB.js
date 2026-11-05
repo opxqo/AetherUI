@@ -1,0 +1,12 @@
+var e={requirements:[`React 19`,`@hugeicons/react`,`@hugeicons/core-free-icons`,`App Shell, Settings / Profile (its sidebar), Settings / General, Settings / Security and Settings / Models (their rows, switches and model pickers), the Model Wheel illustration, Button and Segmented Control (installed with it)`],whenToUse:[`The preferences page of a person's settings in an AI product`,`Personal defaults that sit on top of what the workspace allows`],whenNotToUse:[`Which models the workspace allows – use Settings / Models`,`Name, picture and contact details – use Settings / Profile`],usage:`import { SettingsPreferencesScreen } from "@/components/ui/settings-preferences";
+
+export default function Page() {
+  return (
+    <SettingsPreferencesScreen
+      preferences={preferences}
+      providers={workspaceModels}
+      onSave={(preferences) => savePreferences(preferences)}
+      onNavigate={(label) => router.push(routes[label])}
+    />
+  );
+}`,props:[{name:`preferences`,type:`PreferenceValues`,description:`Default chat and image model, language, theme, app actions, chat tools, custom instructions (on, about, style) and memories – the sample person when left out`},{name:`providers`,type:`Provider[]`,description:`The workspace's providers and models, as in Settings / Models – only models that are on can be picked`},{name:`onSave`,type:`(preferences: PreferenceValues) => void`,description:`Called with all settings whenever something is saved – text fields on blur, everything else at once`},{name:`onNavigate`,type:`(label: string) => void`,description:`Called with the label of a sidebar item`},{name:`workspace`,type:`string`,description:`Workspace name in the sidebar`},{name:`user`,type:`{ name: string; avatar?: string }`,description:`Account at the bottom of the sidebar`},{name:`className`,type:`string`,description:`Extra class on the root`}],accessibility:[`Chat tools are buttons with role="checkbox"; the appearance choice is a radio group`,`Paused instructions keep their text but disable the fields, so nothing is typed into them by mistake`,`Each memory has a Forget button named after it`,`The Model Wheel next to Auto stands still with prefers-reduced-motion`],responsive:[`Fills its container – give it the full viewport height in your app`,`Below 600px controls move under their labels and the chat tools stack`,`Dark mode built in: switches when an ancestor (usually <html>) has the class dark or data-theme="dark"; colors are CSS variables on .ui-as`]};export{e as docs};

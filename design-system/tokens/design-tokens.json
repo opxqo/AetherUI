@@ -1,0 +1,127 @@
+{
+  "$schema": "https://tr.designtokens.org/format/",
+  "meta": {
+    "name": "AffectUI Design System Tokens",
+    "version": "1.0.0",
+    "description": "1:1 Design Tokens extracted from AffectUI (141 components, screens, blocks, illustrations, and motion primitives)"
+  },
+  "color": {
+    "light": {
+      "surface": {
+        "bg": { "$value": "#f5f5f5", "$type": "color", "$description": "Outermost app canvas background" },
+        "panel": { "$value": "#fcfcfc", "$type": "color", "$description": "Main rounded workspace panel" },
+        "preview": { "$value": "#fafafa", "$type": "color", "$description": "Stage & code preview well" },
+        "card": { "$value": "#ffffff", "$type": "color", "$description": "Elevated interactive card surface" },
+        "trayClassic": { "$value": "#f0f0f0", "$type": "color", "$description": "Classic 4px recessed outer tray" }
+      },
+      "ink": {
+        "primary": { "$value": "#0a0a0a", "$type": "color" },
+        "strong": { "$value": "#171717", "$type": "color" },
+        "body": { "$value": "#404040", "$type": "color" },
+        "muted": { "$value": "#737373", "$type": "color" },
+        "faint": { "$value": "#b8b8b8", "$type": "color" },
+        "cleanPrimary": { "$value": "rgba(0, 0, 0, 0.88)", "$type": "color" },
+        "cleanBody": { "$value": "rgba(0, 0, 0, 0.61)", "$type": "color" },
+        "cleanMuted": { "$value": "rgba(0, 0, 0, 0.45)", "$type": "color" },
+        "cleanFaint": { "$value": "rgba(0, 0, 0, 0.27)", "$type": "color" }
+      },
+      "border": {
+        "default": { "$value": "#e5e5e5", "$type": "color" },
+        "panel": { "$value": "#ececec", "$type": "color" },
+        "soft": { "$value": "rgba(10, 10, 10, 0.10)", "$type": "color" },
+        "cardStroke": { "$value": "rgba(10, 10, 10, 0.055)", "$type": "color" },
+        "cleanHairline": { "$value": "rgba(0, 0, 0, 0.06)", "$type": "color" }
+      },
+      "accent": {
+        "classic": { "$value": "#2f6bff", "$type": "color", "$description": "Electric Cobalt for Classic look" },
+        "clean": { "$value": "#0060e2", "$type": "color", "$description": "System Precision Blue for Clean look" },
+        "ok": { "$value": "#0f9f6e", "$type": "color" },
+        "warn": { "$value": "#b86e00", "$type": "color" },
+        "danger": { "$value": "#c2331f", "$type": "color" },
+        "proFrom": { "$value": "#dd0674", "$type": "color" },
+        "proTo": { "$value": "#5e3ee0", "$type": "color" }
+      }
+    },
+    "dark": {
+      "surface": {
+        "bg": { "$value": "#0c0c0d", "$type": "color" },
+        "panel": { "$value": "#121213", "$type": "color" },
+        "preview": { "$value": "#1f1f21", "$type": "color" },
+        "card": { "$value": "#19191b", "$type": "color" },
+        "trayClassic": { "$value": "#232326", "$type": "color" }
+      },
+      "ink": {
+        "primary": { "$value": "#ededed", "$type": "color" },
+        "body": { "$value": "#c4c4c4", "$type": "color" },
+        "muted": { "$value": "#8f8f8f", "$type": "color" },
+        "cleanPrimary": { "$value": "rgba(255, 255, 255, 0.92)", "$type": "color" },
+        "cleanBody": { "$value": "rgba(255, 255, 255, 0.64)", "$type": "color" },
+        "cleanMuted": { "$value": "rgba(255, 255, 255, 0.44)", "$type": "color" },
+        "cleanFaint": { "$value": "rgba(255, 255, 255, 0.26)", "$type": "color" }
+      },
+      "border": {
+        "default": { "$value": "#262628", "$type": "color" },
+        "panel": { "$value": "#222224", "$type": "color" },
+        "soft": { "$value": "rgba(255, 255, 255, 0.07)", "$type": "color" },
+        "cardStroke": { "$value": "rgba(255, 255, 255, 0.05)", "$type": "color" },
+        "cleanHairline": { "$value": "rgba(255, 255, 255, 0.07)", "$type": "color" }
+      },
+      "accent": {
+        "classic": { "$value": "#7aa2ff", "$type": "color" },
+        "clean": { "$value": "#5899ff", "$type": "color" },
+        "ok": { "$value": "#34d399", "$type": "color" },
+        "warn": { "$value": "#f5b544", "$type": "color" },
+        "danger": { "$value": "#f87171", "$type": "color" },
+        "proFrom": { "$value": "#f472b6", "$type": "color" },
+        "proTo": { "$value": "#a78bfa", "$type": "color" }
+      }
+    }
+  },
+  "radius": {
+    "panel": { "$value": "18px", "$type": "dimension" },
+    "tray": { "$value": "16px", "$type": "dimension" },
+    "card": { "$value": "14px", "$type": "dimension" },
+    "surface": { "$value": "12px", "$type": "dimension" },
+    "preview": { "$value": "10px", "$type": "dimension" },
+    "control": { "$value": "9px", "$type": "dimension" },
+    "stageInner": { "$value": "8px", "$type": "dimension", "$description": "Concentric: 14px card radius - 6px card inset" },
+    "token": { "$value": "6px", "$type": "dimension" },
+    "pill": { "$value": "999px", "$type": "dimension" }
+  },
+  "typography": {
+    "fontFamily": {
+      "sans": { "$value": "\"Inter\", \"InterVariable\", ui-sans-serif, system-ui, -apple-system, sans-serif", "$type": "fontFamily" },
+      "mono": { "$value": "\"JetBrains Mono\", \"Geist Mono\", ui-monospace, SFMono-Regular, monospace", "$type": "fontFamily" }
+    },
+    "scale": {
+      "display": { "fontSize": "32px", "lineHeight": "44px", "fontWeight": 600, "letterSpacing": "-0.8px" },
+      "hero": { "fontSize": "24px", "lineHeight": "30px", "fontWeight": 500, "letterSpacing": "-0.6px" },
+      "h2": { "fontSize": "20px", "lineHeight": "24px", "fontWeight": 600, "letterSpacing": "-0.4px" },
+      "cardTitle": { "fontSize": "14px", "lineHeight": "20px", "fontWeight": 600, "letterSpacing": "-0.01em" },
+      "bodyClassic": { "fontSize": "14px", "lineHeight": "20px", "fontWeight": 400, "letterSpacing": "-0.006em" },
+      "bodyClean": { "fontSize": "13px", "lineHeight": "20px", "fontWeight": 400, "letterSpacing": "0" },
+      "caption": { "fontSize": "12px", "lineHeight": "16px", "fontWeight": 400, "letterSpacing": "0" },
+      "badge": { "fontSize": "11px", "lineHeight": "16px", "fontWeight": 500, "letterSpacing": "0.02em" }
+    }
+  },
+  "motion": {
+    "easing": {
+      "easeOut": { "$value": "cubic-bezier(0.22, 1, 0.36, 1)", "$type": "cubicBezier" },
+      "snappy": { "$value": "cubic-bezier(0.32, 0.72, 0.24, 1)", "$type": "cubicBezier" }
+    },
+    "duration": {
+      "fast": { "$value": "140ms", "$type": "duration" },
+      "base": { "$value": "180ms", "$type": "duration" },
+      "panel": { "$value": "280ms", "$type": "duration" },
+      "shell": { "$value": "320ms", "$type": "duration" }
+    }
+  },
+  "layout": {
+    "shellMaxWidth": { "$value": "1736px", "$type": "dimension" },
+    "sidebarWidth": { "$value": "256px", "$type": "dimension" },
+    "docStageWidth": { "$value": "894px", "$type": "dimension" },
+    "screenCanvasWidth": { "$value": "1440px", "$type": "dimension" },
+    "screenCanvasHeight": { "$value": "900px", "$type": "dimension" },
+    "blockCanvasWidth": { "$value": "1200px", "$type": "dimension" }
+  }
+}

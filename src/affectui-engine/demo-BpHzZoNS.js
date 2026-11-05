@@ -1,0 +1,1 @@
+import"./demo-bTIz8Fba.css";import{t as e}from"./jsx-runtime-CTsRTJUX.js";import{t}from"./component-BpX-xwS3.js";var n=e();function r(){return(0,n.jsx)(`div`,{className:`model-wheel-demo`,children:(0,n.jsx)(t,{})})}export{r as default,t as __InnerComponent};

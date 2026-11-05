@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@aether-ui/react": ["./src/index.d.ts"],
+      "@aether-ui/react/clean": ["./src/clean.d.ts"],
+      "@aether-ui/react/ui/*": ["./src/components/ui/*.d.ts"],
+      "@affectui/react": ["./src/index.d.ts"],
+      "@affectui/react/clean": ["./src/clean.d.ts"],
+      "@affectui/react/ui/*": ["./src/components/ui/*.d.ts"]
+    }
+  },
+  "include": ["src/**/*", "design-system/**/*", "bin/**/*"]
+}
