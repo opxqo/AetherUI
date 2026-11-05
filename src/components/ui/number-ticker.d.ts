@@ -1,18 +1,19 @@
 import * as React from "react";
 
+export type Intl = Record<string, any>;
+export type NumberFormatOptions = Record<string, any>;
+
 export interface NumberTickerProps {
   /** The number to show – change it and the digits roll to the new value */
-  value?: any;
+  value?: number;
   /** Formatting, e.g. currency, percent, compact notation or fraction digits */
-  format?: any;
+  format?: Intl.NumberFormatOptions;
   /** Locale passed to Intl.NumberFormat, e.g. "en-US" or "de-DE" (default: browser locale) */
-  locale?: any;
+  locale?: string;
   /** Length of a roll in milliseconds (default: 900) */
-  duration?: any;
+  duration?: number;
   /** Wait before the first count-in, in milliseconds (default: 0) */
-  delay?: any;
-  /** Extra class on the wrapper – font size, weight and color are inherited */
-  className?: any;
+  delay?: number;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

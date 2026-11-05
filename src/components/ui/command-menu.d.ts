@@ -1,18 +1,18 @@
 import * as React from "react";
 
+export type CommandGroup = Record<string, any>;
+
 export interface CommandMenuProps {
   /** Each { id, label, commands: { id, label, hint?, logo? | icon?, keys?, keywords? }[] }; the group with id "suggestions" gets ⌘1–⌘5 (default: Suggestions, Share, General, Go to) */
-  groups?: any;
+  groups?: CommandGroup[];
   /** Text in the empty field (default: "Type a command or search…") */
-  placeholder?: any;
+  placeholder?: string;
   /** Called when a command runs; the assistant fallback sends "ask" and the typed text */
-  onRun?: any;
+  onRun?: (id: string, query?: string) => void;
   /** Runs on Esc in an empty field – close your dialog here */
-  onClose?: any;
+  onClose?: () => void;
   /** Focus the field when the menu appears */
-  autoFocus?: any;
-  /** Extra class on the root */
-  className?: any;
+  autoFocus?: boolean;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

@@ -2,21 +2,19 @@ import * as React from "react";
 
 export interface TextRevealProps {
   /** The text to reveal */
-  text?: any;
+  text?: string;
   /** Reveal word by word or letter by letter (default: "word") */
-  by?: any;
+  by?: "word" | "char";
   /** Time between two pieces, in ms (default: 40) */
-  stagger?: any;
+  stagger?: number;
   /** Wait before the first piece, in ms (default: 0) */
-  delay?: any;
+  delay?: number;
   /** Time each piece takes to arrive, in ms (default: 700) */
-  duration?: any;
+  duration?: number;
   /** Element to render (default: "p") */
-  as?: any;
+  as?: "p" | "h1" | "h2" | "h3" | "span";
   /** Reveal only the first time; otherwise it plays again each time it enters the view (default: true) */
-  once?: any;
-  /** Extra class on the root */
-  className?: any;
+  once?: boolean;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

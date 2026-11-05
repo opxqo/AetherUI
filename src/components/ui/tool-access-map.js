@@ -6,12 +6,16 @@ import DemoComponent, { __InnerComponent } from "../../affectui-engine/demo-Cp18
  * An agent in the middle with every tool it can reach around it – which ones it used, which failed and which it calls right now; open a tool for its calls and replay one on its own
  */
 export function ToolAccessMap(props = {}) {
-  const { demo, ...rest } = props;
-  const hasCustomProps = !demo && Object.keys(rest).length > 0;
+  const { demo, className, style, ...rest } = props;
+  const hasCustomProps = demo === false || (!demo && Object.keys(rest).some(k => !["id", "children", "key", "ref"].includes(k) && !k.startsWith("data-") && !k.startsWith("aria-")));
   if (hasCustomProps && __InnerComponent && __InnerComponent !== DemoComponent) {
-    return React.createElement(__InnerComponent, rest);
+    return React.createElement(__InnerComponent, { className, style, ...rest });
   }
-  return React.createElement(DemoComponent, rest);
+  const element = React.createElement(DemoComponent, { className, style, ...rest });
+  if (className || style) {
+    return React.createElement("div", { className, style, "data-aether-wrapper": "" }, element);
+  }
+  return element;
 }
 
 export const ToolAccessMapRaw = __InnerComponent || DemoComponent;

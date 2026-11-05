@@ -1,38 +1,38 @@
 import * as React from "react";
 
+export type CoverFlowItem = Record<string, any>;
+
 export interface CoverFlowProps {
   /** { id, title?, subtitle?, image?, alt?, cover? } – pass an image URL or any ReactNode as cover */
-  items?: any;
+  items?: CoverFlowItem[];
   /** Controlled front cover – pair with onIndexChange */
-  index?: any;
+  index?: number;
   /** Starting cover when uncontrolled (default: middle cover) */
-  defaultIndex?: any;
+  defaultIndex?: number;
   /** Called whenever a different cover reaches the front, also while dragging */
-  onIndexChange?: any;
+  onIndexChange?: (index: number) => void;
   /** Clicking the front cover or pressing Enter – e.g. open a detail view */
-  onSelect?: any;
+  onSelect?: (item: any, index: any) => void;
   /** Cover width in px – the whole row scales down in narrow containers (to half at most) (default: 280) */
-  itemWidth?: any;
+  itemWidth?: number;
   /** Cover height in px (default: 280) */
-  itemHeight?: any;
+  itemHeight?: number;
   /** How far the side covers turn away, in degrees (default: 50) */
-  angle?: any;
+  angle?: number;
   /** Mirror the covers on the floor (default: true) */
-  reflection?: any;
+  reflection?: boolean;
   /** Title and subtitle of the front cover (default: true) */
-  caption?: any;
+  caption?: boolean;
   /** Replaces the default caption */
-  renderCaption?: any;
+  renderCaption?: (item: any, index: any) => ReactNode;
   /** Previous and next buttons beside the caption (default: true) */
-  controls?: any;
+  controls?: boolean;
   /** Small position ticks under the caption – clicking one jumps there (default: true) */
-  ticks?: any;
+  ticks?: boolean;
   /** A soft click each time a new cover reaches the front (Web Audio, no file) (default: false) */
-  sound?: any;
+  sound?: boolean;
   /** Names the carousel (default: "Cover flow") */
-  "aria-label"?: any;
-  /** Extra class on the root */
-  className?: any;
+  "aria-label"?: string;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

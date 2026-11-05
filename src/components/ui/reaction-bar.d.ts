@@ -1,14 +1,15 @@
 import * as React from "react";
 
+export type Partial = Record<string, any>;
+export type ReactionKey = Record<string, any>;
+
 export interface ReactionBarProps {
   /** Starting count and pressed state per action */
-  reactions?: any;
+  reactions?: Partial<Record<ReactionKey, { count; active? }>>;
   /** Called after a toggle with the new count and state */
-  onReact?: any;
+  onReact?: (key: any, state: any) => void;
   /** Which actions to show, in order (default: ["like", "comment", "repost", "share"]) */
-  actions?: any;
-  /** Extra class on the pill */
-  className?: any;
+  actions?: ReactionKey[];
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

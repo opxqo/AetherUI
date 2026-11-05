@@ -1,28 +1,28 @@
 import * as React from "react";
 
+export type LedgerEntry = Record<string, any>;
+
 export interface AgentLedgerProps {
   /** { id, action, target?, system, icon?, at, change?, detail?, reversible?, dependsOn? } – every change, any order; newest shows first */
-  entries?: any;
+  entries?: LedgerEntry[];
   /** Per entry – shown as before (struck) → after; or pass detail for a single line */
-  change?: any;
+  change?: [before, after];
   /** Per entry – the changes it builds on; undoing one of those undoes this one too, if it can be */
-  dependsOn?: any;
+  dependsOn?: string[];
   /** Per entry – false for things that can't be taken back (a sent email, a payout): no Undo, and "Can't undo" when something it builds on is undone (default: true) */
-  reversible?: any;
+  reversible?: boolean;
   /** Who made the changes, next to the title */
-  agent?: any;
+  agent?: string;
   /** The clock for "2m ago" (epoch ms) – defaults to now, kept fresh */
-  now?: any;
+  now?: number;
   /** Ids of undone changes, controlled or not */
-  "undone / defaultUndone"?: any;
+  "undone / defaultUndone"?: string[];
   /** The change and its reversible dependents – revert or reapply them */
-  "onUndo / onRedo"?: any;
+  "onUndo / onRedo"?: (ids: string[]) => void;
   /** Lights up a change and what builds on it, as if its Undo were pointed at – for a walkthrough */
-  pointAt?: any;
+  pointAt?: string | null;
   /** Heading of the bar (default: "Ledger") */
-  title?: any;
-  /** Extra class on the root */
-  className?: any;
+  title?: string;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

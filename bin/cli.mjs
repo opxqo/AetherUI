@@ -82,6 +82,7 @@ if (cmd === "info") {
 if (cmd === "add") {
   const slug = args[1];
   const isClean = args.includes("--clean");
+  const usePackage = args.includes("--package");
   const targetDir = path.resolve(process.cwd(), getFlag("--dir", "src/components/ui"));
   const item = AFFECTUI_CATALOG.find((x) => x.slug === slug);
   if (!item) {
@@ -90,19 +91,91 @@ if (cmd === "add") {
   }
 
   fs.mkdirSync(targetDir, { recursive: true });
-  const sourceLoader = isClean && item.loadCleanSource ? item.loadCleanSource : item.loadSource;
-  const rawSource = sourceLoader ? await sourceLoader() : "";
-  const dtsPath = path.join(rootDir, "src/components/ui", `${item.slug}.d.ts`);
-
   const outTsxPath = path.join(targetDir, `${item.slug}.tsx`);
   const outDtsPath = path.join(targetDir, `${item.slug}.d.ts`);
 
-  fs.writeFileSync(outTsxPath, rawSource, "utf8");
+  const dtsDir = isClean ? path.join(rootDir, "src/components/ui/clean") : path.join(rootDir, "src/components/ui");
+  const dtsPath = path.join(dtsDir, `${item.slug}.d.ts`);
   if (fs.existsSync(dtsPath)) {
     fs.copyFileSync(dtsPath, outDtsPath);
   }
 
-  console.log(`\n✅ [${BRAND_CONFIG.name}] Added ${item.name} (${isClean ? "Clean" : "Classic"}) to:`);
+  if (usePackage) {
+    const pascal = item.name.replace(/[^A-Za-z0-9]/g, "");
+    const pkgWrapper = `/**
+ * @aether-ui/react — ${item.name} (${item.slug})
+ * Exported via ${BRAND_CONFIG.cliName} add
+ */
+import { ${pascal}, type ${pascal}Props } from "${BRAND_CONFIG.packageName}/ui/${isClean ? "clean/" : ""}${item.slug}";
+
+export { ${pascal}, type ${pascal}Props };
+export default ${pascal};
+`;
+    fs.writeFileSync(outTsxPath, pkgWrapper, "utf8");
+    console.log(`\n✅ [${BRAND_CONFIG.name}] Added package wrapper for ${item.name} (${isClean ? "Clean" : "Classic"}) to:`);
+    console.log(`   - ${outTsxPath}`);
+    console.log(`   - ${outDtsPath}\n`);
+    process.exit(0);
+  }
+
+  const sourceLoader = isClean && item.loadCleanSource ? item.loadCleanSource : item.loadSource;
+  let rawSource = sourceLoader ? await sourceLoader() : "";
+
+  // Check for @/affectui-engine/ imports
+  const engineImports = [...rawSource.matchAll(/from\s+["']@\/affectui-engine\/([^"']+)["']/g)];
+  if (engineImports.length > 0) {
+    const engineDir = path.join(rootDir, "src/affectui-engine");
+    const targetEngineDir = path.join(targetDir, "_engine");
+    fs.mkdirSync(targetEngineDir, { recursive: true });
+
+    // Collect and copy all required engine chunk files & styles recursively
+    const visited = new Set();
+    const queue = engineImports.map((m) => m[1]);
+
+    while (queue.length > 0) {
+      const current = queue.shift();
+      if (visited.has(current)) continue;
+      visited.add(current);
+
+      const srcPath = path.join(engineDir, current);
+      if (!fs.existsSync(srcPath)) continue;
+
+      let content = fs.readFileSync(srcPath, "utf8");
+      const destPath = path.join(targetEngineDir, current);
+      fs.mkdirSync(path.dirname(destPath), { recursive: true });
+
+      if (current.endsWith(".css")) {
+        fs.writeFileSync(destPath, content, "utf8");
+        continue;
+      }
+
+      // Rewrite React & JSX runtime imports to standard npm packages
+      content = content
+        .replace(/from\s*"\.\/react-BkAXpnfr\.js"/g, 'from "react"')
+        .replace(/from\s*"\.\/jsx-runtime-CTsRTJUX\.js"/g, 'from "react/jsx-runtime"');
+
+      // Scan for transitive relative dependencies
+      const subImports = [
+        ...content.matchAll(/from\s*"\.\/([^"]+)"/g),
+        ...content.matchAll(/import\s*"\.\/([^"]+)"/g),
+      ];
+      for (const sm of subImports) {
+        const depFile = sm[1];
+        if (depFile.endsWith(".js") || depFile.endsWith(".css")) {
+          if (!visited.has(depFile)) queue.push(depFile);
+        }
+      }
+
+      fs.writeFileSync(destPath, content, "utf8");
+    }
+
+    // Rewrite import in <slug>.tsx from "@/affectui-engine/" to "./_engine/"
+    rawSource = rawSource.replace(/@\/affectui-engine\//g, "./_engine/");
+  }
+
+  fs.writeFileSync(outTsxPath, rawSource, "utf8");
+
+  console.log(`\n✅ [${BRAND_CONFIG.name}] Added standalone ${item.name} (${isClean ? "Clean" : "Classic"}) to:`);
   console.log(`   - ${outTsxPath}`);
   console.log(`   - ${outDtsPath}\n`);
   process.exit(0);

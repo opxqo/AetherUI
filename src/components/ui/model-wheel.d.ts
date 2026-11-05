@@ -2,13 +2,11 @@ import * as React from "react";
 
 export interface ModelWheelProps {
   /** Models on the wheel, each with its brand mark as one SVG path; use at least 7 to keep the drum full (default: 8 popular models) */
-  models?: any;
+  models?: Array<Record<string, any>>;
   /** Milliseconds a model stays in the middle (default: 1500) */
-  hold?: any;
+  hold?: number;
   /** Accessible description of the illustration (default: "AI models on a turning wheel…") */
-  label?: any;
-  /** Extra class on the root */
-  className?: any;
+  label?: string;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

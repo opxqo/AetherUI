@@ -1,32 +1,32 @@
 import * as React from "react";
 
+export type FanoutTask = Record<string, any>;
+
 export interface FanoutGridProps {
   /** { id, label, status, worker?, start?, end?, cost?, attempts?, result?, error? } – one per task, in the order the cells should show */
-  tasks?: any;
+  tasks?: FanoutTask[];
   /** Per task – picks the cell's tint: gray, blue with a shine, amber, green, red */
-  status?: any;
+  status?: "queued" | "running" | "retrying" | "done" | "failed";
   /** Per task, in ms from the start of the job – used for its duration and the time left */
-  "start / end"?: any;
+  "start / end"?: number;
   /** Per task – 2 and more show in its details */
-  attempts?: any;
+  attempts?: number;
   /** What the whole job does, next to the title – e.g. "Enrich 240 leads" */
-  job?: any;
+  job?: string;
   /** How many workers run at once – the time left is worked out from it (defaults to the tasks running now) */
-  workers?: any;
+  workers?: number;
   /** The clock, in ms from the start of the job (default: 0) */
-  now?: any;
+  now?: number;
   /** Shows "Retry failed" while tasks have failed, and gets their ids */
-  onRetry?: any;
+  onRetry?: (ids: string[]) => void;
   /** A task was picked (click or Enter) – null when it's let go */
-  onSelect?: any;
+  onSelect?: (task: any) => void;
   /** Formats every cost (default: dollars) */
-  formatCost?: any;
+  formatCost?: (amount: number) => string;
   /** Heading of the bar (default: "Fan-out") */
-  title?: any;
+  title?: string;
   /** A small mark before the title, e.g. the agent's logo */
-  icon?: any;
-  /** Extra class on the root */
-  className?: any;
+  icon?: ReactNode;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

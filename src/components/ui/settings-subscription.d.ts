@@ -2,13 +2,11 @@ import * as React from "react";
 
 export interface SettingsSubscriptionScreenProps {
   /** Called with a settings page – "Members" from Manage members and the seats' +, or "Back to app" */
-  onNavigate?: any;
+  onNavigate?: (label: string) => void;
   /** Workspace name, used by the shell (default: "Acme") */
-  workspace?: any;
+  workspace?: string;
   /** Account at the bottom of the sidebar */
-  user?: any;
-  /** Extra class on the root */
-  className?: any;
+  user?: { name: string; avatar?: string };
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

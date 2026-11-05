@@ -1,22 +1,24 @@
 import * as React from "react";
 
+export type DiffSegment = Record<string, any>;
+export type Ref = Record<string, any>;
+export type InlineDiffHandle = Record<string, any>;
+
 export interface InlineDiffProps {
   /** The text as it is now (default: "") */
-  original?: any;
+  original?: string;
   /** The text the AI suggests – diffed word by word against original (default: "") */
-  suggested?: any;
+  suggested?: string;
   /** Pre-computed segments ({ type: "equal", text } or { type: "change", remove, insert }) instead of original and suggested */
-  changes?: any;
+  changes?: DiffSegment[];
   /** Called on every decision and undo with the text so far – pending changes keep the original words */
-  onChange?: any;
+  onChange?: (text: string) => void;
   /** Called when the last pending change is decided, with the final text */
-  onDone?: any;
+  onDone?: (text: string) => void;
   /** Small line on the gray tray above the card, e.g. "Suggested by AI · Make it shorter" */
-  label?: any;
+  label?: string;
   /** highlight(index | null), accept(index), reject(index), acceptAll(), rejectAll(), undo(), reset() */
-  ref?: any;
-  /** Extra class on the root */
-  className?: any;
+  ref?: Ref<InlineDiffHandle>;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

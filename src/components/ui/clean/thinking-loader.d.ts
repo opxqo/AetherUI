@@ -2,23 +2,21 @@ import * as React from "react";
 
 export interface ThinkingLoaderProps {
   /** Labels to walk through, one after another (default: ["Thinking", "Searching the web", "Reading sources", "Writing response"]) */
-  phases?: any;
+  phases?: string[];
   /** Time per phase in ms when the phase isn't controlled (default: 2200) */
-  interval?: any;
+  interval?: number;
   /** Controlled index into phases – the timer stops and the loader shows this phase */
-  phase?: any;
+  phase?: number;
   /** Start over after the last phase instead of holding it (default: false) */
-  loop?: any;
+  loop?: boolean;
   /** Turns the spinner into a check and the label into doneLabel; setting it back to false starts over (default: false) */
-  done?: any;
+  done?: boolean;
   /** Label once done – a function gets the seconds since the loader started (default: (s) => `Thought for ${s}s`) */
-  doneLabel?: any;
+  doneLabel?: string | (((seconds: number) => string));
   /** 28 or 34px tall (default: "md") */
-  size?: any;
+  size?: "sm" | "md";
   /** A bordered capsule, or just the spinner and the label (default: "pill") */
-  variant?: any;
-  /** Extra class on the root */
-  className?: any;
+  variant?: "pill" | "plain";
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

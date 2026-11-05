@@ -1,22 +1,22 @@
 import * as React from "react";
 
+export type PrivacyValues = Record<string, any>;
+
 export interface SettingsPrivacyScreenProps {
   /** The switches, this browser's cookies, product emails, sessions (device, name, meta, current) and shared chats (title, scope, shared, views) – the sample person when left out */
-  privacy?: any;
+  privacy?: PrivacyValues;
   /** Called with all settings whenever something changes, signing out a session and stopping a share included */
-  onSave?: any;
+  onSave?: (privacy: PrivacyValues) => void;
   /** Called when an export of every chat and file is requested */
-  onExport?: any;
+  onExport?: () => void;
   /** Called once deleting every chat is confirmed */
-  onDeleteChats?: any;
+  onDeleteChats?: () => void;
   /** Called with the label of a sidebar item */
-  onNavigate?: any;
+  onNavigate?: (label: string) => void;
   /** Workspace name in the sidebar */
-  workspace?: any;
+  workspace?: string;
   /** Account at the bottom of the sidebar */
-  user?: any;
-  /** Extra class on the root */
-  className?: any;
+  user?: { name: string; avatar?: string };
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

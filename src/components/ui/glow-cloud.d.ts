@@ -2,15 +2,13 @@ import * as React from "react";
 
 export interface GlowCloudProps {
   /** Blue-to-cyan or red-to-orange sky; the cloud's colors follow (default: "blue") */
-  color?: any;
+  color?: "blue" | "orange";
   /** Fill the whole box with the sky gradient; false leaves the cloud on a transparent background with a soft colored edge (default: true) */
-  background?: any;
+  background?: boolean;
   /** The eyes follow the pointer while it's over the illustration (default: true) */
-  followPointer?: any;
+  followPointer?: boolean;
   /** Accessible description of the illustration */
-  label?: any;
-  /** Extra class on the root */
-  className?: any;
+  label?: string;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

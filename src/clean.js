@@ -1,10 +1,8 @@
 /**
- * @affectui/react/clean — Clean Aesthetic Variant Barrel Export (76 Components)
+ * @aether-ui/react/clean — Clean Aesthetic Variant Barrel Export (76 Components)
+ *
+ * Stylesheet entry: import "@aether-ui/react/styles.css";
  */
-import "./affectui-engine/index.css";
-import "./affectui-engine/all-demos.css";
-import "../design-system/tokens/variables.css";
-
 export { AIAnswer, AIAnswerDemo, AIAnswerRaw } from "./components/ui/clean/ai-answer.js";
 export { ChatComposer, ChatComposerDemo, ChatComposerRaw } from "./components/ui/clean/chat-composer.js";
 export { ThinkingState, ThinkingStateDemo, ThinkingStateRaw } from "./components/ui/clean/thinking-state.js";

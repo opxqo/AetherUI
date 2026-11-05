@@ -6,12 +6,16 @@ import DemoComponent, { __InnerComponent } from "../../../affectui-engine/demo.c
  * Where every agent is right now – a live timeline with a lane per agent, tasks growing into “now”, hand-offs drawn between agents and approvals right on the block
  */
 export function AgentLanes(props = {}) {
-  const { demo, ...rest } = props;
-  const hasCustomProps = !demo && Object.keys(rest).length > 0;
+  const { demo, className, style, ...rest } = props;
+  const hasCustomProps = demo === false || (!demo && Object.keys(rest).some(k => !["id", "children", "key", "ref"].includes(k) && !k.startsWith("data-") && !k.startsWith("aria-")));
   if (hasCustomProps && __InnerComponent && __InnerComponent !== DemoComponent) {
-    return React.createElement(__InnerComponent, rest);
+    return React.createElement(__InnerComponent, { className, style, ...rest });
   }
-  return React.createElement(DemoComponent, rest);
+  const element = React.createElement(DemoComponent, { className, style, ...rest });
+  if (className || style) {
+    return React.createElement("div", { className, style, "data-aether-wrapper": "" }, element);
+  }
+  return element;
 }
 
 export const AgentLanesRaw = __InnerComponent || DemoComponent;

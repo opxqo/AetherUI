@@ -2,9 +2,7 @@ import * as React from "react";
 
 export interface LogoClusterProps {
   /** Accessible description of the illustration (default: "The affectUI mark surrounded by…") */
-  label?: any;
-  /** Extra class on the root, e.g. for width */
-  className?: any;
+  label?: string;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

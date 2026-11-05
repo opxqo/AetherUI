@@ -1,24 +1,24 @@
 import * as React from "react";
 
+export type Integration = Record<string, any>;
+
 export interface IntegrationPickerProps {
   /** Each { id, name, domain, category, description, features, path + color or icon, connected } (default: 10 sample services) */
-  integrations?: any;
+  integrations?: Integration[];
   /** Your product's name in the title, e.g. “affectUI + Linear” (default: "affectUI") */
-  appName?: any;
+  appName?: string;
   /** Your product's mark on the black tile (default: the affectUI mark) */
-  appIcon?: any;
+  appIcon?: ReactNode;
   /** Id of the integration that is picked first (default: the first item) */
-  defaultSelected?: any;
+  defaultSelected?: string;
   /** Called when an integration is switched on or off */
-  onToggle?: any;
+  onToggle?: (id: string, connected: boolean) => void;
   /** Called by “Explore integration” */
-  onExplore?: any;
+  onExplore?: (id: string) => void;
   /** Shows the back button and runs on ← in an empty search */
-  onBack?: any;
+  onBack?: () => void;
   /** Runs on Esc in an empty search */
-  onClose?: any;
-  /** Extra class on the root */
-  className?: any;
+  onClose?: () => void;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

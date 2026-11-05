@@ -1,32 +1,32 @@
 import * as React from "react";
 
+export type RunStep = Record<string, any>;
+
 export interface AgentRunScreenProps {
   /** Goal of the run, in the header and above the plan (default: "Prepare the Q3 board update") */
-  title?: any;
+  title?: string;
   /** Steps with id, title, detail, tool, their tool calls ({ name, summary, icon?, args?, result?, duration }) and an optional approval ({ title, description, risk, details }) the run waits on (default: defaultRunSteps) */
-  steps?: any;
+  steps?: RunStep[];
   /** Text the agent wrote, shown as an inline diff in the work area (default: defaultRunDraft) */
-  draft?: any;
+  draft?: { original: string; suggested: string; label?: string };
   /** Name of the agent in the run details (default: "Board prep") */
-  agent?: any;
+  agent?: string;
   /** Plays the built-in simulation on mount – turn off and drive the steps from your own events (default: true) */
-  autoRun?: any;
+  autoRun?: boolean;
   /** An approval was given; the run carries on */
-  onApprove?: any;
+  onApprove?: (stepId: string) => void;
   /** An approval was denied; the run stops at that step */
-  onDeny?: any;
+  onDeny?: (stepId: string) => void;
   /** Stop run pressed */
-  onStop?: any;
+  onStop?: () => void;
   /** Every step is done */
-  onDone?: any;
+  onDone?: () => void;
   /** Called with the label of a sidebar item */
-  onNavigate?: any;
+  onNavigate?: (label: string) => void;
   /** Workspace name in the sidebar (default: "Acme") */
-  workspace?: any;
+  workspace?: string;
   /** Account at the bottom of the sidebar (default: { name: "Alex Morgan" }) */
-  user?: any;
-  /** Extra class on the root */
-  className?: any;
+  user?: { name: string; avatar?: string };
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

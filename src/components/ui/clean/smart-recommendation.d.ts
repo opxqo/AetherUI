@@ -1,16 +1,18 @@
 import * as React from "react";
 
+export type Recommendation = Record<string, any>;
+
 export interface SmartRecommendationProps {
   /** The first is recommended, the rest are alternatives – id, label, reason and signal (0–3) */
-  options?: any;
+  options?: Recommendation[];
   /** Called when an option is accepted */
-  onAccept?: any;
+  onAccept?: (option: any) => void;
   /** Called when an accept is undone */
-  onUndo?: any;
+  onUndo?: (option: any) => void;
   /** Starts with the reason visible (default: true) */
-  defaultOpen?: any;
+  defaultOpen?: boolean;
   /** Heading of the card (default: "Smart recommendation") */
-  title?: any;
+  title?: string;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

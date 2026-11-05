@@ -1,14 +1,14 @@
 import * as React from "react";
 
+export type AgentTeamMember = Record<string, any>;
+
 export interface AgentTeamProps {
   /** Text that types itself into the prompt pill (default: "Build a team to work my inbound pipeline") */
-  prompt?: any;
+  prompt?: string;
   /** Required. Three agents, left to right – { role, avatar, tools? } with up to two of linkedin, hubspot, slack, gmail, salesforce */
-  members?: any;
+  members?: [AgentTeamMember, AgentTeamMember, AgentTeamMember];
   /** Accessible description – by default built from the prompt and the roles */
-  label?: any;
-  /** Extra class on the root, e.g. for width or margins */
-  className?: any;
+  label?: string;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

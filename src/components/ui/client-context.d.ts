@@ -1,18 +1,19 @@
 import * as React from "react";
 
+export type ContextClient = Record<string, any>;
+export type ContextEntry = Record<string, any>;
+
 export interface ClientContextProps {
   /** Each { id, name, meta, mark, kpis, reports, context } – the switcher lists them all */
-  clients?: any;
+  clients?: ContextClient[];
   /** note ("@Report name" becomes a mention), report, files (type pdf · xlsx · csv · doc) or integration { app, connected } */
-  "context entries"?: any;
+  "context entries"?: ContextEntry[];
   /** Author of new context */
-  me?: any;
+  me?: Record<string, any>;
   /** Called when context is added */
-  onAddContext?: any;
+  onAddContext?: (clientId: any, text: any, files: any) => void;
   /** Called when a client is created from the switcher */
-  onCreateClient?: any;
-  /** Extra class on the root */
-  className?: any;
+  onCreateClient?: (name: any) => void;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

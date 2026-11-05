@@ -1,16 +1,16 @@
 import * as React from "react";
 
+export type Tip = Record<string, any>;
+
 export interface KbdProps {
   /** id, title, description, action, doneLabel, primary and onAction */
-  tips?: any;
+  tips?: Tip[];
   /** Heading in the gray tray (default: "Tips") */
-  title?: any;
+  title?: string;
   /** Shows a Close button in the footer */
-  onClose?: any;
+  onClose?: () => void;
   /** Text of the Close button (default: "Close") */
-  closeLabel?: any;
-  /** Extra class on the tray */
-  className?: any;
+  closeLabel?: string;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

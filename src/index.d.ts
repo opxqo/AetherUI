@@ -1,5 +1,5 @@
 /**
- * @affectui/react — TypeScript Declarations for All 141 Components
+ * @aether-ui/react — TypeScript Declarations for All 141 Components
  */
 import * as React from "react";
 
@@ -11,6 +11,7 @@ export declare const AFFECTUI_CATALOG: Array<{
   description: string;
   isPro: boolean;
 }>;
+export declare const AETHERUI_CATALOG: typeof AFFECTUI_CATALOG;
 export declare const ScreenFullContext: React.Context<boolean>;
 export declare const SCREEN_WIDTH: number;
 

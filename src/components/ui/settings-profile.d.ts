@@ -1,16 +1,16 @@
 import * as React from "react";
 
+export type ProfileValues = Record<string, any>;
+
 export interface SettingsProfileScreenProps {
   /** firstName, lastName, email, role?, timezone, weekStart, context, avatar?, hasPassword? – the sample profile when left out */
-  profile?: any;
+  profile?: ProfileValues;
   /** Called with the whole profile whenever something is saved – text on blur, choices at once */
-  onSave?: any;
+  onSave?: (profile: ProfileValues) => void;
   /** Called with the label of a settings page, or "Back to app" */
-  onNavigate?: any;
+  onNavigate?: (label: string) => void;
   /** Workspace name, used by the shell (default: "Acme") */
-  workspace?: any;
-  /** Extra class on the root */
-  className?: any;
+  workspace?: string;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

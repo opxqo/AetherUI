@@ -6,12 +6,16 @@ import DemoComponent, { __InnerComponent } from "../../../affectui-engine/demo.c
  * How much an agent may do on its own – a three-stop dial, and its real actions gliding between “Runs on its own” and “Asks you first”, with a lock for what always asks
  */
 export function AutonomyDial(props = {}) {
-  const { demo, ...rest } = props;
-  const hasCustomProps = !demo && Object.keys(rest).length > 0;
+  const { demo, className, style, ...rest } = props;
+  const hasCustomProps = demo === false || (!demo && Object.keys(rest).some(k => !["id", "children", "key", "ref"].includes(k) && !k.startsWith("data-") && !k.startsWith("aria-")));
   if (hasCustomProps && __InnerComponent && __InnerComponent !== DemoComponent) {
-    return React.createElement(__InnerComponent, rest);
+    return React.createElement(__InnerComponent, { className, style, ...rest });
   }
-  return React.createElement(DemoComponent, rest);
+  const element = React.createElement(DemoComponent, { className, style, ...rest });
+  if (className || style) {
+    return React.createElement("div", { className, style, "data-aether-wrapper": "" }, element);
+  }
+  return element;
 }
 
 export const AutonomyDialRaw = __InnerComponent || DemoComponent;

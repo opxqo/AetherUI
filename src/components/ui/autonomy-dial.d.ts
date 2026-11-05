@@ -1,26 +1,27 @@
 import * as React from "react";
 
+export type AgentAction = Record<string, any>;
+export type AutonomyLevel = Record<string, any>;
+
 export interface AutonomyDialProps {
   /** The agent's actions: { id, label, detail?, risk: "safe" | "risky" | "destructive", icon? } */
-  actions?: any;
+  actions?: AgentAction[];
   /** Controlled level: 0 Always ask, 1 If risky (safe actions run), 2 Full auto */
-  level?: any;
+  level?: 0 | 1 | 2;
   /** Starting level when uncontrolled (default: 1) */
-  defaultLevel?: any;
+  defaultLevel?: 0 | 1 | 2;
   /** Another level was picked */
-  onLevelChange?: any;
+  onLevelChange?: (level: AutonomyLevel) => void;
   /** Controlled ids of actions that always ask, whatever the level */
-  pinned?: any;
+  pinned?: string[];
   /** Starting locks when uncontrolled (default: []) */
-  defaultPinned?: any;
+  defaultPinned?: string[];
   /** A lock was set or removed */
-  onPinnedChange?: any;
+  onPinnedChange?: (pinned: string[]) => void;
   /** Heading, e.g. the agent's name (default: "Agent permissions") */
-  title?: any;
+  title?: string;
   /** Line under the heading (default: "What it may do without asking you") */
-  subtitle?: any;
-  /** Extra class on the root */
-  className?: any;
+  subtitle?: string;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

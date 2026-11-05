@@ -1,1 +1,1 @@
-import"./demo-AoQgzkmh.css";import{t as e}from"./jsx-runtime-CTsRTJUX.js";import{r as t}from"./index-DrzmeL9u.js";var n=e();function r(){return(0,n.jsx)(`div`,{className:`glass-folder-demo`,children:(0,n.jsx)(t,{})})}export{r as default,t as __InnerComponent};
+import"./demo-AoQgzkmh.css";import{t as e}from"./jsx-runtime-CTsRTJUX.js";import{r as t}from"./runtime-shims.js";var n=e();function r(){return(0,n.jsx)(`div`,{className:`glass-folder-demo`,children:(0,n.jsx)(t,{})})}export{r as default,t as __InnerComponent};

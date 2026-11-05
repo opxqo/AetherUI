@@ -1,28 +1,29 @@
 import * as React from "react";
 
+export type AgentTask = Record<string, any>;
+export type AgentInboxView = Record<string, any>;
+
 export interface AgentInboxProps {
   /** { id, title, description?, agent, status, startedAt?, elapsed?, tools?, sources?, steps? } – status is "running", "waiting", "done" or "failed"; steps are { label, time? }, oldest first */
-  tasks?: any;
+  tasks?: AgentTask[];
   /** Approve on a waiting task. Without it the task turns running inside the board */
-  onApprove?: any;
+  onApprove?: (task: AgentTask) => void;
   /** Reject on a waiting task. Without it the task turns failed */
-  onReject?: any;
+  onReject?: (task: AgentTask) => void;
   /** Retry on a failed task. Without it the task runs again and its clock starts over */
-  onRetry?: any;
+  onRetry?: (task: AgentTask) => void;
   /** Shows an Open button on running and done tasks */
-  onOpen?: any;
+  onOpen?: (task: AgentTask) => void;
   /** Heading on the left of the bar, after "Agents /" (default: "Agent inbox") */
-  title?: any;
+  title?: string;
   /** A button in the bar next to the layout switch, e.g. New task */
-  action?: any;
+  action?: { label: string; onClick: () => void };
   /** Controlled layout */
-  view?: any;
+  view?: "board" | "list";
   /** Starting layout when uncontrolled (default: "board") */
-  defaultView?: any;
+  defaultView?: "board" | "list";
   /** Called when Board or List is picked */
-  onViewChange?: any;
-  /** Extra class on the root */
-  className?: any;
+  onViewChange?: (view: AgentInboxView) => void;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

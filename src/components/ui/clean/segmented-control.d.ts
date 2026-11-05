@@ -1,28 +1,28 @@
 import * as React from "react";
 
+export type SegmentOption = Record<string, any>;
+
 export interface SegmentedControlProps {
   /** { value, label?, icon?, count?, badge?, disabled?, ariaLabel?, controls? } – two to six work best; give icon-only options an ariaLabel */
-  options?: any;
+  options?: SegmentOption[];
   /** Controlled value */
-  value?: any;
+  value?: string;
   /** Starting value when uncontrolled (default: first enabled option) */
-  defaultValue?: any;
+  defaultValue?: string;
   /** Called with the new value – on click, while dragging the pill and on arrow keys */
-  onChange?: any;
+  onChange?: (value: string) => void;
   /** 26, 30 or 36px tall options (40px+ on touch screens) (default: "md") */
-  size?: any;
+  size?: "sm" | "md" | "lg";
   /** A gray track with a raised white pill, or text tabs on a hairline with a sliding line (default: "tray") */
-  variant?: any;
+  variant?: "tray" | "underline";
   /** Fills its container with equal segments, each as wide as the widest one needs (default: false) */
-  fullWidth?: any;
+  fullWidth?: boolean;
   /** A radiogroup, or a tablist that switches panels (pair with controls on each option) (default: "radio") */
-  kind?: any;
+  kind?: "radio" | "tabs";
   /** Disables the whole control (default: false) */
-  disabled?: any;
+  disabled?: boolean;
   /** Names the group – or use aria-labelledby */
-  "aria-label"?: any;
-  /** Extra class on the root */
-  className?: any;
+  "aria-label"?: string;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

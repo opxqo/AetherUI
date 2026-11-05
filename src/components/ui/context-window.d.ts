@@ -1,30 +1,30 @@
 import * as React from "react";
 
+export type ContextPart = Record<string, any>;
+
 export interface ContextWindowProps {
   /** { id, label, tokens?, items?, locked?, compact?, color? } – they fill the field in this order */
-  parts?: any;
+  parts?: ContextPart[];
   /** Size of the context window in tokens */
-  limit?: any;
+  limit?: number;
   /** Heading of the card (default: "Context window") */
-  title?: any;
+  title?: string;
   /** Small tag in the head, e.g. the model name */
-  model?: any;
+  model?: string;
   /** Logo in front of the model name, shown at 12px */
-  modelIcon?: any;
+  modelIcon?: ReactNode;
   /** Called when an item is removed. With it the card shows exactly what you pass; without it the removal lives inside the card */
-  onRemoveItem?: any;
+  onRemoveItem?: (partId: string, itemId: string) => void;
   /** Called when Compact is pressed; the cells shimmer until the promise settles. Without it the part shrinks on its own to its compact share */
-  onCompact?: any;
+  onCompact?: (partId: string) => void | Promise<void>;
   /** A button on the tray, e.g. New chat */
-  action?: any;
+  action?: { label: string; onClick: () => void };
   /** Share of the limit from which the percentage turns amber and the tray says how much is left; from 0.95 the window counts as full (default: 0.8) */
-  warnAt?: any;
+  warnAt?: number;
   /** Number of cells in the field (default: 216) */
-  cells?: any;
+  cells?: number;
   /** Cells per row (default: 36) */
-  columns?: any;
-  /** Extra class on the root */
-  className?: any;
+  columns?: number;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

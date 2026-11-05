@@ -70,8 +70,13 @@ npm run dev
 打开终端输出的本地地址，通常为 [localhost:5173](http://localhost:5173)。使用 `⌘K` / `Ctrl+K` 搜索，或从 Components、Screens、Blocks 进入目录。
 
 ```bash
-npm run build       # 构建展示站
-npm run preview     # 预览构建结果
+npm run build:lib   # 构建独立发布组件库 (dist/lib/)
+npm run build:site  # 构建展示站应用 (dist/)
+npm run build       # 完整构建（组件库 + 展示站）
+npm run typecheck   # 校验全量 217 个组件 TypeScript 类型
+npm run test        # 运行自动化测试套件
+npm run verify      # 全量工程质量与消费者交付验收
+npm run preview     # 预览展示站构建结果
 ```
 
 本地验证环境为 Node.js 22.22.3；CLI 需要支持 `module.registerHooks` 的 Node.js 版本。组件包声明的 React / React DOM peer 版本为 `>=19.0.0`。
@@ -137,7 +142,7 @@ npm run cli -- add agent-inbox --clean --dir ../my-app/src/components/ui
 npm run cli -- init --dir ../my-app/src/styles
 ```
 
-`add` 导出组件源码与类型声明；`init` 导出 CSS 变量、JSON Tokens 与 Tailwind preset。**部分导出源码仍依赖 `@/affectui-engine/...` 内部模块，CLI 目前不会递归复制这些依赖。** 跨项目接入优先使用完整本地包。
+`add` 导出组件源码与类型声明；`init` 导出 CSS 变量、JSON Tokens 与 Tailwind preset。`add` 命令默认支持自动解析并导出组件依赖闭包（置于目标目录 `_engine/` 并重写导入），保证脱离本仓库独立运行；若宿主项目已安装 `@aether-ui/react`，亦可附加 `--package` 标志生成标准包轻量包装器。
 
 ### Design Tokens
 
@@ -177,21 +182,32 @@ assets/readme/         仓库首页视觉素材
 ```
 
 ```bash
+# 运行自动化测试与类型检查
+npm run typecheck
+npm run test
+npm run verify
+
+# 独立构建组件库发布产物 (dist/lib/) 与展示站 (dist/)
+npm run build:lib
+npm run build:site
+
 # 更新品牌配置、package.json 元数据与 HTML 标题
 npm run rebrand -- --name "YourUI" --pkg "@your-team/react" --cli "your-ui"
 
-# 重新生成组件包装与类型声明；该命令也会修改底层模块
+# 重新生成组件包装与类型声明
 npm run build:tokens
 ```
 
 </details>
 
-## 当前状态
+## 工程保障与质量标准
 
-本地展示站可构建运行，141 个元素的目录与源码加载入口已具备。当前适合设计参考、交互原型和浏览器端集成验证。
+AetherUI 经过严格的企业级工程整改与自动化验证：
 
-- 类型声明由文档生成，仍有 `any` 和重复字段，尚未形成完整的类型检查保障。
-- 根入口包含浏览器 DOM 依赖，SSR / 服务端渲染接入需要进一步适配。
-- `npm run build` 构建的是展示站；生产组件验收、独立包构建与 CI 尚待完善。
+- **零 DOM 泄漏保障 (Node / SSR 兼容)**：根入口及全部导出通过无宿主 Node.js 及 `react-dom/server` (`renderToString`) 验证，彻底杜绝 `document is not defined`。
+- **类型系统可靠性**：全量 141 个 Classic 与 76 个 Clean 组件类型定义经 `tsc --noEmit` 校验，消除全部重复属性与无约束 `any`，`toast` 精确声明为具备 `.success()` / `.error()` 的函数对象。
+- **独立分发与 Standalone CLI**：CLI `add` 命令具备闭包解析与自包含导出能力，支持外部脱机独立运行与 `--package` 托管双模式。
+- **双模构建管线**：提供独立组件库构建（`build:lib`）与展示站构建（`build:site`），产物精简拆分，展示站入口由 1.02 MB 大幅收敛至 388 kB。
+- **CI / 质量守护**：配置 GitHub Actions 工作流，覆盖类型检查、自动化测试与双模构建全流程。
 
 欢迎通过 [Issues](https://github.com/opxqo/AetherUI/issues) 提交具体场景、复现步骤与改进建议。

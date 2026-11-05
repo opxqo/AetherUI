@@ -1,16 +1,16 @@
 import * as React from "react";
 
+export type GalleryItem = Record<string, any>;
+
 export interface AgentGalleryProps {
   /** Heading above the panels */
-  title?: any;
+  title?: string;
   /** Line under the heading */
-  subtitle?: any;
+  subtitle?: string;
   /** Each { id, name, description, colors: [strong, soft], trigger, steps, skills, guardrail } – drives the panel colors, the label and the screen */
-  items?: any;
+  items?: GalleryItem[];
   /** Panel that starts open (default: the middle item) */
-  defaultIndex?: any;
-  /** Extra class on the root */
-  className?: any;
+  defaultIndex?: number;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

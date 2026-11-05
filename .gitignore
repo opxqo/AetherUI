@@ -18,6 +18,8 @@ coverage/
 *.log
 .DS_Store
 ._*
+scratch/
+.test-tmp/
 
 # Raw conversation exports
 conversation-handover/transcript*.jsonl

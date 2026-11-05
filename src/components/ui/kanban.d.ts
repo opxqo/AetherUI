@@ -2,17 +2,15 @@ import * as React from "react";
 
 export interface KanbanScreenProps {
   /** Called with the label of a sidebar item */
-  onNavigate?: any;
+  onNavigate?: (label: string) => void;
   /** Workspace name in the sidebar (default: "Acme") */
-  workspace?: any;
+  workspace?: string;
   /** Account at the bottom of the sidebar (default: { name: "Alex Morgan" }) */
-  user?: any;
-  /** Extra class on the root */
-  className?: any;
+  user?: { name: string; avatar?: string };
   /** The columns, left to right – tone picks the priority mark */
-  columns?: any;
+  columns?: { id; label; tone: "low" | "medium" | "high" | "done" }[];
   /** The issues – `column` puts each one into a column; every card shows title, detail, status and counts */
-  cards?: any;
+  cards?: { id; column; title; description?; status?: "review" | "attention" | "progress" | "fixed"; comments?; attachments? }[];
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

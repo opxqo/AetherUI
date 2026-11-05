@@ -1,30 +1,30 @@
 import * as React from "react";
 
+export type Attempt = Record<string, any>;
+
 export interface ParallelAttemptsProps {
   /** { id, name, approach, model?, icon?, status, progress?, step?, score?, note?, took?, cost? } – one per attempt, in the order the rows should show; name is usually the model, icon its logo (on a small tile before the name) */
-  attempts?: any;
+  attempts?: Attempt[];
   /** Per attempt – picks the bar's tint: blue with a shine, green, red */
-  status?: any;
+  status?: "running" | "done" | "failed";
   /** Per attempt, 0 to 1 – the bar's length while it runs (and where a failed one stopped) */
-  progress?: any;
+  progress?: number;
   /** Per attempt – what it does right now, shown on the right while it runs */
-  step?: any;
+  step?: string;
   /** Per attempt, 0–100 once done – the highest is marked Best and picked unless you pick another */
-  score?: any;
+  score?: number;
   /** Per attempt – one line about the outcome, or the error */
-  note?: any;
+  note?: string;
   /** What all of them try to do, next to the title */
-  task?: any;
+  task?: string;
   /** Controlled pick – leave it out and the best finished attempt is picked on its own */
-  picked?: any;
+  picked?: string | null;
   /** Another attempt was picked with "Use this one" */
-  onPick?: any;
+  onPick?: (attempt: any) => void;
   /** Formats every cost (default: dollars) */
-  formatCost?: any;
+  formatCost?: (amount: number) => string;
   /** Heading of the bar (default: "Best of N") */
-  title?: any;
-  /** Extra class on the root */
-  className?: any;
+  title?: string;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

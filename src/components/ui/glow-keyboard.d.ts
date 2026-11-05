@@ -2,15 +2,13 @@ import * as React from "react";
 
 export interface GlowKeyboardProps {
   /** Prompts the demo types one after another; each one is sent with Enter (default: three hiking prompts) */
-  prompts?: any;
+  prompts?: string[];
   /** Placeholder of the chat input (default: "Ask AI anything...") */
-  placeholder?: any;
+  placeholder?: string;
   /** Called when a prompt is sent with Enter – by the demo or the user */
-  onSubmit?: any;
+  onSubmit?: (text: string) => void;
   /** Accessible name of the scene (default: "AI chat input above a glass keyboard…") */
-  label?: any;
-  /** Extra class on the root, e.g. for width or margins */
-  className?: any;
+  label?: string;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

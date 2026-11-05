@@ -2,39 +2,29 @@ import * as React from "react";
 
 export interface ToasterProps {
   /** Corner or edge the stack sits in; new toasts come in from that edge (default: "bottom-right") */
-  position?: any;
+  position?: "top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right";
   /** Positions the stack inside the nearest positioned ancestor instead of the viewport (default: false) */
-  inline?: any;
+  inline?: boolean;
   /** Only shows toasts sent with { toaster: id } – for a second, separate stack */
-  id?: any;
+  id?: string;
   /** Default time on screen in ms; each toast can override it, Infinity keeps it open (default: 4000) */
-  duration?: any;
+  duration?: number;
   /** Toasts visible at once; older ones wait (with a paused timer) until there's room (default: 3) */
-  visibleToasts?: any;
+  visibleToasts?: number;
   /** Always shows the stack fanned out instead of on hover and focus (default: false) */
-  expand?: any;
+  expand?: boolean;
   /** Distance from the edges in px; phones always use 12px gutters (default: 24 (20 inline)) */
-  offset?: any;
+  offset?: number;
   /** Space between toasts when fanned out, in px (default: 10) */
-  gap?: any;
+  gap?: number;
   /** Key (KeyboardEvent.key or .code) that moves focus to the newest toast (default: "F8") */
-  hotkey?: any;
+  hotkey?: string | null;
   /** A 1px line along the bottom that runs down with the timer and stops when it pauses (default: true) */
-  hairline?: any;
+  hairline?: boolean;
   /** Small close button on hover and focus – always visible on touch screens (default: true) */
-  closeButton?: any;
+  closeButton?: boolean;
   /** Name of the region for screen readers (the hotkey is added) (default: "Notifications") */
-  label?: any;
-  /** Extra class on the region */
-  className?: any;
-  /** Shows a plain toast; also toast.success, toast.error, toast.info and toast.loading. Returns the id */
-  "toast(title, options?)"?: any;
-  /** A loading toast that turns into success or error; each message is a title, { title, description } or a function of the result */
-  "toast.promise(promise, messages, options?)"?: any;
-  /** Closes one toast, or all of them without an id */
-  "toast.dismiss(id?)"?: any;
-  /** Pass an existing id to update that toast in place (the timer restarts, the text crossfades). action.onClick closes the toast unless it calls event.preventDefault() */
-  ToastOptions?: any;
+  label?: string;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;
@@ -43,11 +33,32 @@ export interface ToasterProps {
   [key: string]: any;
 }
 
+export interface ToastOptions {
+  id?: string | number;
+  description?: React.ReactNode;
+  duration?: number;
+  toaster?: string;
+  action?: { label: string; onClick: (event: React.MouseEvent<HTMLButtonElement>) => void };
+  [key: string]: any;
+}
+
+export interface ToastFn {
+  (title: React.ReactNode, options?: ToastOptions): string | number;
+  success: (title: React.ReactNode, options?: ToastOptions) => string | number;
+  error: (title: React.ReactNode, options?: ToastOptions) => string | number;
+  info: (title: React.ReactNode, options?: ToastOptions) => string | number;
+  loading: (title: React.ReactNode, options?: ToastOptions) => string | number;
+  promise: <T>(promise: Promise<T> | (() => Promise<T>), messages: { loading: React.ReactNode; success: React.ReactNode | ((data: T) => React.ReactNode); error: React.ReactNode | ((err: unknown) => React.ReactNode) }, options?: ToastOptions) => Promise<T>;
+  dismiss: (id?: string | number) => void;
+}
+
+export declare const toast: ToastFn;
+
 /**
  * Toaster — Calm toasts from anywhere – a stack that fans out on hover, promise toasts that morph from spinner to check, swipe to dismiss
  */
 export declare const Toaster: React.FC<ToasterProps>;
 export declare const ToasterRaw: React.FC<ToasterProps>;
 export declare const ToasterDemo: React.FC<ToasterProps>;
-export declare const toast: React.FC<ToasterProps>;
+
 export default Toaster;

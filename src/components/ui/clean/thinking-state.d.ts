@@ -1,18 +1,18 @@
 import * as React from "react";
 
+export type ThinkingStep = Record<string, any>;
+
 export interface ThinkingStateProps {
   /** Searches and thinking steps, revealed in order. Sources can link out (href) and show a tooltip; moreSources hide behind a “+N more” chip */
-  steps?: any;
+  steps?: ThinkingStep[];
   /** Label of the final row (default: "Finished thinking") */
-  doneLabel?: any;
+  doneLabel?: string;
   /** Pause between two steps, in ms (default: 1300) */
-  stepMs?: any;
+  stepMs?: number;
   /** Starts over a few seconds after finishing (default: false) */
-  loop?: any;
+  loop?: boolean;
   /** Called once all steps are done */
-  onDone?: any;
-  /** Extra class on the root */
-  className?: any;
+  onDone?: (seconds: number) => void;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

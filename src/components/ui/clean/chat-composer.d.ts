@@ -1,26 +1,28 @@
 import * as React from "react";
 
+export type ChatModel = Record<string, any>;
+
 export interface ChatComposerProps {
   /** Placeholder of the message field (default: "Start by typing...") */
-  placeholder?: any;
+  placeholder?: string;
   /** Entries of the model picker (Auto, Claude, ChatGPT); the first is selected (default: defaultModels) */
-  models?: any;
+  models?: ChatModel[];
   /** Duration of the connect and approval loading states (default: 1300) */
-  loadMs?: any;
+  loadMs?: number;
   /** Demo transcript that appears word by word in gray while recording – replace with real speech-to-text (default: "Draft a short update…") */
-  dictation?: any;
+  dictation?: string;
   /** Called on send or Enter */
-  onSend?: any;
+  onSend?: (message: string, details: { model: string }) => void;
   /** Called when a model is picked */
-  onModelChange?: any;
+  onModelChange?: (model: ChatModel) => void;
   /** Called when the plus button is clicked – open your own picker here */
-  onAttach?: any;
+  onAttach?: () => void;
   /** Called when “Connect apps” is clicked */
-  onConnectApps?: any;
+  onConnectApps?: () => void;
   /** Called when “Request approval” is clicked */
-  onRequestApproval?: any;
+  onRequestApproval?: () => void;
   /** Called when “Select a project” is clicked */
-  onSelectProject?: any;
+  onSelectProject?: () => void;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

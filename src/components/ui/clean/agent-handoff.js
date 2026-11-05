@@ -6,12 +6,16 @@ import DemoComponent, { __InnerComponent } from "../../../affectui-engine/demo.c
  * A task passed from agent to agent like a relay – at every handoff what went along to the next one, and what got lost on the way
  */
 export function AgentHandoff(props = {}) {
-  const { demo, ...rest } = props;
-  const hasCustomProps = !demo && Object.keys(rest).length > 0;
+  const { demo, className, style, ...rest } = props;
+  const hasCustomProps = demo === false || (!demo && Object.keys(rest).some(k => !["id", "children", "key", "ref"].includes(k) && !k.startsWith("data-") && !k.startsWith("aria-")));
   if (hasCustomProps && __InnerComponent && __InnerComponent !== DemoComponent) {
-    return React.createElement(__InnerComponent, rest);
+    return React.createElement(__InnerComponent, { className, style, ...rest });
   }
-  return React.createElement(DemoComponent, rest);
+  const element = React.createElement(DemoComponent, { className, style, ...rest });
+  if (className || style) {
+    return React.createElement("div", { className, style, "data-aether-wrapper": "" }, element);
+  }
+  return element;
 }
 
 export const AgentHandoffRaw = __InnerComponent || DemoComponent;

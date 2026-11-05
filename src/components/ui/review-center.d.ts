@@ -1,50 +1,55 @@
 import * as React from "react";
 
+export type ReviewItem = Record<string, any>;
+export type ReviewText = Record<string, any>;
+export type ReviewFile = Record<string, any>;
+export type ReviewStep = Record<string, any>;
+export type Ref = Record<string, any>;
+export type ReviewCenterHandle = Record<string, any>;
+
 export interface ReviewCenterProps {
   /** { id, title, agent, model?, icon?, type, risk, confidence, createdAt, reasoning?, fields?, body?, bodyLabel?, format?, sources? } – everything waiting; decided items hide themselves, new ids slide into the queue */
-  items?: any;
+  items?: ReviewItem[];
   /** Per item – sorts the queue (high first), feeds the High risk filter and shows as a small tag next to the agent (high and medium) */
-  risk?: any;
+  risk?: "high" | "medium" | "low";
   /** Per item, 0–1 – below lowConfidence the item counts as Unsure */
-  confidence?: any;
+  confidence?: number;
   /** Per item – a string, or an array of strings and { text, note, source? } flags; flags are marked and explain themselves on hover, focus or F. Edit (E) works on these two */
-  "fields / body"?: any;
+  "fields / body"?: ReviewText;
   /** Per item – a code change: { path, added?, removed?, diff?, start? } – a row per file, a unified diff with line numbers and a light syntax tint under the files that have one */
-  files?: any;
+  files?: ReviewFile[];
   /** Per item – a plan: { title, tool?, icon?, detail? } as numbered steps; a step with a flag gets an amber number */
-  steps?: any;
+  steps?: ReviewStep[];
   /** Per item – "code" shows the body as a diff, like a file's (default: "text") */
-  format?: any;
+  format?: "text" | "code";
   /** Approved or rejected – result is { decision, reason?, text?, fields? }; text and fields only when the reviewer edited them */
-  onDecide?: any;
+  onDecide?: (item: any, result: any) => void;
   /** The last decision was taken back – put the item back if you dropped it from items */
-  onUndo?: any;
+  onUndo?: (item: any, result: any) => void;
   /** The reviewer moved on without deciding; the row is marked skipped */
-  onSkip?: any;
+  onSkip?: (item: any) => void;
   /** How many were reviewed before (e.g. today) – the header counts on from here (default: 0) */
-  reviewed?: any;
+  reviewed?: number;
   /** The total in the header (default: reviewed + waiting) */
-  total?: any;
+  total?: number;
   /** How long an item may wait, in ms – waiting times turn amber at 75% and red past it (default: 1800000) */
-  sla?: any;
+  sla?: number;
   /** The clock (epoch ms) – defaults to the real one, ticking every 10s */
-  now?: any;
+  now?: number;
   /** Below this an item is Unsure (default: 0.7) */
-  lowConfidence?: any;
+  lowConfidence?: number;
   /** The quick reasons for a rejection, picked with 1–4 (default: ["Wrong info", "Tone", "Not allowed", "Other"]) */
-  reasons?: any;
+  reasons?: string[];
   /** High risk first then oldest, oldest first, or as passed (default: "risk") */
-  order?: any;
+  order?: "risk" | "oldest" | "given";
   /** The queue's filter, controlled or uncontrolled (default: "all") */
-  "filter / defaultFilter"?: any;
+  "filter / defaultFilter"?: "all" | "high" | "unsure";
   /** The filter changed */
-  onFilterChange?: any;
+  onFilterChange?: (filter: any) => void;
   /** approve, reject(reason?), edit, setDraft, save, cancel, skip, next, previous, undo, peek(index), select(id) */
-  ref?: any;
+  ref?: Ref<ReviewCenterHandle>;
   /** Heading of the bar (default: "Review center") */
-  title?: any;
-  /** Extra class on the root */
-  className?: any;
+  title?: string;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

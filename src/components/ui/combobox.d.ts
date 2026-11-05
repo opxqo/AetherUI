@@ -1,34 +1,34 @@
 import * as React from "react";
 
+export type ComboboxOption = Record<string, any>;
+
 export interface ComboboxProps {
   /** The list. avatar is an image URL or true for initials; options with the same group are listed under one title */
-  options?: any;
+  options?: Array<Record<string, any>>;
   /** Pick many (chips) or one – one closes the list after picking (default: true) */
-  multiple?: any;
+  multiple?: boolean;
   /** Controlled values (also for single choice, with at most one entry) */
-  value?: any;
+  value?: string[];
   /** Starting values when uncontrolled (default: []) */
-  defaultValue?: any;
+  defaultValue?: string[];
   /** Called on every pick, removal or creation */
-  onChange?: any;
+  onChange?: (value: string[], options: ComboboxOption[]) => void;
   /** Shown while nothing is picked (default: "Search…") */
-  placeholder?: any;
+  placeholder?: string;
   /** Offer a create row when no option matches the typed text exactly (default: false) */
-  creatable?: any;
+  creatable?: boolean;
   /** Builds the new option – defaults to { value: text, label: text } */
-  onCreate?: any;
+  onCreate?: (text: string) => ComboboxOption | void;
   /** Text of the create row, e.g. Invite “…” (default: Create “…”) */
-  createLabel?: any;
+  createLabel?: (text: string) => string;
   /** Show at most this many chips, the rest as a "+3" chip */
-  maxVisibleTags?: any;
+  maxVisibleTags?: number;
   /** Visible label above the field (also names the list) */
-  label?: any;
+  label?: string;
   /** Open the list right away (default: false) */
-  defaultOpen?: any;
+  defaultOpen?: boolean;
   /** Shown when nothing matches (default: "No results") */
-  emptyText?: any;
-  /** Extra class on the root */
-  className?: any;
+  emptyText?: string;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

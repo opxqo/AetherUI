@@ -1,22 +1,23 @@
 import * as React from "react";
 
+export type LaneAgent = Record<string, any>;
+export type LaneTask = Record<string, any>;
+
 export interface AgentLanesProps {
   /** One lane each: { id, name, model?, avatar? }. A logo as avatar sits on a white tile; without one the initials show. Free agents get an Idle tag, waiting ones Needs you */
-  agents?: any;
+  agents?: LaneAgent[];
   /** { id, agentId, title, status: "done" | "running" | "waiting" | "failed", start, end?, handoffTo?, ask?, summary?, tools? }. No end: the block reaches "now" */
-  tasks?: any;
+  tasks?: LaneTask[];
   /** How much time the lanes show, in ms (default: 30 minutes) */
-  span?: any;
+  span?: number;
   /** A clock you control, e.g. a faster one for a demo. Without it the lanes follow real time, every second */
-  now?: any;
+  now?: number;
   /** Approve or Reject on a waiting task. Without handlers the lanes change the status themselves */
-  "onApprove / onReject"?: any;
+  "onApprove / onReject"?: (task: LaneTask) => void;
   /** Shows an Open link in the tooltip of a block that doesn't wait */
-  onOpen?: any;
+  onOpen?: (task: LaneTask) => void;
   /** Heading in the bar (default: "Agents") */
-  title?: any;
-  /** Extra class on the root */
-  className?: any;
+  title?: string;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

@@ -1,42 +1,42 @@
 import * as React from "react";
 
+export type KpiBoardData = Record<string, any>;
+
 export interface KpiBoardProps {
   /** One data set per range id: { stats, overview, focus } */
-  data?: any;
+  data?: Record<string, KpiBoardData>;
   /** Options of the date range picker */
-  ranges?: any;
+  ranges?: { id: string; label: string }[];
   /** Controlled range id */
-  range?: any;
+  range?: string;
   /** Starting range when uncontrolled (default: first range) */
-  defaultRange?: any;
+  defaultRange?: string;
   /** Called with the new range */
-  onRangeChange?: any;
+  onRangeChange?: (id: string) => void;
   /** A filter inside the overview card, e.g. All items / Pro / Team – it only switches that card's lines; no filter when left out */
-  segments?: any;
+  segments?: { id: string; label: string }[];
   /** Controlled segment id */
-  segment?: any;
+  segment?: string;
   /** Starting segment when uncontrolled (default: first segment) */
-  defaultSegment?: any;
+  defaultSegment?: string;
   /** Called with the new segment */
-  onSegmentChange?: any;
+  onSegmentChange?: (id: string) => void;
   /** Words after every change (default: "vs. last period") */
-  compareLabel?: any;
+  compareLabel?: string;
   /** Name of the main line in the tooltip and the focus card (default: "This period") */
-  currentLabel?: any;
+  currentLabel?: string;
   /** Name of the comparison line (default: "Last period") */
-  previousLabel?: any;
+  previousLabel?: string;
   /** Formats money values (default: $1,234.00) */
-  formatMoney?: any;
+  formatMoney?: (value: number) => string;
   /** Icon in the focus card */
-  icon?: any;
+  icon?: ReactNode;
   /** Heading on the left of the bar above the cards */
-  title?: any;
+  title?: string;
   /** The small button at the top right of the focus card, e.g. Set up */
-  setup?: any;
+  setup?: { label: string; onClick: () => void };
   /** The button at the bottom of the focus card */
-  action?: any;
-  /** Extra class on the root */
-  className?: any;
+  action?: { label: string; onClick: () => void };
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

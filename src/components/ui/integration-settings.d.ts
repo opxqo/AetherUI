@@ -1,26 +1,29 @@
 import * as React from "react";
 
+export type Partial = Record<string, any>;
+export type IntegrationValues = Record<string, any>;
+
 export interface IntegrationSettingsProps {
   /** Name of the service */
-  name?: any;
+  name?: string;
   /** Logo in the white tile */
-  logo?: any;
+  logo?: ReactNode;
   /** Small number next to the name */
-  count?: any;
+  count?: number;
   /** Line under the name; switching off shows a paused note instead */
-  meta?: any;
+  meta?: string;
   /** enabled, siteUrl, timeZone and apiKey to start with */
-  defaultValues?: any;
+  defaultValues?: Partial<IntegrationValues>;
   /** Helper text under the address field */
-  siteHint?: any;
+  siteHint?: string;
   /** Choices in the time zone picker */
-  timeZones?: any;
+  timeZones?: string[];
   /** Creates a key – a random demo key without it */
-  onGenerateKey?: any;
+  onGenerateKey?: () => string | Promise<string>;
   /** Called with all values from the save bar */
-  onSave?: any;
+  onSave?: (values: any) => void | Promise<void>;
   /** Called when the switch changes */
-  onToggle?: any;
+  onToggle?: (enabled: boolean) => void;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

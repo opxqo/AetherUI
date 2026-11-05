@@ -1,22 +1,23 @@
 import * as React from "react";
 
+export type CatalogItem = Record<string, any>;
+export type ScheduleLine = Record<string, any>;
+
 export interface BillingScheduleProps {
   /** Heading on the tray (default: "Create a billing schedule") */
-  title?: any;
+  title?: string;
   /** Starting phase name – editable in the summary (default: "Build-out phase") */
-  phase?: any;
+  phase?: string;
   /** Currency symbol for prices and totals (default: "$") */
-  currency?: any;
+  currency?: string;
   /** Products under Add product – { name, repeat, price } */
-  catalog?: any;
+  catalog?: CatalogItem[];
   /** Lines to start with – products, a discount or a minimum */
-  defaultLines?: any;
+  defaultLines?: ScheduleLine[];
   /** Start date as yyyy-mm-dd (default: "2026-01-01") */
-  defaultStart?: any;
+  defaultStart?: string;
   /** Called with { phase, start, duration, lines } after every change */
-  onChange?: any;
-  /** Extra class on the root */
-  className?: any;
+  onChange?: (schedule: any) => void;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

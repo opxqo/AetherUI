@@ -1,20 +1,21 @@
 import * as React from "react";
 
+export type RadarAgent = Record<string, any>;
+export type RadarFile = Record<string, any>;
+
 export interface ConflictRadarProps {
   /** One column each: name, model or branch, a mark, and whether it's still working */
-  agents?: any;
+  agents?: RadarAgent[];
   /** One row each, with every agent's edit – the lines it changes, whether it's still writing, and for conflicts its way in one sentence */
-  files?: any;
+  files?: RadarFile[];
   /** Heading in the bar (default: "Parallel work") */
-  title?: any;
+  title?: string;
   /** The agent picked per conflicting file – leave it out and the component keeps the picks itself */
-  resolved?: any;
+  resolved?: Record<string, string>;
   /** A way was picked for a conflict */
-  onResolve?: any;
+  onResolve?: (path: string, agentId: string) => void;
   /** Merge was clicked – it's only enabled once every conflict is settled and every agent is done */
-  onMerge?: any;
-  /** Extra class on the root */
-  className?: any;
+  onMerge?: () => void;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

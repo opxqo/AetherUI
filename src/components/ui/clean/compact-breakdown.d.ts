@@ -1,28 +1,28 @@
 import * as React from "react";
 
+export type BreakdownItem = Record<string, any>;
+
 export interface CompactBreakdownProps {
   /** { id?, label, value, color? } – the parts of the shown period; the list ranks them by value. Give an id when labels can change */
-  items?: any;
+  items?: BreakdownItem[];
   /** Heading of the card (default: "Breakdown") */
-  title?: any;
+  title?: string;
   /** Options of the period switch – no switch when left out */
-  periods?: any;
+  periods?: { id: string; label: string }[];
   /** Controlled period id */
-  period?: any;
+  period?: string;
   /** Starting period when uncontrolled (default: first period) */
-  defaultPeriod?: any;
+  defaultPeriod?: string;
   /** Called with the new period – pass the matching items and delta back in */
-  onPeriodChange?: any;
+  onPeriodChange?: (id: string) => void;
   /** Change against the previous period in percent (12.4 or -3) – a small green or red pill next to the total */
-  delta?: any;
+  delta?: number;
   /** Formats every value – the total, the rows and the hovered part (default: whole numbers with separators) */
-  format?: any;
+  format?: (value: number) => string;
   /** Line under the big number while nothing is hovered (default: "Total") */
-  totalLabel?: any;
+  totalLabel?: string;
   /** Replaces the line on the gray tray; null hides it (default: "Largest: <part>") */
-  footer?: any;
-  /** Extra class on the root */
-  className?: any;
+  footer?: ReactNode | null;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

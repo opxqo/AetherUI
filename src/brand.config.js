@@ -16,6 +16,11 @@ export const BRAND_CONFIG = {
   badgeText: "141 Elements",
   /** 核心品牌标语 */
   tagline: "Enterprise AI-First React UI Component Library & Design System",
+  /** 仓库链接 */
+  githubRepo: "opxqo/AetherUI",
+  repoUrl: "https://github.com/opxqo/AetherUI",
+  issuesUrl: "https://github.com/opxqo/AetherUI/issues",
+  authorUrl: "https://github.com/opxqo",
   /** 版本号 */
   version: "1.0.0",
 };

@@ -1,26 +1,24 @@
 import * as React from "react";
 
+export type Partial = Record<string, any>;
+
 export interface VoiceOrbProps {
   /** What the assistant is doing – the orb melts from one state into the next (default: "idle") */
-  state?: any;
+  state?: "idle" | "listening" | "thinking" | "speaking";
   /** Loudness from 0 to 1 while listening or speaking. Without it the orb makes up a natural-looking level */
-  level?: any;
+  level?: number;
   /** Edge length in px (default: 220) */
-  size?: any;
+  size?: number;
   /** Number of dots – raise it for large sizes (default: 520) */
-  dots?: any;
+  dots?: number;
   /** Color the moving dots take on; resting dots use the text color (default: blue) */
-  accent?: any;
+  accent?: string;
   /** The line under the orb – false hides it, an object replaces single texts (default: true) */
-  label?: any;
+  label?: boolean | Partial<Record<state, string>>;
   /** Dots give way to the mouse pointer (default: true) */
-  interactive?: any;
+  interactive?: boolean;
   /** Makes the orb a button, e.g. to start and stop listening */
-  onPress?: any;
-  /** Extra class on the root */
-  className?: any;
-  /** Inline styles on the root – set color here to change the resting dots */
-  style?: any;
+  onPress?: () => void;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

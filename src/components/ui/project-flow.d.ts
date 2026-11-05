@@ -2,11 +2,9 @@ import * as React from "react";
 
 export interface ProjectFlowProps {
   /** Light or dark cards (default: "light") */
-  theme?: any;
+  theme?: "light" | "dark";
   /** Accessible description of the scene (default: "A client task branching…") */
-  label?: any;
-  /** Extra class on the root, e.g. for width or margins */
-  className?: any;
+  label?: string;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

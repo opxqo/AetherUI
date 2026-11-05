@@ -2,21 +2,21 @@ import * as React from "react";
 
 export interface SkeletonProps {
   /** Width – numbers are px, strings any CSS length (default: "100%") */
-  "Skeleton · width"?: any;
+  "Skeleton · width"?: number | string;
   /** Height – numbers are px (default: 12) */
-  "Skeleton · height"?: any;
+  "Skeleton · height"?: number | string;
   /** Corner radius (default: 6) */
-  "Skeleton · radius"?: any;
+  "Skeleton · radius"?: number | string;
   /** Round shape that uses width for both sides, e.g. for avatars (default: false) */
-  "Skeleton · circle"?: any;
+  "Skeleton · circle"?: boolean;
   /** Extra class or inline styles on the block */
-  "Skeleton · className / style"?: any;
+  "Skeleton · className / style"?: string | CSSProperties;
   /** The label the highlight runs through */
-  "ShimmerText · children"?: any;
+  "ShimmerText · children"?: ReactNode;
   /** Seconds for one pass of the highlight (default: 2) */
-  "ShimmerText · duration"?: any;
+  "ShimmerText · duration"?: number;
   /** Extra class – font size and weight are inherited */
-  "ShimmerText · className"?: any;
+  "ShimmerText · className"?: string;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

@@ -2,23 +2,21 @@ import * as React from "react";
 
 export interface WritingAssistantProps {
   /** Assistant name on top (default: "Quill") */
-  name?: any;
+  name?: string;
   /** Line under the name (default: "Your writing companion.") */
-  tagline?: any;
+  tagline?: string;
   /** Big line on the welcome screen (default: "What should we write?") */
-  greeting?: any;
+  greeting?: string;
   /** Chips that send themselves as a message */
-  suggestions?: any;
+  suggestions?: string[];
   /** Placeholder of the prompt field (default: "Ask anything…") */
-  placeholder?: any;
+  placeholder?: string;
   /** Your answer for a message; a sample writer is used by default */
-  respond?: any;
+  respond?: (message: any) => string | Promise<string>;
   /** auto uses the browser's speech recognition when available, simulate always plays a sample take (default: "auto") */
-  speech?: any;
+  speech?: "auto" | "simulate";
   /** Sentence used for simulated dictation */
-  dictation?: any;
-  /** Extra class on the root */
-  className?: any;
+  dictation?: string;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

@@ -2,11 +2,9 @@ import * as React from "react";
 
 export interface IntegrationFlowProps {
   /** Integrations that rotate through the pills (5 or more look best). The icon fills a 64 × 64 box; mono logos turn black in the centre (default: Okta, Snowflake, Slack, ClickUp, Zendesk) */
-  items?: any;
+  items?: { name: string; icon: ReactNode; title?: string; mono?: boolean }[];
   /** Accessible description of the scene (default: "Integrations like Slack, Okta and Snowflake…") */
-  label?: any;
-  /** Extra class on the root, e.g. for width or margins */
-  className?: any;
+  label?: string;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

@@ -1,44 +1,44 @@
 import * as React from "react";
 
+export type TraceSpan = Record<string, any>;
+
 export interface TraceWaterfallProps {
   /** { id, name, kind, status, start, end?, detail?, icon?, model?, tokensIn?, tokensOut?, cost?, input?, output?, error?, children? } – the whole run as a tree, rebuilt as it goes on */
-  root?: any;
+  root?: TraceSpan;
   /** Per span – picks the bar's tint: agents slate, LLM calls violet, tool calls teal; failed spans are red */
-  kind?: any;
+  kind?: "agent" | "subagent" | "llm" | "tool";
   /** Per span – a running span has no end yet and grows into "now" */
-  status?: any;
+  status?: "running" | "done" | "failed";
   /** Per span, in ms from the start of the run; leave end out while it runs */
-  "start / end"?: any;
+  "start / end"?: number;
   /** Per span – a few muted words after the name, e.g. the model or the query */
-  detail?: any;
+  detail?: string;
   /** Per span – a small mark, e.g. the model maker's or the tool's logo; defaults to a swatch in the kind's color */
-  icon?: any;
+  icon?: ReactNode;
   /** Per span, its own – agents add up their children, so don't pre-sum */
-  "cost / tokensIn / tokensOut"?: any;
+  "cost / tokensIn / tokensOut"?: number;
   /** Per span – short previews shown in the details window */
-  "input / output / error"?: any;
+  "input / output / error"?: string;
   /** The clock in ms from the start of the run – e.g. a faster one for a demo or a replay */
-  now?: any;
+  now?: number;
   /** When the run started (epoch ms) – without now, the component ticks its own clock from here while a span runs */
-  startedAt?: any;
+  startedAt?: number;
   /** Ids of folded spans, controlled or uncontrolled (default: []) */
-  "collapsed / defaultCollapsed"?: any;
+  "collapsed / defaultCollapsed"?: string[];
   /** A span was folded or opened */
-  onCollapsedChange?: any;
+  onCollapsedChange?: (collapsed: string[]) => void;
   /** The span whose details are open, controlled or uncontrolled (default: null) */
-  "openId / defaultOpenId"?: any;
+  "openId / defaultOpenId"?: string | null;
   /** Details opened (with the span) or closed */
-  onOpenChange?: any;
+  onOpenChange?: (id: string | null, span?: TraceSpan) => void;
   /** Marks the slowest finished LLM or tool call with a small "Slowest" tag (default: true) */
-  markSlowest?: any;
+  markSlowest?: boolean;
   /** The shortest time the axis shows, in ms – it grows in round steps as the run gets longer (default: 10000) */
-  minRange?: any;
+  minRange?: number;
   /** Formats every cost (default: dollars, e.g. "$0.042") */
-  formatCost?: any;
+  formatCost?: (amount: number) => string;
   /** Heading of the bar; next to it the root's input (or name) (default: "Trace") */
-  title?: any;
-  /** Extra class on the root */
-  className?: any;
+  title?: string;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

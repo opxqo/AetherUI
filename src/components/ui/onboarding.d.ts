@@ -1,20 +1,20 @@
 import * as React from "react";
 
+export type OnboardingValues = Record<string, any>;
+
 export interface OnboardingScreenProps {
   /** Step shown first; the steps before it count as done (default: 2) */
-  defaultStep?: any;
+  defaultStep?: 1 | 2 | 3 | 4;
   /** Addresses already in the invite field, e.g. from the sign-up form (default: ["jamie@acme.com"]) */
-  defaultInvites?: any;
+  defaultInvites?: string[];
   /** Called after Create agent (or skipping the last step) with workspace, slug, team size, tools, invites, role and template */
-  onComplete?: any;
+  onComplete?: (values: OnboardingValues) => void;
   /** Called with the label of a sidebar item or a next step (Chat, Integrations, Analytics) */
-  onNavigate?: any;
+  onNavigate?: (label: string) => void;
   /** Workspace name in the sidebar, the greeting and the first field (default: "Acme") */
-  workspace?: any;
+  workspace?: string;
   /** Account at the bottom of the sidebar; the first name is used in the greeting (default: { name: "Alex Morgan" }) */
-  user?: any;
-  /** Extra class on the root */
-  className?: any;
+  user?: { name: string; avatar?: string };
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

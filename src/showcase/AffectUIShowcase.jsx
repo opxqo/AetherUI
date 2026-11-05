@@ -8,7 +8,7 @@ import React, {
   Component,
 } from "react";
 import { AFFECTUI_CATALOG } from "../affectui-engine/catalog.js";
-import { ScreenFullContext } from "../affectui-engine/index-DrzmeL9u.js";
+import { ScreenFullContext } from "../affectui-engine/context.js";
 import { BRAND_CONFIG } from "../brand.config.js";
 import "./showcase.css";
 
@@ -90,11 +90,12 @@ function useWebHaptics() {
 /* ============================================================================
    2. AnimatedStarCounter & DiaTextReveal & SpotlightCard (1:1 Amicro Primitives)
    ============================================================================ */
-function AnimatedStarCounter({ value, fallback = 2492, className = "" }) {
-  const target = value !== null && value > 0 ? value : fallback;
+function AnimatedStarCounter({ value, className = "" }) {
+  const target = typeof value === "number" && value > 0 ? value : null;
   const [displayValue, setDisplayValue] = useState(0);
 
   useEffect(() => {
+    if (!target) return;
     let rafId;
     const start = performance.now();
     const duration = 320;
@@ -107,6 +108,8 @@ function AnimatedStarCounter({ value, fallback = 2492, className = "" }) {
     rafId = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(rafId);
   }, [target]);
+
+  if (!target) return null;
 
   return (
     <span className={className} style={{ fontVariantNumeric: "tabular-nums" }}>
@@ -386,17 +389,40 @@ const Icons = {
   ),
 };
 
-// Component cache for lazy imports
+// Component cache & synchronous resolved module cache for instant 0ms mount
 const componentCache = new Map();
+const resolvedModuleCache = new Map();
+
+function loadComponentModule(item, variant = "classic") {
+  const key = `${item.slug}:${variant}`;
+  if (resolvedModuleCache.has(key)) {
+    return Promise.resolve(resolvedModuleCache.get(key));
+  }
+  const loader =
+    variant === "clean" && item.loadClean ? item.loadClean : item.loadClassic;
+  return loader()
+    .then((mod) => {
+      const Comp = mod.default || mod;
+      resolvedModuleCache.set(key, Comp);
+      return Comp;
+    })
+    .catch(async (err) => {
+      // Evict and retry once in case Vite dev server was re-optimizing deps
+      componentCache.delete(key);
+      await new Promise((r) => setTimeout(r, 250));
+      const mod = await loader();
+      const Comp = mod.default || mod;
+      resolvedModuleCache.set(key, Comp);
+      return Comp;
+    });
+}
 
 function getLazyComponent(item, variant = "classic") {
   const key = `${item.slug}:${variant}`;
   if (!componentCache.has(key)) {
-    const loader =
-      variant === "clean" && item.loadClean ? item.loadClean : item.loadClassic;
     const LazyComp = React.lazy(async () => {
-      const mod = await loader();
-      return { default: mod.default || mod };
+      const Comp = await loadComponentModule(item, variant);
+      return { default: Comp };
     });
     componentCache.set(key, LazyComp);
   }
@@ -464,32 +490,95 @@ function useCardAutoFit(stageRef, enabled = true) {
 }
 
 function CardPreview({ item, variant }) {
-  const [isVisible, setIsVisible] = useState(false);
+  const effectiveVariant =
+    variant === "clean" && item.loadClean ? "clean" : "classic";
+  const cacheKey = `${item.slug}:${effectiveVariant}`;
+
+  const [ResolvedComp, setResolvedComp] = useState(
+    () => resolvedModuleCache.get(cacheKey) || null,
+  );
+  const [isInView, setIsInView] = useState(false);
   const stageRef = useRef(null);
   const isScreen = item.kind === "screen";
   const isComponent = !item.kind || item.kind === "component";
 
-  useCardAutoFit(stageRef, isVisible && isComponent);
+  // Keep ResolvedComp synced when variant changes
+  useEffect(() => {
+    const cached = resolvedModuleCache.get(cacheKey);
+    if (cached) {
+      setResolvedComp(() => cached);
+    } else if (isInView) {
+      let active = true;
+      loadComponentModule(item, effectiveVariant)
+        .then((Comp) => {
+          if (active) setResolvedComp(() => Comp);
+        })
+        .catch(() => {});
+      return () => {
+        active = false;
+      };
+    }
+  }, [cacheKey, isInView, item, effectiveVariant]);
 
+  // Viewport observer with 45ms scroll-settle debounce so fast scrolling
+  // doesn't clog HTTP/1.1 connections with skipped rows, plus off-screen
+  // unmounting beyond 1000px to keep 141 live intervals from starving CPU.
   useEffect(() => {
     const el = stageRef.current;
     if (!el) return;
-    const observer = new IntersectionObserver(
+    if (typeof IntersectionObserver === "undefined") {
+      setIsInView(true);
+      return;
+    }
+
+    let timerId = null;
+
+    // Immediate check if already in viewport on mount
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight + 300 && rect.bottom > -300) {
+      setIsInView(true);
+    }
+
+    const enterObserver = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
+          if (resolvedModuleCache.has(cacheKey)) {
+            setIsInView(true);
+          } else {
+            timerId = setTimeout(() => {
+              setIsInView(true);
+            }, 40);
+          }
+        } else {
+          if (timerId) {
+            clearTimeout(timerId);
+            timerId = null;
+          }
         }
       },
-      { rootMargin: "320px" },
+      { rootMargin: "420px 0px" },
     );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
 
-  const effectiveVariant =
-    variant === "clean" && item.loadClean ? "clean" : "classic";
-  const Comp = isVisible ? getLazyComponent(item, effectiveVariant) : null;
+    const leaveObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) {
+          setIsInView(false);
+        }
+      },
+      { rootMargin: "1100px 0px" },
+    );
+
+    enterObserver.observe(el);
+    leaveObserver.observe(el);
+
+    return () => {
+      if (timerId) clearTimeout(timerId);
+      enterObserver.disconnect();
+      leaveObserver.disconnect();
+    };
+  }, [cacheKey]);
+
+  useCardAutoFit(stageRef, isInView && !!ResolvedComp && isComponent);
 
   return (
     <div
@@ -504,10 +593,10 @@ function CardPreview({ item, variant }) {
         aria-hidden="true"
       >
         <ErrorBoundary>
-          {isVisible && Comp ? (
+          {isInView && ResolvedComp ? (
             <Suspense fallback={<div className="af-skeleton" />}>
               <ScreenFullContext.Provider value={false}>
-                <Comp key={effectiveVariant} onNavigate={() => {}} />
+                <ResolvedComp key={effectiveVariant} onNavigate={() => {}} />
               </ScreenFullContext.Provider>
             </Suspense>
           ) : (
@@ -860,7 +949,21 @@ export default function AffectUIShowcase() {
   const [cmdIndex, setCmdIndex] = useState(0);
   const [shareOpen, setShareOpen] = useState(false);
   const [refreshKey, setRefreshKey] = useState(0);
-  const [stars] = useState(2492);
+  const [stars, setStars] = useState(null);
+
+  useEffect(() => {
+    const repo = BRAND_CONFIG.githubRepo;
+    if (repo) {
+      fetch(`https://api.github.com/repos/${repo}`)
+        .then((r) => (r.ok ? r.json() : null))
+        .then((d) => {
+          if (typeof d?.stargazers_count === "number") {
+            setStars(d.stargazers_count);
+          }
+        })
+        .catch(() => {});
+    }
+  }, []);
 
   // Default to Amicro's signature Dark theme unless user explicitly chose light
   const [theme, setTheme] = useState(() => {
@@ -1403,7 +1506,7 @@ export default function AffectUIShowcase() {
 
             {/* GitHub Stars Pill */}
             <a
-              href="https://github.com/Subhan-code/Amicro--Micro-transitions-"
+              href={BRAND_CONFIG.repoUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="am-pill-btn"
@@ -1412,18 +1515,18 @@ export default function AffectUIShowcase() {
             >
               {Icons.github}
               <span style={{ fontWeight: 600, letterSpacing: "-0.02em", fontSize: 12 }}>
-                <AnimatedStarCounter value={stars} fallback={2492} />
+                {stars > 0 ? <AnimatedStarCounter value={stars} /> : "GitHub"}
               </span>
             </a>
 
             {/* X / Twitter Circle Button */}
             <a
-              href="https://x.com/SubhanHQ"
+              href={BRAND_CONFIG.authorUrl || BRAND_CONFIG.repoUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="am-circle-btn"
               onClick={() => triggerHaptic("light")}
-              title="Follow on X"
+              title="Repository & Organization"
             >
               {Icons.xTwitter}
             </a>
@@ -2017,7 +2120,7 @@ export default function AffectUIShowcase() {
                 </button>
 
                 <a
-                  href="https://github.com/Subhan-code/Amicro--Micro-transitions-"
+                  href={BRAND_CONFIG.repoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="am-btn-secondary"
@@ -2025,9 +2128,11 @@ export default function AffectUIShowcase() {
                 >
                   {Icons.github}
                   <span>GitHub Repo</span>
-                  <span className="am-star-pill">
-                    <AnimatedStarCounter value={stars} fallback={2492} />
-                  </span>
+                  {stars > 0 && (
+                    <span className="am-star-pill">
+                      <AnimatedStarCounter value={stars} />
+                    </span>
+                  )}
                 </a>
               </div>
             </section>
@@ -2242,7 +2347,7 @@ export default function AffectUIShowcase() {
                   </button>
 
                   <a
-                    href="https://github.com/Subhan-code/Amicro--Micro-transitions-"
+                    href={BRAND_CONFIG.repoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="am-btn-secondary"
@@ -2256,9 +2361,11 @@ export default function AffectUIShowcase() {
                   >
                     {Icons.github}
                     <span>GitHub</span>
-                    <span style={{ fontSize: 12, fontWeight: 600, opacity: 0.9 }}>
-                      (<AnimatedStarCounter value={stars} fallback={2492} />)
-                    </span>
+                    {stars > 0 && (
+                      <span style={{ fontSize: 12, fontWeight: 600, opacity: 0.9 }}>
+                        (<AnimatedStarCounter value={stars} />)
+                      </span>
+                    )}
                   </a>
                 </div>
               </div>

@@ -1,12 +1,12 @@
 import * as React from "react";
 
+export type Notice = Record<string, any>;
+
 export interface NotificationStackProps {
   /** id, badge, title, text, action ({ label, href, onClick, external }) and pattern */
-  notices?: any;
+  notices?: Notice[];
   /** Called when a notice is dismissed with its close button */
-  onDismiss?: any;
-  /** Extra class on the stack */
-  className?: any;
+  onDismiss?: (notice: Notice) => void;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

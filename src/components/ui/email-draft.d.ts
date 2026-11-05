@@ -1,30 +1,31 @@
 import * as React from "react";
 
+export type DraftContact = Record<string, any>;
+export type DraftTone = Record<string, any>;
+
 export interface EmailDraftProps {
   /** Reference of the record the email is about (default: "SUB-1182") */
-  reference?: any;
+  reference?: string;
   /** Account or company under the reference (default: "Northwind Logistics") */
-  account?: any;
+  account?: string;
   /** Amount on the right (default: "$8,900") */
-  amount?: any;
+  amount?: string;
   /** Status chip next to the reference (default: "Renews in 5 days") */
-  status?: any;
+  status?: string;
   /** Who wrote the draft, shown in the footer (default: "Renewal agent") */
-  agent?: any;
+  agent?: string;
   /** People the email can go to – the first is preselected */
-  contacts?: any;
+  contacts?: DraftContact[];
   /** File name of the attachment; it can be removed and added back */
-  attachment?: any;
+  attachment?: string | null;
   /** Text variants { id, label, body(contact) } – Friendly, Short and Formal by default */
-  tones?: any;
+  tones?: DraftTone[];
   /** Link appended to the email text */
-  link?: any;
+  link?: Record<string, any>;
   /** Called after Send with the final email */
-  onSend?: any;
+  onSend?: (data: Record<string, any>) => void;
   /** Called when the draft is discarded */
-  onDiscard?: any;
-  /** Extra class on the root */
-  className?: any;
+  onDiscard?: () => void;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

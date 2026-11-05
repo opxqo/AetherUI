@@ -1,16 +1,16 @@
 import * as React from "react";
 
+export type MetricChange = Record<string, any>;
+
 export interface ChangeSummaryProps {
   /** label, change text, tone (good, bad, neutral) and the arrow direction */
-  changes?: any;
+  changes?: MetricChange[];
   /** Heading in the gray tray (default: "What's changed") */
-  title?: any;
+  title?: string;
   /** Small text on the right of the heading */
-  period?: any;
+  period?: string;
   /** Replaces the icon in front of the heading */
-  icon?: any;
-  /** Extra class on the tray */
-  className?: any;
+  icon?: ReactNode;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

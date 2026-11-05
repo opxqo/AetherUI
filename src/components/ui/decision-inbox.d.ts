@@ -1,12 +1,12 @@
 import * as React from "react";
 
+export type Decision = Record<string, any>;
+
 export interface DecisionInboxProps {
   /** id, title, detail, primary and secondary answer, and collapsed to start folded */
-  decisions?: any;
+  decisions?: Decision[];
   /** Called when someone picks an answer */
-  onDecide?: any;
-  /** Extra class on the tray */
-  className?: any;
+  onDecide?: (decision, answer: "primary" | "secondary") => void;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

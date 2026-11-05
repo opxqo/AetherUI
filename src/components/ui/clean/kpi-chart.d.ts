@@ -1,28 +1,28 @@
 import * as React from "react";
 
+export type KpiSeries = Record<string, any>;
+
 export interface KpiChartProps {
   /** Label above the number */
-  title?: any;
+  title?: string;
   /** Headline value, already formatted */
-  value?: any;
+  value?: string;
   /** Change against the previous period – green when positive, red when negative */
-  delta?: any;
+  delta?: number;
   /** One label per point; first, middle and last are shown on the axis */
-  labels?: any;
+  labels?: string[];
   /** Longer labels for the tooltip header, falls back to labels */
-  tooltipLabels?: any;
+  tooltipLabels?: string[];
   /** Lines with a label, a color and one value per label */
-  series?: any;
+  series?: KpiSeries[];
   /** Formats axis, tooltip and delta values (default: compact, e.g. 1.2k) */
-  format?: any;
+  format?: (n: number) => string;
   /** Line under the chart */
-  footer?: any;
+  footer?: string;
   /** Point that stays highlighted while nobody hovers */
-  defaultIndex?: any;
+  defaultIndex?: number;
   /** Quiet text in the plot when there are no values, or only zeros (0% on a percent axis still draws) (default: "No data yet") */
-  emptyText?: any;
-  /** Extra class on the card */
-  className?: any;
+  emptyText?: string;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

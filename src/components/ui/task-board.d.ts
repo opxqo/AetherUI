@@ -1,18 +1,23 @@
 import * as React from "react";
 
+export type Task = Record<string, any>;
+export type TaskStatus = Record<string, any>;
+export type TaskLabel = Record<string, any>;
+export type TaskPerson = Record<string, any>;
+
 export interface TaskBoardProps {
   /** key, title, status, priority (0–4), estimate, labels, assignee, dueIn, subtasks, pullRequest, created */
-  tasks?: any;
+  tasks?: Task[];
   /** Columns in order: id, label and icon */
-  statuses?: any;
+  statuses?: TaskStatus[];
   /** id, label and color – used on cards, in the filter and in the panel */
-  labels?: any;
+  labels?: TaskLabel[];
   /** id, name and avatar for assignees */
-  people?: any;
+  people?: TaskPerson[];
   /** Breadcrumb above the board */
-  path?: any;
+  path?: string[];
   /** Called with all tasks after every move, edit, add or delete */
-  onChange?: any;
+  onChange?: (tasks: Task[]) => void;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

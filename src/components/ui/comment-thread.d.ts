@@ -1,18 +1,21 @@
 import * as React from "react";
 
+export type ThreadMessage = Record<string, any>;
+export type ThreadAuthor = Record<string, any>;
+
 export interface AssistantMarkProps {
   /** id, author, createdAt, text – assistant replies can add a status line with folding details */
-  messages?: any;
+  messages?: ThreadMessage[];
   /** Author of new replies */
-  currentUser?: any;
+  currentUser?: ThreadAuthor;
   /** Shown with a thinking state while an answer is on its way */
-  assistant?: any;
+  assistant?: ThreadAuthor;
   /** Return a message (or a promise) for the assistant to answer, nothing to just post */
-  onReply?: any;
+  onReply?: (text: any) => ThreadMessage | Promise<ThreadMessage | void> | void;
   /** Shows a close button */
-  onClose?: any;
+  onClose?: () => void;
   /** Heading in the gray tray (default: "Comment") */
-  title?: any;
+  title?: string;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

@@ -1,18 +1,19 @@
 import * as React from "react";
 
+export type App = Record<string, any>;
+export type AppCategory = Record<string, any>;
+
 export interface AppDirectoryProps {
   /** id, name, vendor, description, categories, logo, tile color, essential and connected */
-  apps?: any;
+  apps?: App[];
   /** Sidebar entries with id, label and icon – essentials and all are built in */
-  categories?: any;
+  categories?: AppCategory[];
   /** Heading inside the card (default: "Integrations") */
-  title?: any;
+  title?: string;
   /** Line under the heading */
-  subtitle?: any;
+  subtitle?: string;
   /** Called after an app was connected or disconnected */
-  onToggle?: any;
-  /** Extra class on the block */
-  className?: any;
+  onToggle?: (app: App, connected: boolean) => void;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

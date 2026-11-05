@@ -1,18 +1,14 @@
 import * as React from "react";
 
 export interface GradientTextProps {
-  /** The text to fill with the gradient */
-  children?: any;
   /** Gradient start, end and up to two blob colors; replaces the dark-mode colors too (default: ["#dd0674", "#5e3ee0", "#ff5fae", "#7c5cff"]) */
-  colors?: any;
+  colors?: string[];
   /** Seconds per flow cycle (default: 8) */
-  speed?: any;
+  speed?: number;
   /** Sweep the color in from left to right when the text scrolls into view (default: true) */
-  sweep?: any;
+  sweep?: boolean;
   /** Element to render (default: "span") */
-  as?: any;
-  /** Extra class on the root */
-  className?: any;
+  as?: "span" | "h1" | "h2" | "p";
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

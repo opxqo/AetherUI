@@ -1,18 +1,18 @@
 import * as React from "react";
 
+export type WorkspaceValues = Record<string, any>;
+
 export interface SettingsGeneralScreenProps {
   /** The workspace – the sample workspace when left out */
-  workspace?: any;
+  workspace?: { name: string; slug: string; context: string; icon?: string };
   /** Called with the whole workspace whenever something is saved – text on blur, the icon at once */
-  onSave?: any;
+  onSave?: (workspace: WorkspaceValues) => void;
   /** Called once the deletion is confirmed by typing the workspace's name */
-  onDelete?: any;
+  onDelete?: () => void;
   /** Called with the label of a settings page, or "Back to app" */
-  onNavigate?: any;
+  onNavigate?: (label: string) => void;
   /** Account at the bottom of the sidebar */
-  user?: any;
-  /** Extra class on the root */
-  className?: any;
+  user?: { name: string; avatar?: string };
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

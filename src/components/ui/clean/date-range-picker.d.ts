@@ -1,28 +1,28 @@
 import * as React from "react";
 
+export type DateRange = Record<string, any>;
+
 export interface DateRangePickerProps {
   /** Controlled range */
-  value?: any;
+  value?: { start: Date; end: Date };
   /** Starting range when uncontrolled (default: last 30 days) */
-  defaultValue?: any;
+  defaultValue?: { start: Date; end: Date };
   /** Called on Apply with the range, the comparison range (or null) and the compare mode */
-  onChange?: any;
+  onChange?: (range: any, compare: any, mode: any) => void;
   /** The list on the left (chips on phones) (default: Today … Year to date) */
-  presets?: any;
+  presets?: { id, label, range: (today: any) => DateRange }[];
   /** Show "Compare: Off / Previous period / Previous year" (default: true) */
-  compare?: any;
+  compare?: boolean;
   /** Comparison selected at the start (default: "previous") */
-  defaultCompare?: any;
+  defaultCompare?: "off" | "previous" | "year";
   /** 0 = Sunday, 1 = Monday (default: 1) */
-  weekStartsOn?: any;
+  weekStartsOn?: 0 | 1;
   /** Days outside can't be picked (default: max: today) */
-  "min / max"?: any;
+  "min / max"?: Date;
   /** Open the panel right away (default: false) */
-  defaultOpen?: any;
+  defaultOpen?: boolean;
   /** Reference day for the presets – handy for tests and screenshots (default: now) */
-  today?: any;
-  /** Extra class on the root */
-  className?: any;
+  today?: Date;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

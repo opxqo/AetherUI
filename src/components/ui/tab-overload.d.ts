@@ -2,9 +2,7 @@ import * as React from "react";
 
 export interface TabOverloadProps {
   /** Accessible description of the illustration (default: "Three overlapping browser windows…") */
-  label?: any;
-  /** Extra class on the root, e.g. for width or margins */
-  className?: any;
+  label?: string;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

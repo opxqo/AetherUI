@@ -1,22 +1,18 @@
 import * as React from "react";
 
 export interface GridBackgroundProps {
-  /** Content rendered above the grid */
-  children?: any;
   /** Cell size in px (default: 48) */
-  size?: any;
+  size?: number;
   /** Line color; dark mode defaults to rgba(255,255,255,.07) (default: rgba(0,0,0,.07)) */
-  color?: any;
+  color?: string;
   /** Seconds per cell; 0 keeps the grid still (default: 3) */
-  speed?: any;
+  speed?: number;
   /** Drift direction; diagonal runs from top right to bottom left (default: "diagonal") */
-  direction?: any;
+  direction?: "up" | "down" | "left" | "right" | "diagonal";
   /** Uncover the grid with a circle growing from the center when it first comes into view (default: true) */
-  reveal?: any;
+  reveal?: boolean;
   /** Radius of the edge fade, in % of the distance to the corners (default: 70) */
-  fade?: any;
-  /** Extra class on the container – give it a height or let the content size it */
-  className?: any;
+  fade?: number;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

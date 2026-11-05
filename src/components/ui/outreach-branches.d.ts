@@ -2,9 +2,7 @@ import * as React from "react";
 
 export interface OutreachBranchesProps {
   /** Accessible description of the illustration (default: "Lines branching out to Gmail, Slack and Notion…") */
-  label?: any;
-  /** Extra class on the root, e.g. for width or margins */
-  className?: any;
+  label?: string;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

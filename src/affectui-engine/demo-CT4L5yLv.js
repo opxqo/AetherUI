@@ -1,1 +1,1 @@
-import{t as e}from"./jsx-runtime-CTsRTJUX.js";import{m as t,p as n}from"./index-DrzmeL9u.js";import{t as r}from"./component-BrkPT9fN.js";var i=e();function a(){return(0,i.jsx)(n,{children:(0,i.jsx)(r,{onNavigate:t})})}export{a as default,r as __InnerComponent};
+import{t as e}from"./jsx-runtime-CTsRTJUX.js";import{m as t,p as n}from"./runtime-shims.js";import{t as r}from"./component-BrkPT9fN.js";var i=e();function a(){return(0,i.jsx)(n,{children:(0,i.jsx)(r,{onNavigate:t})})}export{a as default,r as __InnerComponent};

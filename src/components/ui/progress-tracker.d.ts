@@ -1,18 +1,18 @@
 import * as React from "react";
 
+export type ProgressStep = Record<string, any>;
+
 export interface ProgressTrackerProps {
   /** Each step has an id, a label, an optional done flag and icon */
-  steps?: any;
+  steps?: ProgressStep[];
   /** Heading above the bar (default: "Getting started") */
-  title?: any;
+  title?: string;
   /** Ticks the open steps one by one and starts over – stops when someone clicks or types (default: false) */
-  autoPlay?: any;
+  autoPlay?: boolean;
   /** Pause between two automatic steps, in ms (default: 2200) */
-  interval?: any;
+  interval?: number;
   /** Called with every step and its state */
-  onChange?: any;
-  /** Extra class on the card */
-  className?: any;
+  onChange?: (steps: ProgressStep[]) => void;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

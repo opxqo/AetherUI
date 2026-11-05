@@ -2,9 +2,7 @@ import * as React from "react";
 
 export interface EnrichmentOrbitProps {
   /** Accessible description of the illustration (default: "A Grok tile with data nodes orbiting…") */
-  label?: any;
-  /** Extra class on the root, e.g. for width or margins */
-  className?: any;
+  label?: string;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

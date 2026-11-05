@@ -1,18 +1,19 @@
 import * as React from "react";
 
+export type ProfileMenuItem = Record<string, any>;
+export type ProfileSetup = Record<string, any>;
+
 export interface ProfileMenuProps {
   /** Name of the signed-in user */
-  name?: any;
+  name?: string;
   /** Email under the name, cut off with an ellipsis when long */
-  email?: any;
+  email?: string;
   /** Replaces the default avatar, e.g. an <img> */
-  avatar?: any;
+  avatar?: ReactNode;
   /** Actions with label, icon, optional badge and onSelect */
-  items?: any;
+  items?: ProfileMenuItem[];
   /** Profile setup progress: done, total, the next step and onContinue – leave empty to hide */
-  setup?: any;
-  /** Extra class on the card */
-  className?: any;
+  setup?: ProfileSetup;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

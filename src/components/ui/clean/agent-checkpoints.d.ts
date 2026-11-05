@@ -1,26 +1,26 @@
 import * as React from "react";
 
+export type Checkpoint = Record<string, any>;
+
 export interface AgentCheckpointsProps {
   /** { id, title, icon?, parent?, status?, at?, files?, cost? } in the order they were taken – pass them again whenever one is added or changes; icon is a small mark before the title, e.g. the logo of the tool it worked with */
-  checkpoints?: any;
+  checkpoints?: Checkpoint[];
   /** Per checkpoint, the one it follows – a checkpoint whose parent already has a later one starts a new attempt on its own lane */
-  parent?: any;
+  parent?: string;
   /** Per checkpoint – running shimmers, failed gets a badge, stopped means you rewound away while the agent worked toward it (default: "done") */
-  status?: any;
+  status?: "running" | "done" | "failed" | "stopped";
   /** Id of the checkpoint the agent stands on – the way to it is blue, everything off it fades back (default: the last checkpoint) */
-  head?: any;
+  head?: string;
   /** Rewind was pressed – add a new checkpoint with this one as its parent, and move head to it */
-  onRewind?: any;
+  onRewind?: (checkpoint: Checkpoint) => void;
   /** What the run is for, next to the title */
-  task?: any;
+  task?: string;
   /** Formats at (default: 0:42 / 1:05) */
-  formatTime?: any;
+  formatTime?: (ms: number) => string;
   /** Formats the total in the bar on top (default: dollars, e.g. "$0.42") */
-  formatCost?: any;
+  formatCost?: (amount: number) => string;
   /** Heading of the bar (default: "Checkpoints") */
-  title?: any;
-  /** Extra class on the root */
-  className?: any;
+  title?: string;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

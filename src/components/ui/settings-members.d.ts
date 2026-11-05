@@ -1,18 +1,21 @@
 import * as React from "react";
 
+export type Member = Record<string, any>;
+export type Team = Record<string, any>;
+export type Members = Record<string, any>;
+export type Teams = Record<string, any>;
+
 export interface SettingsMembersScreenProps {
   /** { id, name?, email, role, plan, usage (0–1), invited? } – the sample members when left out */
-  members?: any;
+  members?: Member[];
   /** { id, name, members: member ids } */
-  teams?: any;
+  teams?: Team[];
   /** Id of the person looking – marked (You) and never removed (default: "alex") */
-  me?: any;
+  me?: string;
   /** Tab that is open first (default: "Members") */
-  defaultTab?: any;
+  defaultTab?: "Members" | "Teams";
   /** Called with the label of a settings page, or "Back to app" */
-  onNavigate?: any;
-  /** Extra class on the root */
-  className?: any;
+  onNavigate?: (label: string) => void;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

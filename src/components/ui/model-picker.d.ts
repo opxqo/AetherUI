@@ -1,44 +1,44 @@
 import * as React from "react";
 
+export type PickerModel = Record<string, any>;
+
 export interface ModelPickerProps {
   /** { id, name, description?, icon?, speed?, quality?, cost?, latencyMs?, pricePerM? } – strengths go from 1 to 5 (cost 5 is the most expensive); leave all three out for a router like Auto and the row says "Varies" */
-  models?: any;
+  models?: PickerModel[];
   /** Id of the chosen model (controlled) */
-  value?: any;
+  value?: string;
   /** Chosen model when uncontrolled (default: first model) */
-  defaultValue?: any;
+  defaultValue?: string;
   /** Called with the picked model's id */
-  onChange?: any;
+  onChange?: (id: string) => void;
   /** Extended thinking switch (controlled) */
-  thinking?: any;
+  thinking?: boolean;
   /** Starting state of the thinking switch (default: false) */
-  defaultThinking?: any;
+  defaultThinking?: boolean;
   /** Called when the thinking switch flips */
-  onThinkingChange?: any;
+  onThinkingChange?: (on: boolean) => void;
   /** Web search switch (controlled) */
-  webSearch?: any;
+  webSearch?: boolean;
   /** Starting state of the web search switch (default: false) */
-  defaultWebSearch?: any;
+  defaultWebSearch?: boolean;
   /** Called when the web search switch flips */
-  onWebSearchChange?: any;
+  onWebSearchChange?: (on: boolean) => void;
   /** Thinking effort (controlled) – the control only shows while thinking is on */
-  effort?: any;
+  effort?: "low" | "medium" | "high";
   /** Starting effort (default: "medium") */
-  defaultEffort?: any;
+  defaultEffort?: "low" | "medium" | "high";
   /** Called with the new effort */
-  onEffortChange?: any;
+  onEffortChange?: (effort: any) => void;
   /** Controlled open state of the menu */
-  open?: any;
+  open?: boolean;
   /** Starts open when uncontrolled (default: false) */
-  defaultOpen?: any;
+  defaultOpen?: boolean;
   /** Called when the menu opens or closes */
-  onOpenChange?: any;
+  onOpenChange?: (open: boolean) => void;
   /** Which edge of the trigger the menu lines up with (default: "start") */
-  align?: any;
+  align?: "start" | "end";
   /** Opens below or above the trigger – use top for a composer at the bottom of the screen (default: "bottom") */
-  side?: any;
-  /** Extra class on the root */
-  className?: any;
+  side?: "bottom" | "top";
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

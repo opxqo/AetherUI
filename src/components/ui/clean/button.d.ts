@@ -2,17 +2,15 @@ import * as React from "react";
 
 export interface ButtonProps {
   /** Dark filled, white with an outline, text only, or red for deleting (default: "primary") */
-  variant?: any;
+  variant?: "primary" | "secondary" | "ghost" | "destructive";
   /** 32, 40 or 48px high (default: "md") */
-  size?: any;
+  size?: "sm" | "md" | "lg";
   /** Swaps the left icon for a spinner, shimmers the label, sets aria-busy and ignores clicks (default: false) */
-  loading?: any;
+  loading?: boolean;
   /** Icon before the label; without children the button becomes square */
-  icon?: any;
+  icon?: ReactNode;
   /** Icon after the label */
-  iconRight?: any;
-  /** Everything a native button takes, including ref, type and disabled */
-  "...props"?: any;
+  iconRight?: ReactNode;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

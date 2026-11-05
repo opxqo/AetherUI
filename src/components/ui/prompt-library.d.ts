@@ -1,24 +1,24 @@
 import * as React from "react";
 
+export type PromptTemplate = Record<string, any>;
+
 export interface PromptLibraryProps {
   /** { id, title, category?, tone?, body, variables? } – body holds the variables in curly braces, e.g. {audience}; variables maps a name to { description?, default? } */
-  templates?: any;
+  templates?: PromptTemplate[];
   /** Id of the chosen template (controlled) */
-  value?: any;
+  value?: string;
   /** Id chosen at first when uncontrolled – the first template by default */
-  defaultValue?: any;
+  defaultValue?: string;
   /** Called when another template is chosen */
-  onSelect?: any;
+  onSelect?: (id: string) => void;
   /** Called with the finished prompt when Use is pressed – only possible once every variable is filled */
-  onUse?: any;
+  onUse?: (prompt: string, template: PromptTemplate, values: Record<string, string>) => void;
   /** Called after the prompt was copied to the clipboard */
-  onCopy?: any;
+  onCopy?: (prompt: string) => void;
   /** Heading above the list (default: "Prompts") */
-  title?: any;
+  title?: string;
   /** Label of the use button (default: "Use prompt") */
-  useLabel?: any;
-  /** Extra class on the root */
-  className?: any;
+  useLabel?: string;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

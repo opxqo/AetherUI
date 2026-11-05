@@ -1,42 +1,44 @@
 import * as React from "react";
 
+export type ExperimentVariant = Record<string, any>;
+export type ExperimentMetric = Record<string, any>;
+export type ExperimentTone = Record<string, any>;
+
 export interface ExperimentCardProps {
   /** Name of the experiment */
-  title?: any;
+  title?: string;
   /** { id, key, name, values, control?, visitors?, confidence?, color? } – values and confidence hold one number per metric id; key is the short letter in the badge */
-  variants?: any;
+  variants?: ExperimentVariant[];
   /** { id, label, format?, lowerIsBetter? } – the switch above the rows; no switch with a single metric */
-  metrics?: any;
+  metrics?: ExperimentMetric[];
   /** Controlled metric id */
-  metric?: any;
+  metric?: string;
   /** Starting metric when uncontrolled (default: first metric) */
-  defaultMetric?: any;
+  defaultMetric?: string;
   /** Called with the new metric */
-  onMetricChange?: any;
+  onMetricChange?: (id: string) => void;
   /** Controlled id of the picked variant */
-  winner?: any;
+  winner?: string | null;
   /** Picked variant when uncontrolled (default: null) */
-  defaultWinner?: any;
+  defaultWinner?: string | null;
   /** Called when a variant is picked, or null when the pick is taken back */
-  onWinnerChange?: any;
+  onWinnerChange?: (id: string | null) => void;
   /** The tag under the title – tone is red, amber, green, blue, violet or gray */
-  status?: any;
+  status?: { label: string; tone?: ExperimentTone };
   /** Short text next to the status, e.g. "Day 9 of 14" */
-  note?: any;
+  note?: string;
   /** The button that appears on the tray once a winner is picked */
-  action?: any;
+  action?: { label: string | ((variant: any) => string); onClick: (variant: any) => void };
   /** The line on the tray while nothing is hovered or picked (default: "Pick a winner") */
-  hint?: any;
+  hint?: ReactNode;
   /** Hover opens under the mouse; taps and the keyboard always toggle (default: "hover") */
-  trigger?: any;
+  trigger?: "hover" | "click";
   /** Controlled open state */
-  open?: any;
+  open?: boolean;
   /** Starts open when uncontrolled (default: false) */
-  defaultOpen?: any;
+  defaultOpen?: boolean;
   /** Called when the card opens or closes */
-  onOpenChange?: any;
-  /** Extra class on the root */
-  className?: any;
+  onOpenChange?: (open: boolean) => void;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

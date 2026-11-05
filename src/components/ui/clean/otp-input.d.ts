@@ -2,41 +2,39 @@ import * as React from "react";
 
 export interface OtpInputProps {
   /** Number of boxes (default: 6) */
-  length?: any;
+  length?: number;
   /** A small dash between the boxes – true puts it in the middle, a number after that many boxes (default: false) */
-  separator?: any;
+  separator?: boolean | number;
   /** Digits only with the numeric keyboard on phones; false allows letters too, shown in capitals (default: true) */
-  numeric?: any;
+  numeric?: boolean;
   /** The code – makes the field controlled */
-  value?: any;
+  value?: string;
   /** Starting code when uncontrolled (default: "") */
-  defaultValue?: any;
+  defaultValue?: string;
   /** Every change: typing, Backspace, paste, autofill and the clearing after an error */
-  onChange?: any;
+  onChange?: (code: string) => void;
   /** Called once the last box is filled by the user – the place to start verifying */
-  onComplete?: any;
+  onComplete?: (code: string) => void;
   /** Verifying shimmers and locks the field, error shakes and shows the message, success morphs into the pill (default: "idle") */
-  status?: any;
+  status?: "idle" | "verifying" | "error" | "success";
   /** Shown below the boxes after an error, until the user types again (default: "That code didn't work. Try again.") */
-  errorMessage?: any;
+  errorMessage?: ReactNode;
   /** Clears the boxes shortly after the shake, ready for the next try (default: true) */
-  clearOnError?: any;
+  clearOnError?: boolean;
   /** Text in the pill on success (default: "Verified") */
-  successLabel?: any;
+  successLabel?: string;
   /** Shows "Didn't get a code?" below the boxes with a countdown that becomes a Resend button; clicking restarts the countdown */
-  onResend?: any;
+  onResend?: () => void;
   /** Seconds until the code can be resent (default: 30) */
-  resendIn?: any;
+  resendIn?: number;
   /** Where the boxes and the lines below them sit (default: "start") */
-  align?: any;
+  align?: "start" | "center";
   /** Dims the field and ignores input (default: false) */
-  disabled?: any;
+  disabled?: boolean;
   /** Focuses the field on mount (without scrolling) (default: false) */
-  autoFocus?: any;
+  autoFocus?: boolean;
   /** Accessible name; the number of digits is added (default: "Verification code") */
-  label?: any;
-  /** Extra class on the root */
-  className?: any;
+  label?: string;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

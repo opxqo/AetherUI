@@ -1,13 +1,11 @@
 /**
- * @affectui/react — Enterprise AI-First UI Component Library
+ * @aether-ui/react — Enterprise AI-First UI Component Library
  * 141 Production Components, Screens, Blocks, Illustrations & Motion Primitives
+ *
+ * Stylesheet entry: import "@aether-ui/react/styles.css";
  */
-import "./affectui-engine/index.css";
-import "./affectui-engine/all-demos.css";
-import "../design-system/tokens/variables.css";
-
-export { AFFECTUI_CATALOG } from "./affectui-engine/catalog.js";
-export { ScreenFullContext, SCREEN_WIDTH } from "./affectui-engine/index-DrzmeL9u.js";
+export { AFFECTUI_CATALOG, AFFECTUI_CATALOG as AETHERUI_CATALOG } from "./affectui-engine/catalog.js";
+export { ScreenFullContext, SCREEN_WIDTH } from "./affectui-engine/context.js";
 
 export { AIAnswer, AIAnswerDemo, AIAnswerRaw } from "./components/ui/ai-answer.js";
 export { ChatComposer, ChatComposerDemo, ChatComposerRaw } from "./components/ui/chat-composer.js";

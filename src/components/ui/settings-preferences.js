@@ -6,12 +6,16 @@ import DemoComponent, { __InnerComponent } from "../../affectui-engine/demo-mRCh
  * Personal preferences with a settings sidebar: default models with Auto and the Model Wheel, language and appearance, chat tools as tiles, custom instructions the model reads with every message and the memories it kept
  */
 export function SettingsPreferencesScreen(props = {}) {
-  const { demo, ...rest } = props;
-  const hasCustomProps = !demo && Object.keys(rest).length > 0;
+  const { demo, className, style, ...rest } = props;
+  const hasCustomProps = demo === false || (!demo && Object.keys(rest).some(k => !["id", "children", "key", "ref"].includes(k) && !k.startsWith("data-") && !k.startsWith("aria-")));
   if (hasCustomProps && __InnerComponent && __InnerComponent !== DemoComponent) {
-    return React.createElement(__InnerComponent, rest);
+    return React.createElement(__InnerComponent, { className, style, ...rest });
   }
-  return React.createElement(DemoComponent, rest);
+  const element = React.createElement(DemoComponent, { className, style, ...rest });
+  if (className || style) {
+    return React.createElement("div", { className, style, "data-aether-wrapper": "" }, element);
+  }
+  return element;
 }
 
 export const SettingsPreferencesScreenRaw = __InnerComponent || DemoComponent;

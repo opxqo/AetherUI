@@ -1,18 +1,18 @@
 import * as React from "react";
 
+export type NotificationValues = Record<string, any>;
+
 export interface SettingsNotificationsScreenProps {
   /** Digest on and its time, the weekly report, the types (id, title, note, channel: both, email, mobile or inbox) and quiet hours with from and to – the sample person when left out */
-  notifications?: any;
+  notifications?: NotificationValues;
   /** Called with all settings whenever something changes */
-  onSave?: any;
+  onSave?: (notifications: NotificationValues) => void;
   /** Called with the label of a sidebar item */
-  onNavigate?: any;
+  onNavigate?: (label: string) => void;
   /** Workspace name in the sidebar */
-  workspace?: any;
+  workspace?: string;
   /** Account at the bottom of the sidebar */
-  user?: any;
-  /** Extra class on the root */
-  className?: any;
+  user?: { name: string; avatar?: string };
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

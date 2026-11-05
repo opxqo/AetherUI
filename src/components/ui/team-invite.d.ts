@@ -1,12 +1,12 @@
 import * as React from "react";
 
+export type TeamInviteAvatar = Record<string, any>;
+
 export interface TeamInviteProps {
   /** Required. The two connected teammates, then the one being invited – each { src, name? } with a square portrait */
-  avatars?: any;
+  avatars?: [TeamInviteAvatar, TeamInviteAvatar, TeamInviteAvatar];
   /** Accessible description – by default built from the names */
-  label?: any;
-  /** Extra class on the root, e.g. for width or margins */
-  className?: any;
+  label?: string;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

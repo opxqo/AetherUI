@@ -1,20 +1,23 @@
 import * as React from "react";
 
+export type Conversation = Record<string, any>;
+export type Project = Record<string, any>;
+
 export interface AiWorkspaceProps {
   /** Your model call – the answer streams in word by word. Demo answers without it */
-  respond?: any;
+  respond?: (message: any, history: any) => Promise<string>;
   /** Shown in the greeting and the sidebar (default: "Lena") */
-  userName?: any;
+  userName?: string;
   /** Image for the sidebar footer */
-  userAvatar?: any;
+  userAvatar?: string;
   /** Initial or logo in the top-left tile (default: "N") */
-  workspace?: any;
+  workspace?: ReactNode;
   /** Pinned assistants in the sidebar – pinned projects are added automatically */
-  pinned?: any;
+  pinned?: string[];
   /** Recent chats with their messages */
-  conversations?: any;
+  conversations?: Conversation[];
   /** Projects with name, description, days since update and pinned */
-  projects?: any;
+  projects?: Project[];
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

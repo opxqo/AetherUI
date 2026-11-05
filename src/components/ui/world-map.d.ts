@@ -1,18 +1,18 @@
 import * as React from "react";
 
+export type Continent = Record<string, any>;
+
 export interface WorldMapProps {
   /** Highlighted continent (controlled). Pair it with onContinentChange to keep the menu working */
-  continent?: any;
+  continent?: "north-america" | "south-america" | "europe" | "africa" | "asia" | "oceania";
   /** Continent highlighted first when continent is not set (default: "europe") */
-  defaultContinent?: any;
+  defaultContinent?: Continent;
   /** Called when the viewer picks a continent in the menu */
-  onContinentChange?: any;
+  onContinentChange?: (continent: Continent) => void;
   /** Show the continent menu in the top-left corner (default: true) */
-  showSwitcher?: any;
+  showSwitcher?: boolean;
   /** Accessible description of the map; by default it follows the current continent (default: "World map with Europe highlighted" …) */
-  label?: any;
-  /** Extra class on the root, e.g. for width or margins */
-  className?: any;
+  label?: string | (((continent: Continent) => string));
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

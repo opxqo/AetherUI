@@ -2,39 +2,37 @@ import * as React from "react";
 
 export interface UsageMeterProps {
   /** Credits included in the plan – the bar's full width */
-  total?: any;
+  total?: number;
   /** What the credits went into in the shown period. Without colors the parts get shades of the accent, then grays; each label keeps its shade */
-  used?: any;
+  used?: { label: string; value: number; color?: string }[];
   /** Thin meters below, e.g. seats and storage. Leave total out (or null) for unlimited – shown as "of ∞" on a striped track */
-  limits?: any;
+  limits?: { label; used; total?: number | null; unit?; decimals? }[];
   /** Options of the period switch; no switch when left out */
-  periods?: any;
+  periods?: { id: string; label: string }[];
   /** Controlled period id – pass the matching used, limits and daily with it */
-  period?: any;
+  period?: string;
   /** Starting period when uncontrolled; defaults to the first option */
-  defaultPeriod?: any;
+  defaultPeriod?: string;
   /** Called when a period is picked */
-  onPeriodChange?: any;
+  onPeriodChange?: (id: string) => void;
   /** When the credits reset – shown as "Resets in 9 days", the date on hover */
-  resetAt?: any;
+  resetAt?: Date | string | number;
   /** Usage per day for the sparkline; null for days still to come, shown as flat stubs */
-  daily?: any;
+  daily?: { label: string; value: number | null }[];
   /** Called by the button with the current state */
-  onUpgrade?: any;
+  onUpgrade?: (state: "ok" | "warn" | "limit") => void;
   /** Card title, e.g. the workspace or product name (default: "Usage") */
-  title?: any;
+  title?: string;
   /** Plan name in front of the reset date */
-  plan?: any;
+  plan?: string;
   /** Unit of the main meter (default: "credits") */
-  unit?: any;
+  unit?: string;
   /** Share (0–1) from which the meter and the limits warn (default: 0.8) */
-  warnAt?: any;
+  warnAt?: number;
   /** Button text while there is room left (a quiet button) (default: "Upgrade") */
-  upgradeLabel?: any;
+  upgradeLabel?: string;
   /** Button text near and at the limit (a solid button) (default: "Add credits") */
-  topUpLabel?: any;
-  /** Extra class on the root */
-  className?: any;
+  topUpLabel?: string;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

@@ -1,36 +1,38 @@
 import * as React from "react";
 
+export type ProjectTask = Record<string, any>;
+export type ProjectOption = Record<string, any>;
+export type ProjectMember = Record<string, any>;
+
 export interface ProjectCardProps {
   /** Name of the project */
-  title?: any;
+  title?: string;
   /** { id, label, done?, assignee? } – one ring segment and one row each; assignee is a member's name */
-  tasks?: any;
+  tasks?: ProjectTask[];
   /** Called with the full list after a tick. With it the card shows exactly what you pass; without it the ticks live inside the card */
-  onTasksChange?: any;
+  onTasksChange?: (tasks: ProjectTask[]) => void;
   /** Id of the chosen status (default: first option) */
-  status?: any;
+  status?: string;
   /** { id, label, tone? } – tone is red, amber, green, blue, violet or gray and also picks the icon; icon replaces it (default: To do, In progress, In review, Done) */
-  statuses?: any;
+  statuses?: ProjectOption[];
   /** Called with the picked status */
-  onStatusChange?: any;
+  onStatusChange?: (id: string) => void;
   /** Ready-to-show due date, e.g. "Oct 24" – shown as "Due Oct 24" */
-  due?: any;
+  due?: string;
   /** { name, avatar? } – the avatars in the head; hovering one shows only that person's subtasks. Initials on a soft color without an image */
-  members?: any;
+  members?: ProjectMember[];
   /** A button on the tray of the open card, e.g. Open */
-  action?: any;
+  action?: { label: string; onClick: () => void };
   /** The line on the tray while nothing is hovered (default: "2 left" / "All done") */
-  hint?: any;
+  hint?: ReactNode;
   /** Hover opens under the mouse; taps and the keyboard always toggle (default: "hover") */
-  trigger?: any;
+  trigger?: "hover" | "click";
   /** Controlled open state */
-  open?: any;
+  open?: boolean;
   /** Starts open when uncontrolled (default: false) */
-  defaultOpen?: any;
+  defaultOpen?: boolean;
   /** Called when the card opens or closes */
-  onOpenChange?: any;
-  /** Extra class on the root */
-  className?: any;
+  onOpenChange?: (open: boolean) => void;
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

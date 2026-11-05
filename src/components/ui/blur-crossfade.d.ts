@@ -2,19 +2,15 @@ import * as React from "react";
 
 export interface BlurCrossfadeProps {
   /** Key of the current content – changing it starts the swap */
-  id?: any;
-  /** Content for the current id */
-  children?: any;
+  id?: string | number;
   /** Length of the swap and the size morph in ms (default: 420) */
-  duration?: any;
+  duration?: number;
   /** Blur in px at the outer ends of the fade (default: 10) */
-  blur?: any;
+  blur?: number;
   /** Which sides glide to the new size; both makes the box as wide as its content (default: "height") */
-  morph?: any;
+  morph?: "height" | "both" | "none";
   /** Root element – span inside buttons and other inline content (default: "div") */
-  as?: any;
-  /** Extra class on the box */
-  className?: any;
+  as?: "div" | "span";
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

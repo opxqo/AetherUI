@@ -1,22 +1,22 @@
 import * as React from "react";
 
+export type SecurityValues = Record<string, any>;
+
 export interface SettingsSecurityScreenProps {
   /** Domains, join by domain, SSO, metadata URL, two-step verification, session length and IP ranges – the sample workspace when left out */
-  security?: any;
+  security?: SecurityValues;
   /** Called with all settings whenever something changes – switches and lists at once, the metadata URL on blur */
-  onSave?: any;
+  onSave?: (security: SecurityValues) => void;
   /** Checks the domain's TXT record; resolve true once it is found. The demo waits a moment and says yes */
-  onVerifyDomain?: any;
+  onVerifyDomain?: (domain: string) => Promise<boolean>;
   /** Called once signing everyone out is confirmed */
-  onSignOutAll?: any;
+  onSignOutAll?: () => void;
   /** Called with the label of a sidebar item */
-  onNavigate?: any;
+  onNavigate?: (label: string) => void;
   /** Workspace name in the sidebar */
-  workspace?: any;
+  workspace?: string;
   /** Account at the bottom of the sidebar */
-  user?: any;
-  /** Extra class on the root */
-  className?: any;
+  user?: { name: string; avatar?: string };
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

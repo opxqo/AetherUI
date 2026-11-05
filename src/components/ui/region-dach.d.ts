@@ -1,18 +1,18 @@
 import * as React from "react";
 
+export type Region = Record<string, any>;
+
 export interface RegionDachProps {
   /** Shown region (controlled). Pair it with onRegionChange to keep the menu working */
-  region?: any;
+  region?: "dach" | "us" | "cn" | "in" | "br" | "jp";
   /** Region shown first when region is not set (default: "dach") */
-  defaultRegion?: any;
+  defaultRegion?: Region;
   /** Called when the viewer picks a region in the menu */
-  onRegionChange?: any;
+  onRegionChange?: (region: Region) => void;
   /** Show the region menu in the top-left corner (default: true) */
-  showSwitcher?: any;
+  showSwitcher?: boolean;
   /** Accessible description of the map; by default it follows the current region (default: "Map of the DACH region: Germany, Austria and Switzerland" / "Map of Japan" …) */
-  label?: any;
-  /** Extra class on the root, e.g. for width or margins */
-  className?: any;
+  label?: string | (((region: Region) => string));
   /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;

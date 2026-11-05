@@ -24,7 +24,17 @@ const { AFFECTUI_CATALOG } = await import("../src/affectui-engine/catalog.js");
 function toPascalCase(slug) {
   return slug
     .split("-")
-    .map((p) => (p === "ai" ? "AI" : p === "kpi" ? "KPI" : p === "otp" ? "OTP" : p === "dach" ? "DACH" : p.charAt(0).toUpperCase() + p.slice(1)))
+    .map((p) =>
+      p === "ai"
+        ? "AI"
+        : p === "kpi"
+          ? "KPI"
+          : p === "otp"
+            ? "OTP"
+            : p === "dach"
+              ? "DACH"
+              : p.charAt(0).toUpperCase() + p.slice(1)
+    )
     .join("");
 }
 
@@ -45,7 +55,6 @@ function patchDemoFileWithInnerExport(demoFileName, propNames = []) {
     return "__InnerComponent";
   }
 
-  // 1. Check if it imports the main component from ./component-*.js or ./index-DrzmeL9u.js
   let innerIdent = null;
   const fnMatches = [...code.matchAll(/function\s+([A-Za-z0-9_$]+)\s*\(\{([^}]*)\}/g)];
   let bestScore = -1;
@@ -65,11 +74,9 @@ function patchDemoFileWithInnerExport(demoFileName, propNames = []) {
   }
 
   if (!innerIdent || bestScore <= 0) {
-    // Check component-* imports
     const compImport = code.match(/import\{([^}]+)\}from"\.\/(component[^"]+)"/);
     if (compImport) {
       const specs = compImport[1].split(",").map((s) => s.trim());
-      // Usually `t` or `t as X` or `r`
       const tSpec = specs.find((s) => s === "t" || s.startsWith("t as ") || s.includes(" as t"));
       const firstSpec = tSpec || specs[0];
       innerIdent = firstSpec.includes(" as ") ? firstSpec.split(" as ")[1].trim() : firstSpec.trim();
@@ -80,11 +87,69 @@ function patchDemoFileWithInnerExport(demoFileName, propNames = []) {
     }
   }
 
-  // Patch export statement to also export `innerIdent as __InnerComponent`
   const newExport = `export{${defaultFn} as default,${innerIdent} as __InnerComponent};`;
   code = code.replace(/export\{[^}]+\};?\s*$/, newExport);
   fs.writeFileSync(filePath, code, "utf8");
   return "__InnerComponent";
+}
+
+const RESERVED_BASE_PROPS = new Set(["className", "style", "children", "demo"]);
+const TS_GLOBALS = new Set([
+  "string", "number", "boolean", "any", "void", "null", "undefined", "never", "unknown", "object",
+  "Function", "Date", "RegExp", "Array", "Record", "Set", "Map", "Promise", "React", "ReactNode",
+  "CSSProperties", "MouseEvent", "KeyboardEvent", "ChangeEvent", "HTMLElement", "HTMLInputElement",
+  "HTMLButtonElement", "HTMLDivElement", "SVGElement", "Element", "Node"
+]);
+
+function sanitizePropType(typeStr, customTypeSet) {
+  if (!typeStr || typeof typeStr !== "string") return "any";
+  let t = typeStr.trim();
+  // Strip comments like "– status is ..."
+  if (t.includes(" – ")) t = t.split(" – ")[0].trim();
+  if (t.includes(" — ")) t = t.split(" — ")[0].trim();
+  if (t.startsWith("(default:")) return "any";
+
+  // Replace slash-separated types like "boolean / (paused) => void" with union "|"
+  t = t.replace(/\s*\/\s*/g, " | ");
+
+  // Fix "(foo | null) => void" where foo is param name -> "(foo: any) => void"
+  t = t.replace(/\(([a-z0-9_$]+)\s*\|\s*null\)\s*=>/gi, "($1: any) =>");
+
+  // Fix prose descriptions like "ToolCallCard elements"
+  if (t.includes("elements")) t = "React.ReactNode";
+
+  // Handle untyped pseudo object literals like { id, title, status }[]
+  t = t.replace(/\{\s*[A-Za-z0-9_$,\s?]+\s*\}\[\]/g, "Array<Record<string, any>>");
+  t = t.replace(/\{\s*[A-Za-z0-9_$,\s?]+\s*\}/g, "Record<string, any>");
+
+  // Check if function parameter has no type like "(id) => void" -> "(id: any) => void"
+  t = t.replace(/\(([a-z0-9_$]+)\)\s*=>/gi, "($1: any) =>");
+  t = t.replace(/\(([a-z0-9_$]+),\s*([a-z0-9_$]+)\)\s*=>/gi, "($1: any, $2: any) =>");
+  t = t.replace(/\(([a-z0-9_$]+),\s*([a-z0-9_$]+),\s*([a-z0-9_$]+)\)\s*=>/gi, "($1: any, $2: any, $3: any) =>");
+  t = t.replace(/\(\s*\{([^}]+)\}\s*\)\s*=>/g, "(options: { $1 }) =>");
+
+  // In TS union types, function types must be parenthesized: e.g. string | ((variant: any) => string)
+  if (t.includes("|") && t.includes("=>")) {
+    t = t.replace(/\|\s*(\([^)]*\)\s*=>\s*[^;|]+)/g, "| ($1)");
+  }
+
+  // Ensure parameter name for Record/Array arguments: (Record<...>) => void -> (data: Record<...>) => void
+  t = t.replace(/\((Record<[^>]+>)\)\s*=>/g, "(data: $1) =>");
+  t = t.replace(/\bPromise\b(?!<)/g, "Promise<any>");
+
+  // If there are still invalid characters for a TS type expression, fallback to any
+  if (/[^A-Za-z0-9_$()=>\[\]{}|&"':;,\s\.\<\>\?\-]/.test(t)) {
+    return "any";
+  }
+
+  // Collect custom identifiers for export declaration
+  const idents = t.match(/\b[A-Z][a-zA-Z0-9_]*\b/g) || [];
+  for (const id of idents) {
+    if (!TS_GLOBALS.has(id)) {
+      customTypeSet.add(id);
+    }
+  }
+  return t;
 }
 
 const rootExports = [];
@@ -93,8 +158,6 @@ const cleanExports = [];
 const cleanDtsExports = [];
 const exportedIdentSet = new Set();
 const cleanExportedIdentSet = new Set();
-
-let patchedSourceCount = 0;
 
 for (const item of AFFECTUI_CATALOG) {
   const docs = item.loadDocs ? await item.loadDocs() : null;
@@ -132,7 +195,7 @@ for (const item of AFFECTUI_CATALOG) {
     patchDemoFileWithInnerExport(cleanDemoFile, propNames);
   }
 
-  // Generate src/components/ui/<slug>.jsx
+  // Generate src/components/ui/<slug>.js
   const secondaryExportsCode = namedExports
     .filter((n) => n !== primaryName && n !== "toast")
     .map((n) => `export const ${n} = ${primaryName};`)
@@ -140,7 +203,7 @@ for (const item of AFFECTUI_CATALOG) {
 
   const toastSpecialCode =
     item.slug === "toaster"
-      ? `import { o as EngineToaster, s as engineToast } from "../../affectui-engine/index-DrzmeL9u.js";\nexport const toast = engineToast;\n`
+      ? `import { Toaster as EngineToaster, toast as engineToast } from "../../affectui-engine/demo.clean-Nl_cej3R.js";\nexport const toast = engineToast;\n`
       : "";
 
   const uiModuleCode = `import React from "react";
@@ -151,12 +214,16 @@ ${toastSpecialCode}
  * ${item.description}
  */
 export function ${primaryName}(props = {}) {
-  const { demo, ...rest } = props;
-  const hasCustomProps = !demo && Object.keys(rest).length > 0;
+  const { demo, className, style, ...rest } = props;
+  const hasCustomProps = demo === false || (!demo && Object.keys(rest).some(k => !["id", "children", "key", "ref"].includes(k) && !k.startsWith("data-") && !k.startsWith("aria-")));
   if (hasCustomProps && __InnerComponent && __InnerComponent !== DemoComponent) {
-    return React.createElement(__InnerComponent, rest);
+    return React.createElement(__InnerComponent, { className, style, ...rest });
   }
-  return React.createElement(DemoComponent, rest);
+  const element = React.createElement(DemoComponent, { className, style, ...rest });
+  if (className || style) {
+    return React.createElement("div", { className, style, "data-aether-wrapper": "" }, element);
+  }
+  return element;
 }
 
 export const ${primaryName}Raw = __InnerComponent || DemoComponent;
@@ -169,33 +236,75 @@ export default ${primaryName};
 
   // Generate TypeScript Declaration src/components/ui/<slug>.d.ts
   const propsInterfaceName = `${primaryName}Props`;
+  const customTypeSet = new Set();
+  const seenPropKeys = new Set();
+
   const propsFields = propList
+    .filter((p) => {
+      const rawName = p.name.replace(/\?$/, "");
+      if (seenPropKeys.has(rawName)) return false;
+      seenPropKeys.add(rawName);
+      // Filter duplicate standard props and invalid non-prop documentation entries
+      if (RESERVED_BASE_PROPS.has(rawName)) return false;
+      if (rawName.includes("(") || rawName.includes(".") || rawName === "ToastOptions") return false;
+      return true;
+    })
     .map((p) => {
       const rawName = p.name.replace(/\?$/, "");
       const safeKey = /^[A-Za-z_$][A-Za-z0-9_$]*$/.test(rawName) ? rawName : JSON.stringify(rawName);
       const desc = (p.description || "").replace(/\*\//g, "* /");
       const def = p.default ? ` (default: ${p.default})` : "";
-      return `  /** ${desc}${def} */\n  ${safeKey}?: any;`;
+      const propType = sanitizePropType(p.type, customTypeSet);
+      return `  /** ${desc}${def} */\n  ${safeKey}?: ${propType};`;
     })
     .join("\n");
 
+  const customTypeDeclarations = Array.from(customTypeSet)
+    .map((id) => `export type ${id} = Record<string, any>;`)
+    .join("\n");
+
   const dtsNamedExports = namedExports
-    .filter((n) => n !== primaryName)
+    .filter((n) => n !== primaryName && n !== "toast")
     .map((n) => `export declare const ${n}: React.FC<${propsInterfaceName}>;`)
     .join("\n");
 
-  const dtsCode = `import * as React from "react";
+  const toasterDtsSpecial =
+    item.slug === "toaster"
+      ? `
+export interface ToastOptions {
+  id?: string | number;
+  description?: React.ReactNode;
+  duration?: number;
+  toaster?: string;
+  action?: { label: string; onClick: (event: React.MouseEvent<HTMLButtonElement>) => void };
+  [key: string]: any;
+}
 
+export interface ToastFn {
+  (title: React.ReactNode, options?: ToastOptions): string | number;
+  success: (title: React.ReactNode, options?: ToastOptions) => string | number;
+  error: (title: React.ReactNode, options?: ToastOptions) => string | number;
+  info: (title: React.ReactNode, options?: ToastOptions) => string | number;
+  loading: (title: React.ReactNode, options?: ToastOptions) => string | number;
+  promise: <T>(promise: Promise<T> | (() => Promise<T>), messages: { loading: React.ReactNode; success: React.ReactNode | ((data: T) => React.ReactNode); error: React.ReactNode | ((err: unknown) => React.ReactNode) }, options?: ToastOptions) => Promise<T>;
+  dismiss: (id?: string | number) => void;
+}
+
+export declare const toast: ToastFn;
+`
+      : "";
+
+  const dtsCode = `import * as React from "react";
+${customTypeDeclarations ? `\n${customTypeDeclarations}\n` : ""}
 export interface ${propsInterfaceName} {
-${propsFields}
-  /** Render built-in interactive demo preset when true */
+${propsFields ? `${propsFields}\n` : ""}  /** Render built-in interactive demo preset when true */
   demo?: boolean;
   className?: string;
   style?: React.CSSProperties;
   children?: React.ReactNode;
   [key: string]: any;
 }
-
+${toasterDtsSpecial}
 /**
  * ${item.name} — ${item.description}
  */
@@ -210,8 +319,11 @@ export default ${primaryName};
 
   // Add to root barrel exports
   const barrelExportNames = [primaryName, `${primaryName}Demo`, `${primaryName}Raw`];
+  if (item.slug === "toaster" && !barrelExportNames.includes("toast")) {
+    barrelExportNames.push("toast");
+  }
   for (const extra of namedExports) {
-    if (!barrelExportNames.includes(extra)) barrelExportNames.push(extra);
+    if (extra !== "toast" && !barrelExportNames.includes(extra)) barrelExportNames.push(extra);
   }
   const uniqueNames = barrelExportNames.filter((n) => {
     if (exportedIdentSet.has(n)) return false;
@@ -230,7 +342,7 @@ export default ${primaryName};
   if (cleanDemoFile) {
     const cleanToastCode =
       item.slug === "toaster"
-        ? `import { o as EngineToaster, s as engineToast } from "../../../affectui-engine/index-DrzmeL9u.js";\nexport const toast = engineToast;\n`
+        ? `import { Toaster as EngineToaster, toast as engineToast } from "../../../affectui-engine/demo.clean-Nl_cej3R.js";\nexport const toast = engineToast;\n`
         : "";
     const cleanModuleCode = `import React from "react";
 import DemoComponent, { __InnerComponent } from "../../../affectui-engine/${cleanDemoFile}";
@@ -240,12 +352,16 @@ ${cleanToastCode}
  * ${item.description}
  */
 export function ${primaryName}(props = {}) {
-  const { demo, ...rest } = props;
-  const hasCustomProps = !demo && Object.keys(rest).length > 0;
+  const { demo, className, style, ...rest } = props;
+  const hasCustomProps = demo === false || (!demo && Object.keys(rest).some(k => !["id", "children", "key", "ref"].includes(k) && !k.startsWith("data-") && !k.startsWith("aria-")));
   if (hasCustomProps && __InnerComponent && __InnerComponent !== DemoComponent) {
-    return React.createElement(__InnerComponent, rest);
+    return React.createElement(__InnerComponent, { className, style, ...rest });
   }
-  return React.createElement(DemoComponent, rest);
+  const element = React.createElement(DemoComponent, { className, style, ...rest });
+  if (className || style) {
+    return React.createElement("div", { className, style, "data-aether-wrapper": "" }, element);
+  }
+  return element;
 }
 
 export const ${primaryName}Raw = __InnerComponent || DemoComponent;
@@ -268,70 +384,24 @@ export default ${primaryName};
       );
     }
   }
-
-  // Populate empty component-*.js source chunks so all 141 items have full copyable TSX source code
-  if (item.loadSource) {
-    const srcFileMatch = item.loadSource.toString().match(/\.\/([^"]+)/);
-    if (srcFileMatch) {
-      const srcFilePath = path.join(engineDir, srcFileMatch[1]);
-      if (fs.existsSync(srcFilePath) && fs.statSync(srcFilePath).size < 100) {
-        const fullTsxSource = `/**
- * @affectui/react — ${item.name} (${item.slug})
- * Category: ${item.category} | Kind: ${item.kind}
- * ${item.description}
- */
-import * as React from "react";
-import DemoComponent, { __InnerComponent } from "@/affectui-engine/${classicDemoFile}";
-
-export interface ${propsInterfaceName} {
-${propsFields}
-  demo?: boolean;
-  className?: string;
-}
-
-export function ${primaryName}({ demo, ...props }: ${propsInterfaceName}) {
-  const hasCustomProps = !demo && Object.keys(props).length > 0;
-  if (hasCustomProps && __InnerComponent && __InnerComponent !== DemoComponent) {
-    const Comp = __InnerComponent as React.ComponentType<${propsInterfaceName}>;
-    return <Comp {...props} />;
-  }
-  const Preset = DemoComponent as React.ComponentType<${propsInterfaceName}>;
-  return <Preset {...props} />;
-}
-
-${secondaryExportsCode}
-export default ${primaryName};
-
-/* --- Usage Example ---
-${usage.trim()}
-*/
-`;
-        const escaped = JSON.stringify(fullTsxSource);
-        fs.writeFileSync(srcFilePath, `var e=${escaped};export{e as default};\n`, "utf8");
-        patchedSourceCount++;
-      }
-    }
-  }
 }
 
 // Write src/index.js & src/index.d.ts
 const indexJsContent = `/**
- * @affectui/react — Enterprise AI-First UI Component Library
+ * @aether-ui/react — Enterprise AI-First UI Component Library
  * 141 Production Components, Screens, Blocks, Illustrations & Motion Primitives
+ *
+ * Stylesheet entry: import "@aether-ui/react/styles.css";
  */
-import "./affectui-engine/index.css";
-import "./affectui-engine/all-demos.css";
-import "../design-system/tokens/variables.css";
-
-export { AFFECTUI_CATALOG } from "./affectui-engine/catalog.js";
-export { ScreenFullContext, SCREEN_WIDTH } from "./affectui-engine/index-DrzmeL9u.js";
+export { AFFECTUI_CATALOG, AFFECTUI_CATALOG as AETHERUI_CATALOG } from "./affectui-engine/catalog.js";
+export { ScreenFullContext, SCREEN_WIDTH } from "./affectui-engine/context.js";
 
 ${rootExports.join("\n")}
 `;
 fs.writeFileSync(path.resolve("src/index.js"), indexJsContent, "utf8");
 
 const indexDtsContent = `/**
- * @affectui/react — TypeScript Declarations for All 141 Components
+ * @aether-ui/react — TypeScript Declarations for All 141 Components
  */
 import * as React from "react";
 
@@ -343,6 +413,7 @@ export declare const AFFECTUI_CATALOG: Array<{
   description: string;
   isPro: boolean;
 }>;
+export declare const AETHERUI_CATALOG: typeof AFFECTUI_CATALOG;
 export declare const ScreenFullContext: React.Context<boolean>;
 export declare const SCREEN_WIDTH: number;
 
@@ -352,12 +423,10 @@ fs.writeFileSync(path.resolve("src/index.d.ts"), indexDtsContent, "utf8");
 
 // Write src/clean.js & src/clean.d.ts
 const cleanJsContent = `/**
- * @affectui/react/clean — Clean Aesthetic Variant Barrel Export (76 Components)
+ * @aether-ui/react/clean — Clean Aesthetic Variant Barrel Export (76 Components)
+ *
+ * Stylesheet entry: import "@aether-ui/react/styles.css";
  */
-import "./affectui-engine/index.css";
-import "./affectui-engine/all-demos.css";
-import "../design-system/tokens/variables.css";
-
 ${cleanExports.join("\n")}
 `;
 fs.writeFileSync(path.resolve("src/clean.js"), cleanJsContent, "utf8");
@@ -373,6 +442,5 @@ fs.writeFileSync(path.resolve("src/styles.css"), stylesCssContent, "utf8");
 console.log({
   classicModulesGenerated: AFFECTUI_CATALOG.length,
   cleanModulesGenerated: cleanExports.length,
-  patchedEmptySourceFiles: patchedSourceCount,
 });
 process.exit(0);
