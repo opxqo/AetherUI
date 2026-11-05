@@ -1,3 +1,4 @@
+import "../../src/styles.css";
 import * as React from "react";
 import { AgentInbox, Button, toast } from "../../src/index.js";
 import { AgentInbox as CleanInbox } from "../../src/clean.js";

@@ -51,7 +51,7 @@ console.log("217 installed APIs and demos rendered successfully.");
   });
   await runStep("Installed TypeScript consumer with declarations checked", () => {
     const original = fs.readFileSync(path.join(root, "tests/types/consumer.tsx"), "utf8");
-    const source = original.replaceAll('../../src/components/ui/', '@aether-ui/react/ui/').replaceAll('../../src/index.js', '@aether-ui/react').replaceAll('../../src/clean.js', '@aether-ui/react/clean').replace(/(@aether-ui\/react\/ui\/[^"']+)\.js/g, '$1');
+    const source = original.replaceAll('../../src/styles.css', '@aether-ui/react/styles.css').replaceAll('../../src/components/ui/', '@aether-ui/react/ui/').replaceAll('../../src/index.js', '@aether-ui/react').replaceAll('../../src/clean.js', '@aether-ui/react/clean').replace(/(@aether-ui\/react\/ui\/[^"']+)\.js/g, '$1');
     fs.writeFileSync(path.join(consumer, "consumer.tsx"), source);
     fs.writeFileSync(path.join(consumer, "tsconfig.json"), JSON.stringify({ compilerOptions: { target: "ES2022", module: "ESNext", moduleResolution: "Bundler", jsx: "react-jsx", strict: true, skipLibCheck: false, noEmit: true }, include: ["consumer.tsx"] }));
     execFileSync(process.execPath, [path.join(root, "node_modules/typescript/bin/tsc"), "-p", path.join(consumer, "tsconfig.json"), "--pretty", "false"], { cwd: consumer, stdio: "pipe" });
@@ -80,6 +80,9 @@ console.log("217 installed APIs and demos rendered successfully.");
   });
   if (!consumerOnly) await runStep("Showcase build", () => npm(["run", "build:site"]));
   console.log("All requested checks completed successfully. Browser interaction checks are reported separately.");
+} catch (error) {
+  process.stderr.write(error.stdout?.toString() || error.stderr?.toString() || String(error));
+  process.exitCode = 1;
 } finally {
   fs.rmSync(consumer, { recursive: true, force: true });
 }

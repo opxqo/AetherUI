@@ -55,6 +55,7 @@ export async function collectComponentFiles(root, entry, { styles = true } = {})
       ast.walkDecls(decl => { decl.value = rewrite(decl.value); });
       contents = Buffer.from(ast.toString());
       for (const dep of dependencies) await visit(dep);
+      if (fs.existsSync(file + ".d.ts")) await visit(file + ".d.ts");
     } else if (/\.(?:js|mjs)$/.test(file) && !file.endsWith(".d.ts")) {
       const [imports] = parse(contents.toString());
       for (const imp of imports) {
