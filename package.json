@@ -22,17 +22,17 @@
     },
     "./ui/*": {
       "types": "./src/components/ui/*.d.ts",
-      "import": "./src/components/ui/*.js",
-      "default": "./src/components/ui/*.js"
+      "import": "./dist/lib/ui/*.js",
+      "default": "./dist/lib/ui/*.js"
     },
     "./ui/clean/*": {
       "types": "./src/components/ui/clean/*.d.ts",
-      "import": "./src/components/ui/clean/*.js",
-      "default": "./src/components/ui/clean/*.js"
+      "import": "./dist/lib/ui/clean/*.js",
+      "default": "./dist/lib/ui/clean/*.js"
     },
     "./brand": "./src/brand.config.js",
     "./catalog": "./src/affectui-engine/catalog.js",
-    "./styles.css": "./src/styles.css",
+    "./styles.css": "./dist/lib/styles.css",
     "./dist/lib/styles.css": "./dist/lib/styles.css",
     "./tokens.css": "./design-system/tokens/variables.css",
     "./tokens.json": "./design-system/tokens/design-tokens.json",
@@ -59,22 +59,31 @@
     "preview": "vite preview --outDir dist/site",
     "typecheck": "tsc --noEmit",
     "test": "node --test tests/*.test.mjs",
-    "verify": "node scripts/verify-consumer.mjs"
+    "verify": "node scripts/verify-consumer.mjs",
+    "prepack": "npm run build:lib"
   },
   "peerDependencies": {
     "react": ">=19.0.0",
     "react-dom": ">=19.0.0"
   },
   "dependencies": {
-    "react": ">=19.0.0",
-    "react-dom": ">=19.0.0"
+    "es-module-lexer": "^3.0.4",
+    "postcss": "^8.5.32",
+    "postcss-value-parser": "^4.2.0"
   },
   "devDependencies": {
+    "@babel/parser": "^7.29.13",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^4.3.4",
+    "esbuild": "^0.28.2",
     "prettier": "^3.5.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "typescript": "^7.0.2",
     "vite": "^6.2.0"
+  },
+  "engines": {
+    "node": ">=20.19.0"
   }
 }

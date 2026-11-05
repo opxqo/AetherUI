@@ -1,14 +1,5 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
-
-/**
- * Enterprise Runtime Shims for Demo & Layout Execution
- * Replaces monolithic legacy engine bundle with zero-DOM-leak pure shims.
- */
-export const m = () => {};
-export const p = ({ children }) => children;
-export const h = () => {};
-export const r = () => {};
-export const kt = () => ReactDOM;
-export const ScreenFullContext = React.createContext(false);
-export const SCREEN_WIDTH = 1440;
+// Compatibility names used by the extracted modules; all share one implementation and context.
+export {
+  navigateScreen as m, ScreenFrame as p, useFolderQuery as h,
+  GlassFolder as r, getReactDOM as kt, ScreenFullContext, SCREEN_WIDTH,
+} from "./screen-runtime.js";

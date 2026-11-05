@@ -1,0 +1,1427 @@
+[
+  {
+    "slug": "ai-answer",
+    "name": "AI Answer",
+    "kind": "component",
+    "primary": "AIAnswer",
+    "exports": [],
+    "classic": "demo-DBAxVX0U.js",
+    "clean": "demo.clean-ZdfWqiDN.js"
+  },
+  {
+    "slug": "chat-composer",
+    "name": "Chat Composer",
+    "kind": "component",
+    "primary": "ChatComposer",
+    "exports": [],
+    "classic": "demo-ap1FpgjI.js",
+    "clean": "demo.clean-DX9zRbTo.js"
+  },
+  {
+    "slug": "thinking-state",
+    "name": "Thinking State",
+    "kind": "component",
+    "primary": "ThinkingState",
+    "exports": [],
+    "classic": "demo-C-mWQewT.js",
+    "clean": "demo.clean-CD8Bwm6R.js"
+  },
+  {
+    "slug": "writing-assistant",
+    "name": "Writing Assistant",
+    "kind": "component",
+    "primary": "WritingAssistant",
+    "exports": [],
+    "classic": "demo-DeFFCGcX.js",
+    "clean": "demo.clean-CXx2yr1v.js"
+  },
+  {
+    "slug": "thinking-loader",
+    "name": "Thinking Loader",
+    "kind": "component",
+    "primary": "ThinkingLoader",
+    "exports": [],
+    "classic": "demo-BKj0WRzp.js",
+    "clean": "demo.clean-CrWsmROu.js"
+  },
+  {
+    "slug": "combobox",
+    "name": "Combobox",
+    "kind": "component",
+    "primary": "Combobox",
+    "exports": [],
+    "classic": "demo-DqZv_kIm.js",
+    "clean": "demo.clean-BBOmnWT8.js"
+  },
+  {
+    "slug": "command-menu",
+    "name": "Command Menu",
+    "kind": "component",
+    "primary": "CommandMenu",
+    "exports": [],
+    "classic": "demo-BloxR6eN.js",
+    "clean": "demo.clean-BY6TallM.js"
+  },
+  {
+    "slug": "date-range-picker",
+    "name": "Date Range Picker",
+    "kind": "component",
+    "primary": "DateRangePicker",
+    "exports": [],
+    "classic": "demo-BFXVVPt-.js",
+    "clean": "demo.clean-Ce4Bm5uX.js"
+  },
+  {
+    "slug": "dropzone",
+    "name": "Dropzone",
+    "kind": "component",
+    "primary": "Dropzone",
+    "exports": [],
+    "classic": "demo-BaVYNLv-.js",
+    "clean": "demo.clean-DOYCsrp4.js"
+  },
+  {
+    "slug": "otp-input",
+    "name": "OTP Input",
+    "kind": "component",
+    "primary": "OtpInput",
+    "exports": [
+      "OTPInput"
+    ],
+    "classic": "demo-DNDBlImO.js",
+    "clean": "demo.clean-C1n1pYzg.js"
+  },
+  {
+    "slug": "segmented-control",
+    "name": "Segmented Control",
+    "kind": "component",
+    "primary": "SegmentedControl",
+    "exports": [],
+    "classic": "demo-Dm6BxvlO.js",
+    "clean": "demo.clean-C-Z6yZbv.js"
+  },
+  {
+    "slug": "stepper-form",
+    "name": "Stepper Form",
+    "kind": "component",
+    "primary": "StepperForm",
+    "exports": [
+      "StepperField",
+      "StepperInput",
+      "StepperTags",
+      "StepperChoices",
+      "StepperReview"
+    ],
+    "classic": "demo-DnMvqnaQ.js",
+    "clean": "demo.clean-CbPQYZdO.js",
+    "secondary": {
+      "classic": {
+        "StepperField": "StepperField",
+        "StepperInput": "StepperInput",
+        "StepperTags": "StepperTags",
+        "StepperChoices": "StepperChoices",
+        "StepperReview": "StepperReview"
+      },
+      "clean": {
+        "StepperField": "StepperField",
+        "StepperInput": "StepperInput",
+        "StepperTags": "StepperTags",
+        "StepperChoices": "StepperChoices",
+        "StepperReview": "StepperReview"
+      }
+    }
+  },
+  {
+    "slug": "toaster",
+    "name": "Toaster",
+    "kind": "component",
+    "primary": "Toaster",
+    "exports": [],
+    "classic": "demo-BnJ2hi23.js",
+    "clean": "demo.clean-Nl_cej3R.js"
+  },
+  {
+    "slug": "usage-meter",
+    "name": "Usage Meter",
+    "kind": "component",
+    "primary": "UsageMeter",
+    "exports": [],
+    "classic": "demo-D5XENR7-.js",
+    "clean": "demo.clean-_yTJ3G4b.js"
+  },
+  {
+    "slug": "agent-checkpoints",
+    "name": "Agent Checkpoints",
+    "kind": "component",
+    "primary": "AgentCheckpoints",
+    "exports": [],
+    "classic": "demo-Dy8kRkE4.js",
+    "clean": "demo.clean-rMzZE8NQ.js"
+  },
+  {
+    "slug": "agent-cursors",
+    "name": "Agent Cursors",
+    "kind": "component",
+    "primary": "AgentCursors",
+    "exports": [
+      "acceptSuggestion"
+    ],
+    "classic": "demo-T2vp62ci.js",
+    "clean": "demo.clean-DNQWXEXh.js",
+    "secondary": {
+      "classic": {
+        "acceptSuggestion": "acceptSuggestion"
+      },
+      "clean": {
+        "acceptSuggestion": "acceptSuggestion"
+      }
+    }
+  },
+  {
+    "slug": "agent-findings",
+    "name": "Agent Findings",
+    "kind": "component",
+    "primary": "AgentFindings",
+    "exports": [],
+    "classic": "demo-oWyfFMeM.js",
+    "clean": "demo.clean-CqT5aPHC.js"
+  },
+  {
+    "slug": "agent-fleet",
+    "name": "Agent Fleet",
+    "kind": "component",
+    "primary": "AgentFleet",
+    "exports": [],
+    "classic": "demo-DIZ2E5-o.js",
+    "clean": "demo.clean-2xe35V7E.js"
+  },
+  {
+    "slug": "agent-graph",
+    "name": "Agent Graph",
+    "kind": "component",
+    "primary": "AgentGraph",
+    "exports": [],
+    "classic": "demo-BbHNVcxq.js",
+    "clean": "demo.clean-BNT_FJcc.js"
+  },
+  {
+    "slug": "agent-handoff",
+    "name": "Agent Handoff",
+    "kind": "component",
+    "primary": "AgentHandoff",
+    "exports": [],
+    "classic": "demo-CW_0t88D.js",
+    "clean": "demo.clean-T_nZpskz.js"
+  },
+  {
+    "slug": "agent-inbox",
+    "name": "Agent Inbox",
+    "kind": "component",
+    "primary": "AgentInbox",
+    "exports": [],
+    "classic": "demo-Ck6EJPHF.js",
+    "clean": "demo.clean-kiCHizEx.js"
+  },
+  {
+    "slug": "agent-lanes",
+    "name": "Agent Lanes",
+    "kind": "component",
+    "primary": "AgentLanes",
+    "exports": [],
+    "classic": "demo-D2be2q7n.js",
+    "clean": "demo.clean-UqHmaqVc.js"
+  },
+  {
+    "slug": "agent-ledger",
+    "name": "Agent Ledger",
+    "kind": "component",
+    "primary": "AgentLedger",
+    "exports": [],
+    "classic": "demo-CGzh0xx5.js",
+    "clean": "demo.clean-D4kEyDST.js"
+  },
+  {
+    "slug": "agent-monitor",
+    "name": "Agent Monitor",
+    "kind": "component",
+    "primary": "AgentMonitor",
+    "exports": [],
+    "classic": "demo-BbTawgt2.js",
+    "clean": "demo.clean-C6Ab9LLt.js"
+  },
+  {
+    "slug": "agent-queue",
+    "name": "Agent Queue",
+    "kind": "component",
+    "primary": "AgentQueue",
+    "exports": [],
+    "classic": "demo-CRKNaMKk.js",
+    "clean": "demo.clean-YsG62-iJ.js"
+  },
+  {
+    "slug": "agent-recap",
+    "name": "Agent Recap",
+    "kind": "component",
+    "primary": "AgentRecap",
+    "exports": [],
+    "classic": "demo-CC5Qxjh3.js",
+    "clean": "demo.clean-DmExF8_a.js"
+  },
+  {
+    "slug": "agent-steering",
+    "name": "Agent Steering",
+    "kind": "component",
+    "primary": "AgentSteering",
+    "exports": [],
+    "classic": "demo-BlCEXjmy.js",
+    "clean": "demo.clean-DfiZ4T3_.js"
+  },
+  {
+    "slug": "agent-tree",
+    "name": "Agent Tree",
+    "kind": "component",
+    "primary": "AgentTree",
+    "exports": [],
+    "classic": "demo-B_JQedQ8.js",
+    "clean": "demo.clean-DEOk3i7u.js"
+  },
+  {
+    "slug": "autonomy-dial",
+    "name": "Autonomy Dial",
+    "kind": "component",
+    "primary": "AutonomyDial",
+    "exports": [],
+    "classic": "demo-D1Cm2Y4U.js",
+    "clean": "demo.clean-CTbI3YEC.js"
+  },
+  {
+    "slug": "cited-answer",
+    "name": "Cited Answer",
+    "kind": "component",
+    "primary": "CitedAnswer",
+    "exports": [],
+    "classic": "demo-Dvsf4FXI.js",
+    "clean": "demo.clean-Be9rfp7V.js"
+  },
+  {
+    "slug": "compact-breakdown",
+    "name": "Compact Breakdown",
+    "kind": "component",
+    "primary": "CompactBreakdown",
+    "exports": [],
+    "classic": "demo-v8zKTRWM.js",
+    "clean": "demo.clean-BuMLWdOS.js"
+  },
+  {
+    "slug": "conflict-radar",
+    "name": "Conflict Radar",
+    "kind": "component",
+    "primary": "ConflictRadar",
+    "exports": [],
+    "classic": "demo-C8n-KhXq.js",
+    "clean": "demo.clean-kYvZQLYS.js"
+  },
+  {
+    "slug": "context-map",
+    "name": "Context Map",
+    "kind": "component",
+    "primary": "ContextMap",
+    "exports": [],
+    "classic": "demo-B9Q3KRp_.js",
+    "clean": "demo.clean-SLNT61_6.js"
+  },
+  {
+    "slug": "context-window",
+    "name": "Context Window",
+    "kind": "component",
+    "primary": "ContextWindow",
+    "exports": [],
+    "classic": "demo-C8rgC34B.js",
+    "clean": "demo.clean-GouX_aPH.js"
+  },
+  {
+    "slug": "cost-waterfall",
+    "name": "Cost Waterfall",
+    "kind": "component",
+    "primary": "CostWaterfall",
+    "exports": [],
+    "classic": "demo-j3eWk5E0.js",
+    "clean": "demo.clean-DuC4pAFW.js"
+  },
+  {
+    "slug": "decision-tree",
+    "name": "Decision Tree",
+    "kind": "component",
+    "primary": "DecisionTree",
+    "exports": [],
+    "classic": "demo-BCVR2Hhf.js",
+    "clean": "demo.clean-B0whtqPR.js"
+  },
+  {
+    "slug": "delegate-board",
+    "name": "Delegate Board",
+    "kind": "component",
+    "primary": "DelegateBoard",
+    "exports": [],
+    "classic": "demo-DHNjSsE4.js",
+    "clean": "demo.clean-DbZzI48W.js"
+  },
+  {
+    "slug": "experiment-card",
+    "name": "Experiment Card",
+    "kind": "component",
+    "primary": "ExperimentCard",
+    "exports": [],
+    "classic": "demo-DBtQYhoC.js",
+    "clean": "demo.clean-EEcBFQIL.js"
+  },
+  {
+    "slug": "fallback-chain",
+    "name": "Fallback Chain",
+    "kind": "component",
+    "primary": "FallbackChain",
+    "exports": [],
+    "classic": "demo-Cr3cCxya.js",
+    "clean": "demo.clean-CkD71wWL.js"
+  },
+  {
+    "slug": "fan-out-grid",
+    "name": "Fan-out Grid",
+    "kind": "component",
+    "primary": "FanoutGrid",
+    "exports": [
+      "FanOutGrid"
+    ],
+    "classic": "demo-BFd3gKrI.js",
+    "clean": "demo.clean-Dh8J8jM5.js"
+  },
+  {
+    "slug": "integration-picker",
+    "name": "Integration Picker",
+    "kind": "component",
+    "primary": "IntegrationPicker",
+    "exports": [],
+    "classic": "demo-BbtxcaBE.js",
+    "clean": "demo.clean-DCl4YOmS.js"
+  },
+  {
+    "slug": "integration-settings",
+    "name": "Integration Settings",
+    "kind": "component",
+    "primary": "IntegrationSettings",
+    "exports": [],
+    "classic": "demo-BSW5akXq.js",
+    "clean": "demo.clean-BjW5KB4-.js"
+  },
+  {
+    "slug": "kpi-chart",
+    "name": "KPI Chart",
+    "kind": "component",
+    "primary": "KpiChart",
+    "exports": [
+      "KPIChart"
+    ],
+    "classic": "demo-CDO93-eN.js",
+    "clean": "demo.clean-RZZ7XV1q.js"
+  },
+  {
+    "slug": "memory-panel",
+    "name": "Memory Panel",
+    "kind": "component",
+    "primary": "MemoryPanel",
+    "exports": [],
+    "classic": "demo-Dzop4bhP.js",
+    "clean": "demo.clean-BNHrnTlu.js"
+  },
+  {
+    "slug": "message-actions",
+    "name": "Message Actions",
+    "kind": "component",
+    "primary": "MessageActions",
+    "exports": [
+      "MessageText"
+    ],
+    "classic": "demo-DrVDkZ74.js",
+    "clean": "demo.clean-ulTm4Y9p.js",
+    "secondary": {
+      "classic": {
+        "MessageText": "MessageText"
+      },
+      "clean": {
+        "MessageText": "MessageText"
+      }
+    }
+  },
+  {
+    "slug": "model-picker",
+    "name": "Model Picker",
+    "kind": "component",
+    "primary": "ModelPicker",
+    "exports": [],
+    "classic": "demo-ousVLbdn.js",
+    "clean": "demo.clean-COPIA0pP.js"
+  },
+  {
+    "slug": "parallel-attempts",
+    "name": "Parallel Attempts",
+    "kind": "component",
+    "primary": "ParallelAttempts",
+    "exports": [],
+    "classic": "demo-DNq6dj3m.js",
+    "clean": "demo.clean-BhWfxUkE.js"
+  },
+  {
+    "slug": "permission-request",
+    "name": "Permission Request",
+    "kind": "component",
+    "primary": "PermissionRequest",
+    "exports": [],
+    "classic": "demo-277u-kzk.js",
+    "clean": "demo.clean-D8ufAHnn.js"
+  },
+  {
+    "slug": "plan-vs-actual",
+    "name": "Plan vs Actual",
+    "kind": "component",
+    "primary": "PlanVsActual",
+    "exports": [],
+    "classic": "demo.clean-wzchKI2C.js",
+    "clean": "demo.clean-wzchKI2C.js"
+  },
+  {
+    "slug": "profile-menu",
+    "name": "Profile Menu",
+    "kind": "component",
+    "primary": "ProfileMenu",
+    "exports": [
+      "SettingsIcon",
+      "LogoutIcon"
+    ],
+    "classic": "demo-Dk3NEbkP.js",
+    "clean": "demo.clean-CPL7IiHS.js",
+    "secondary": {
+      "classic": {
+        "SettingsIcon": "SettingsIcon",
+        "LogoutIcon": "LogoutIcon"
+      },
+      "clean": {
+        "SettingsIcon": "SettingsIcon",
+        "LogoutIcon": "LogoutIcon"
+      }
+    }
+  },
+  {
+    "slug": "project-card",
+    "name": "Project Card",
+    "kind": "component",
+    "primary": "ProjectCard",
+    "exports": [],
+    "classic": "demo-mVJMtnH2.js",
+    "clean": "demo.clean-C-cDjx5G.js"
+  },
+  {
+    "slug": "prompt-library",
+    "name": "Prompt Library",
+    "kind": "component",
+    "primary": "PromptLibrary",
+    "exports": [],
+    "classic": "demo-Dag7eJtM.js",
+    "clean": "demo.clean-CkmyfNZK.js"
+  },
+  {
+    "slug": "review-center",
+    "name": "Review Center",
+    "kind": "component",
+    "primary": "ReviewCenter",
+    "exports": [],
+    "classic": "demo-ocpQ0Pxs.js",
+    "clean": "demo.clean-CfzVMkMh.js"
+  },
+  {
+    "slug": "scheduled-runs",
+    "name": "Scheduled Runs",
+    "kind": "component",
+    "primary": "ScheduledRuns",
+    "exports": [],
+    "classic": "demo-At8-ozCe.js",
+    "clean": "demo.clean-BvPoXlne.js"
+  },
+  {
+    "slug": "tips-panel",
+    "name": "Tips Panel",
+    "kind": "component",
+    "primary": "Kbd",
+    "exports": [
+      "TipsPanel"
+    ],
+    "classic": "demo-CeNLDeWD.js",
+    "clean": "demo.clean-EtdM2R2t.js"
+  },
+  {
+    "slug": "tool-access-map",
+    "name": "Tool Access Map",
+    "kind": "component",
+    "primary": "ToolAccessMap",
+    "exports": [],
+    "classic": "demo-Cp187cyY.js",
+    "clean": "demo.clean-DjnGlKv0.js"
+  },
+  {
+    "slug": "tool-call-card",
+    "name": "Tool Call Card",
+    "kind": "component",
+    "primary": "ToolCallCard",
+    "exports": [
+      "ToolCallGroup"
+    ],
+    "classic": "demo-BanY3X-P.js",
+    "clean": "demo.clean-Bc3dcFVh.js",
+    "secondary": {
+      "classic": {
+        "ToolCallGroup": "ToolCallGroup"
+      },
+      "clean": {
+        "ToolCallGroup": "ToolCallGroup"
+      }
+    }
+  },
+  {
+    "slug": "trace-waterfall",
+    "name": "Trace Waterfall",
+    "kind": "component",
+    "primary": "TraceWaterfall",
+    "exports": [],
+    "classic": "demo-OLdSLdLw.js",
+    "clean": "demo.clean-DfqKG4h-.js"
+  },
+  {
+    "slug": "approval-card",
+    "name": "Approval Card",
+    "kind": "component",
+    "primary": "ApprovalCard",
+    "exports": [],
+    "classic": "demo-BzZHOI57.js",
+    "clean": "demo.clean-CHh134hb.js"
+  },
+  {
+    "slug": "breakdown-chart",
+    "name": "Breakdown Chart",
+    "kind": "component",
+    "primary": "BreakdownChart",
+    "exports": [],
+    "classic": "demo-_DBbejj2.js",
+    "clean": "demo.clean-BWVKmfqY.js"
+  },
+  {
+    "slug": "button",
+    "name": "Button",
+    "kind": "component",
+    "primary": "Button",
+    "exports": [],
+    "classic": "demo-DFP8ePHp.js",
+    "clean": "demo.clean-fXLK9gWq.js"
+  },
+  {
+    "slug": "data-table",
+    "name": "Data Table",
+    "kind": "component",
+    "primary": "DataTable",
+    "exports": [
+      "TextColumnIcon",
+      "TagColumnIcon"
+    ],
+    "classic": "demo-BKUB9d_p.js",
+    "clean": "demo.clean-7-VzSUWm.js",
+    "secondary": {
+      "classic": {
+        "TextColumnIcon": "TextColumnIcon",
+        "TagColumnIcon": "TagColumnIcon"
+      },
+      "clean": {
+        "TextColumnIcon": "TextColumnIcon",
+        "TagColumnIcon": "TagColumnIcon"
+      }
+    }
+  },
+  {
+    "slug": "filter-menu",
+    "name": "Filter Menu",
+    "kind": "component",
+    "primary": "FilterMenu",
+    "exports": [],
+    "classic": "demo-BDtChEC0.js",
+    "clean": "demo.clean-C_wFoPI4.js"
+  },
+  {
+    "slug": "reaction-bar",
+    "name": "Reaction Bar",
+    "kind": "component",
+    "primary": "ReactionBar",
+    "exports": [],
+    "classic": "demo-x4AxvLaI.js",
+    "clean": "demo.clean-BwU0t77A.js"
+  },
+  {
+    "slug": "smart-recommendation",
+    "name": "Smart Recommendation",
+    "kind": "component",
+    "primary": "SmartRecommendation",
+    "exports": [],
+    "classic": "demo-Bmw88bzb.js",
+    "clean": "demo.clean-CxJAxhV_.js"
+  },
+  {
+    "slug": "agent-plan",
+    "name": "Agent Plan",
+    "kind": "component",
+    "primary": "AgentPlan",
+    "exports": [],
+    "classic": "demo-BF7ciLLI.js",
+    "clean": "demo.clean-7-boHMGq.js"
+  },
+  {
+    "slug": "billing-schedule",
+    "name": "Billing Schedule",
+    "kind": "component",
+    "primary": "BillingSchedule",
+    "exports": [],
+    "classic": "demo-COJAGeNk.js",
+    "clean": "demo.clean-tbaHea_K.js"
+  },
+  {
+    "slug": "change-summary",
+    "name": "Change Summary",
+    "kind": "component",
+    "primary": "ChangeSummary",
+    "exports": [],
+    "classic": "demo-IBGa6B_0.js",
+    "clean": "demo.clean-Cw1zxurv.js"
+  },
+  {
+    "slug": "comments-panel",
+    "name": "Comments Panel",
+    "kind": "component",
+    "primary": "CommentsPanel",
+    "exports": [],
+    "classic": "demo-Ioffv_GL.js",
+    "clean": "demo.clean-CnjHsWNN.js"
+  },
+  {
+    "slug": "email-draft",
+    "name": "Email Draft",
+    "kind": "component",
+    "primary": "EmailDraft",
+    "exports": [],
+    "classic": "demo-BqE2nm6j.js",
+    "clean": "demo.clean-CmPMxC4Y.js"
+  },
+  {
+    "slug": "progress-tracker",
+    "name": "Progress Tracker",
+    "kind": "component",
+    "primary": "ProgressTracker",
+    "exports": [],
+    "classic": "demo-CRM2yhps.js",
+    "clean": "demo.clean-DEuHi6CX.js"
+  },
+  {
+    "slug": "comment-thread",
+    "name": "Comment Thread",
+    "kind": "component",
+    "primary": "AssistantMark",
+    "exports": [
+      "CommentThread"
+    ],
+    "classic": "demo-ElZs8qP_.js",
+    "clean": "demo.clean-C7QEyQUW.js"
+  },
+  {
+    "slug": "inline-diff",
+    "name": "Inline Diff",
+    "kind": "component",
+    "primary": "InlineDiff",
+    "exports": [],
+    "classic": "demo-bn5f6BmC.js",
+    "clean": "demo.clean-1BCd75XO.js"
+  },
+  {
+    "slug": "setup-guide",
+    "name": "Setup Guide",
+    "kind": "component",
+    "primary": "SetupGuide",
+    "exports": [],
+    "classic": "demo-BBQFFf2i.js",
+    "clean": "demo.clean-Djp5LeyI.js"
+  },
+  {
+    "slug": "decision-inbox",
+    "name": "Decision Inbox",
+    "kind": "component",
+    "primary": "DecisionInbox",
+    "exports": [],
+    "classic": "demo-BTRtmfz4.js",
+    "clean": "demo.clean-BDDT1Pea.js"
+  },
+  {
+    "slug": "notification-stack",
+    "name": "Notification Stack",
+    "kind": "component",
+    "primary": "NotificationStack",
+    "exports": [],
+    "classic": "demo-B6G7VOmY.js",
+    "clean": "demo.clean-D8SAlH2y.js"
+  },
+  {
+    "slug": "app-shell-flat",
+    "name": "App Shell Flat",
+    "kind": "screen",
+    "primary": "AppShellFlat",
+    "exports": [
+      "WorkspacePanel"
+    ],
+    "classic": "demo-DUhSwzhW.js",
+    "clean": null,
+    "secondary": {
+      "classic": {
+        "WorkspacePanel": "WorkspacePanel"
+      }
+    }
+  },
+  {
+    "slug": "app-shell",
+    "name": "App Shell Inset",
+    "kind": "screen",
+    "primary": "AppShell",
+    "exports": [
+      "WorkspacePanel"
+    ],
+    "classic": "demo-Br2EPuwn.js",
+    "clean": null,
+    "secondary": {
+      "classic": {
+        "WorkspacePanel": "WorkspacePanel"
+      }
+    }
+  },
+  {
+    "slug": "assistant-home",
+    "name": "AI Chat / Start",
+    "kind": "screen",
+    "primary": "AssistantHomeScreen",
+    "exports": [
+      "AssistantHome"
+    ],
+    "classic": "demo-CT4L5yLv.js",
+    "clean": null
+  },
+  {
+    "slug": "agent-chat",
+    "name": "AI Chat / Agents",
+    "kind": "screen",
+    "primary": "AgentChatScreen",
+    "exports": [
+      "AgentChat"
+    ],
+    "classic": "demo-9NZ5oo05.js",
+    "clean": null
+  },
+  {
+    "slug": "agent-run",
+    "name": "AI Chat / Run",
+    "kind": "screen",
+    "primary": "AgentRunScreen",
+    "exports": [
+      "AgentRun"
+    ],
+    "classic": "demo-DcCU7oPV.js",
+    "clean": null
+  },
+  {
+    "slug": "files",
+    "name": "Folders / Overview",
+    "kind": "screen",
+    "primary": "FilesScreen",
+    "exports": [
+      "Files"
+    ],
+    "classic": "demo-B7zbJYh5.js",
+    "clean": null
+  },
+  {
+    "slug": "folder",
+    "name": "Folders / Detail",
+    "kind": "screen",
+    "primary": "FolderScreen",
+    "exports": [
+      "Folder"
+    ],
+    "classic": "demo-DZ-lI8Eb.js",
+    "clean": null
+  },
+  {
+    "slug": "integrations",
+    "name": "Integrations",
+    "kind": "screen",
+    "primary": "IntegrationsScreen",
+    "exports": [
+      "Integrations"
+    ],
+    "classic": "demo-tSofIbN8.js",
+    "clean": null
+  },
+  {
+    "slug": "crm",
+    "name": "CRM",
+    "kind": "screen",
+    "primary": "CrmScreen",
+    "exports": [
+      "Crm"
+    ],
+    "classic": "demo-BTdzblYw.js",
+    "clean": null
+  },
+  {
+    "slug": "kanban",
+    "name": "Kanban Board",
+    "kind": "screen",
+    "primary": "KanbanScreen",
+    "exports": [
+      "Kanban"
+    ],
+    "classic": "demo-BRSYeTDM.js",
+    "clean": null
+  },
+  {
+    "slug": "analytics",
+    "name": "Analytics",
+    "kind": "screen",
+    "primary": "AnalyticsScreen",
+    "exports": [
+      "Analytics"
+    ],
+    "classic": "demo-DqPXaheB.js",
+    "clean": null
+  },
+  {
+    "slug": "onboarding",
+    "name": "Onboarding",
+    "kind": "screen",
+    "primary": "OnboardingScreen",
+    "exports": [
+      "Onboarding"
+    ],
+    "classic": "demo-BZKijLCU.js",
+    "clean": null
+  },
+  {
+    "slug": "evals",
+    "name": "Evals",
+    "kind": "screen",
+    "primary": "EvalsScreen",
+    "exports": [
+      "Evals"
+    ],
+    "classic": "demo-C75c5UD6.js",
+    "clean": null
+  },
+  {
+    "slug": "settings-preferences",
+    "name": "Settings / Preferences",
+    "kind": "screen",
+    "primary": "SettingsPreferencesScreen",
+    "exports": [
+      "SettingsPreferences"
+    ],
+    "classic": "demo-mRChABp9.js",
+    "clean": null
+  },
+  {
+    "slug": "settings-notifications",
+    "name": "Settings / Notifications",
+    "kind": "screen",
+    "primary": "SettingsNotificationsScreen",
+    "exports": [
+      "SettingsNotifications"
+    ],
+    "classic": "demo-BVNs823U.js",
+    "clean": null
+  },
+  {
+    "slug": "settings-privacy",
+    "name": "Settings / Privacy",
+    "kind": "screen",
+    "primary": "SettingsPrivacyScreen",
+    "exports": [
+      "SettingsPrivacy"
+    ],
+    "classic": "demo-Bx6K_V5F.js",
+    "clean": null
+  },
+  {
+    "slug": "settings-subscription",
+    "name": "Settings / Billing",
+    "kind": "screen",
+    "primary": "SettingsSubscriptionScreen",
+    "exports": [
+      "SettingsSubscription"
+    ],
+    "classic": "demo-CVegJkmk.js",
+    "clean": null
+  },
+  {
+    "slug": "settings-general",
+    "name": "Settings / General",
+    "kind": "screen",
+    "primary": "SettingsGeneralScreen",
+    "exports": [
+      "SettingsGeneral"
+    ],
+    "classic": "demo-CvriwZ5d.js",
+    "clean": null
+  },
+  {
+    "slug": "settings-profile",
+    "name": "Settings / Profile",
+    "kind": "screen",
+    "primary": "SettingsProfileScreen",
+    "exports": [
+      "SettingsProfile"
+    ],
+    "classic": "demo-DSMBQ3nl.js",
+    "clean": null
+  },
+  {
+    "slug": "settings-members",
+    "name": "Settings / Teams",
+    "kind": "screen",
+    "primary": "SettingsMembersScreen",
+    "exports": [
+      "SettingsMembers"
+    ],
+    "classic": "demo-B27uonNG.js",
+    "clean": null
+  },
+  {
+    "slug": "settings-models",
+    "name": "Settings / Models",
+    "kind": "screen",
+    "primary": "SettingsModelsScreen",
+    "exports": [
+      "SettingsModels"
+    ],
+    "classic": "demo-BtJme0MP.js",
+    "clean": null
+  },
+  {
+    "slug": "settings-security",
+    "name": "Settings / Security",
+    "kind": "screen",
+    "primary": "SettingsSecurityScreen",
+    "exports": [
+      "SettingsSecurity"
+    ],
+    "classic": "demo-CtVTw0eN.js",
+    "clean": null
+  },
+  {
+    "slug": "client-context",
+    "name": "Client Context",
+    "kind": "block",
+    "primary": "ClientContext",
+    "exports": [],
+    "classic": "demo-borEBI1Z.js",
+    "clean": null
+  },
+  {
+    "slug": "invoice-credit",
+    "name": "Invoice & Credit Note",
+    "kind": "block",
+    "primary": "InvoiceCredit",
+    "exports": [],
+    "classic": "demo-C-iCHBJN.js",
+    "clean": null
+  },
+  {
+    "slug": "logo-marquee",
+    "name": "Logo Marquee",
+    "kind": "block",
+    "primary": "LogoMarquee",
+    "exports": [],
+    "classic": "demo-dPDkooNn.js",
+    "clean": null
+  },
+  {
+    "slug": "metrics-dashboard",
+    "name": "Metrics Dashboard",
+    "kind": "block",
+    "primary": "MetricsDashboard",
+    "exports": [],
+    "classic": "demo-Coprs2Jd.js",
+    "clean": null
+  },
+  {
+    "slug": "pricing-plans",
+    "name": "Pricing Plans",
+    "kind": "block",
+    "primary": "PricingPlans",
+    "exports": [],
+    "classic": "demo-CGLaBJBw.js",
+    "clean": null
+  },
+  {
+    "slug": "task-board",
+    "name": "Task Board",
+    "kind": "block",
+    "primary": "TaskBoard",
+    "exports": [],
+    "classic": "demo-CmolVFYq.js",
+    "clean": null
+  },
+  {
+    "slug": "testimonial-wall",
+    "name": "Testimonial Wall",
+    "kind": "block",
+    "primary": "TestimonialWall",
+    "exports": [],
+    "classic": "demo-BOeM0CYP.js",
+    "clean": null
+  },
+  {
+    "slug": "ai-workspace",
+    "name": "AI Workspace",
+    "kind": "block",
+    "primary": "AiWorkspace",
+    "exports": [
+      "AIWorkspace"
+    ],
+    "classic": "demo-CX33j9ef.js",
+    "clean": null
+  },
+  {
+    "slug": "app-directory",
+    "name": "App Directory",
+    "kind": "block",
+    "primary": "AppDirectory",
+    "exports": [],
+    "classic": "demo-S9qKZHRx.js",
+    "clean": null
+  },
+  {
+    "slug": "kpi-board",
+    "name": "KPI Board",
+    "kind": "block",
+    "primary": "KpiBoard",
+    "exports": [
+      "KPIBoard"
+    ],
+    "classic": "demo-DVOt8T4-.js",
+    "clean": null
+  },
+  {
+    "slug": "agent-gallery",
+    "name": "Agent Gallery",
+    "kind": "block",
+    "primary": "AgentGallery",
+    "exports": [],
+    "classic": "demo-zt7AXopF.js",
+    "clean": null
+  },
+  {
+    "slug": "cover-flow",
+    "name": "Cover Flow",
+    "kind": "illustration",
+    "primary": "CoverFlow",
+    "exports": [],
+    "classic": "demo-DUDAZG_X.js",
+    "clean": null
+  },
+  {
+    "slug": "frost-cloud",
+    "name": "Frost Cloud",
+    "kind": "illustration",
+    "primary": "FrostCloud",
+    "exports": [],
+    "classic": "demo-DrDu-VuE.js",
+    "clean": null
+  },
+  {
+    "slug": "glow-cloud",
+    "name": "Glow Cloud",
+    "kind": "illustration",
+    "primary": "GlowCloud",
+    "exports": [],
+    "classic": "demo-Cm8kSHcX.js",
+    "clean": null
+  },
+  {
+    "slug": "glow-keyboard",
+    "name": "Glow Keyboard",
+    "kind": "illustration",
+    "primary": "GlowKeyboard",
+    "exports": [],
+    "classic": "demo-HT-hqV3e.js",
+    "clean": null
+  },
+  {
+    "slug": "integration-beam",
+    "name": "Integration Beam",
+    "kind": "illustration",
+    "primary": "IntegrationBeam",
+    "exports": [],
+    "classic": "demo-JIg3CWgz.js",
+    "clean": null
+  },
+  {
+    "slug": "logo-cluster",
+    "name": "Logo Cluster",
+    "kind": "illustration",
+    "primary": "LogoCluster",
+    "exports": [],
+    "classic": "demo-CkkSZhS9.js",
+    "clean": null
+  },
+  {
+    "slug": "model-wheel",
+    "name": "Model Wheel",
+    "kind": "illustration",
+    "primary": "ModelWheel",
+    "exports": [],
+    "classic": "demo-BpHzZoNS.js",
+    "clean": null
+  },
+  {
+    "slug": "project-flow",
+    "name": "Project Flow",
+    "kind": "illustration",
+    "primary": "ProjectFlow",
+    "exports": [],
+    "classic": "demo-Cwdm4ytX.js",
+    "clean": null
+  },
+  {
+    "slug": "region-dach",
+    "name": "DACH Region",
+    "kind": "illustration",
+    "primary": "RegionDach",
+    "exports": [
+      "RegionDACH"
+    ],
+    "classic": "demo-Ci6RIQmr.js",
+    "clean": null
+  },
+  {
+    "slug": "empty-calendar",
+    "name": "Empty Calendar",
+    "kind": "illustration",
+    "primary": "EmptyCalendar",
+    "exports": [],
+    "classic": "demo-MXjIQshC.js",
+    "clean": null
+  },
+  {
+    "slug": "integration-flow",
+    "name": "Integration Flow",
+    "kind": "illustration",
+    "primary": "IntegrationFlow",
+    "exports": [],
+    "classic": "demo-BGQwbKVm.js",
+    "clean": null
+  },
+  {
+    "slug": "voice-orb",
+    "name": "Voice Orb",
+    "kind": "illustration",
+    "primary": "VoiceOrb",
+    "exports": [],
+    "classic": "demo-DbX9tDU_.js",
+    "clean": null
+  },
+  {
+    "slug": "tab-overload",
+    "name": "Tab Overload",
+    "kind": "illustration",
+    "primary": "TabOverload",
+    "exports": [],
+    "classic": "demo-CVKU8Uzh.js",
+    "clean": null
+  },
+  {
+    "slug": "world-map",
+    "name": "World Map Continental",
+    "kind": "illustration",
+    "primary": "WorldMap",
+    "exports": [],
+    "classic": "demo-Q0wmIwEm.js",
+    "clean": null
+  },
+  {
+    "slug": "ghosted-chat",
+    "name": "Ghosted Chat",
+    "kind": "illustration",
+    "primary": "GhostedChat",
+    "exports": [],
+    "classic": "demo-Cm2FVMWj.js",
+    "clean": null
+  },
+  {
+    "slug": "lead-sourcing",
+    "name": "Lead Sourcing",
+    "kind": "illustration",
+    "primary": "LeadSourcing",
+    "exports": [],
+    "classic": "demo-BTBcqeeL.js",
+    "clean": null
+  },
+  {
+    "slug": "enrichment-orbit",
+    "name": "Enrichment Orbit",
+    "kind": "illustration",
+    "primary": "EnrichmentOrbit",
+    "exports": [],
+    "classic": "demo-CU49Fdlm.js",
+    "clean": null
+  },
+  {
+    "slug": "outreach-branches",
+    "name": "Outreach Branches",
+    "kind": "illustration",
+    "primary": "OutreachBranches",
+    "exports": [],
+    "classic": "demo-D-FldunI.js",
+    "clean": null
+  },
+  {
+    "slug": "glass-folder",
+    "name": "Glass Folder",
+    "kind": "illustration",
+    "primary": "GlassFolder",
+    "exports": [],
+    "classic": "demo-BDApkIlc.js",
+    "clean": null
+  },
+  {
+    "slug": "side-folder",
+    "name": "Side Folder",
+    "kind": "illustration",
+    "primary": "SideFolder",
+    "exports": [],
+    "classic": "demo-ClUxDNiT.js",
+    "clean": null
+  },
+  {
+    "slug": "team-invite",
+    "name": "Team Invite",
+    "kind": "illustration",
+    "primary": "TeamInvite",
+    "exports": [],
+    "classic": "demo-cWsVSmbI.js",
+    "clean": null
+  },
+  {
+    "slug": "layer-stack",
+    "name": "Layer Stack",
+    "kind": "illustration",
+    "primary": "LayerStack",
+    "exports": [],
+    "classic": "demo-fCatWsFs.js",
+    "clean": null
+  },
+  {
+    "slug": "agent-team",
+    "name": "Agent Team",
+    "kind": "illustration",
+    "primary": "AgentTeam",
+    "exports": [],
+    "classic": "demo-BioXBQfc.js",
+    "clean": null
+  },
+  {
+    "slug": "integration-grid",
+    "name": "Integration Grid",
+    "kind": "illustration",
+    "primary": "IntegrationGrid",
+    "exports": [],
+    "classic": "demo-BABw5NIJ.js",
+    "clean": null
+  },
+  {
+    "slug": "blur-crossfade",
+    "name": "Blur Crossfade",
+    "kind": "motion",
+    "primary": "BlurCrossfade",
+    "exports": [],
+    "classic": "demo-Ye53Zfy1.js",
+    "clean": null
+  },
+  {
+    "slug": "gradient-floor",
+    "name": "Gradient Floor",
+    "kind": "motion",
+    "primary": "GradientFloor",
+    "exports": [],
+    "classic": "demo-B-TgH1P-.js",
+    "clean": null
+  },
+  {
+    "slug": "gradient-text",
+    "name": "Gradient Text",
+    "kind": "motion",
+    "primary": "GradientText",
+    "exports": [],
+    "classic": "demo-Dcdtba_V.js",
+    "clean": null
+  },
+  {
+    "slug": "grid-background",
+    "name": "Grid Background",
+    "kind": "motion",
+    "primary": "GridBackground",
+    "exports": [],
+    "classic": "demo-S1hMjDCH.js",
+    "clean": null
+  },
+  {
+    "slug": "number-ticker",
+    "name": "Number Ticker",
+    "kind": "motion",
+    "primary": "NumberTicker",
+    "exports": [],
+    "classic": "demo-DVKJvdEh.js",
+    "clean": null
+  },
+  {
+    "slug": "shimmer-loader",
+    "name": "Shimmer Loader",
+    "kind": "motion",
+    "primary": "Skeleton",
+    "exports": [
+      "ShimmerText",
+      "ShimmerLoader"
+    ],
+    "classic": "demo-BH465McH.js",
+    "clean": null,
+    "secondary": {
+      "classic": {
+        "ShimmerText": "ShimmerText"
+      }
+    }
+  },
+  {
+    "slug": "text-reveal",
+    "name": "Text Reveal",
+    "kind": "motion",
+    "primary": "TextReveal",
+    "exports": [],
+    "classic": "demo-DU0pIcNJ.js",
+    "clean": null
+  },
+  {
+    "slug": "tilt-card",
+    "name": "Tilt Card",
+    "kind": "motion",
+    "primary": "TiltCard",
+    "exports": [],
+    "classic": "demo-BijqyLh8.js",
+    "clean": null
+  }
+]

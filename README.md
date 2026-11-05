@@ -71,7 +71,7 @@ npm run dev
 
 ```bash
 npm run build:lib   # 构建独立发布组件库 (dist/lib/)
-npm run build:site  # 构建展示站应用 (dist/)
+npm run build:site  # 构建展示站应用 (dist/site/)
 npm run build       # 完整构建（组件库 + 展示站）
 npm run typecheck   # 校验全量 217 个组件 TypeScript 类型
 npm run test        # 运行自动化测试套件
@@ -79,7 +79,7 @@ npm run verify      # 全量工程质量与消费者交付验收
 npm run preview     # 预览展示站构建结果
 ```
 
-本地验证环境为 Node.js 22.22.3；CLI 需要支持 `module.registerHooks` 的 Node.js 版本。组件包声明的 React / React DOM peer 版本为 `>=19.0.0`。
+本地验证环境为 Node.js 22.22.3；支持 Node.js 20.19+ / 22；CLI 不需要模块加载钩子。组件包声明的 React / React DOM peer 版本为 `>=19.0.0`。
 
 ## 在项目中使用
 
@@ -129,7 +129,7 @@ import { AgentInbox as ClassicAgentInbox } from "@aether-ui/react";
 import { AgentInbox as CleanAgentInbox } from "@aether-ui/react/clean";
 ```
 
-回调需要连接业务逻辑；示例中的日志不会执行真实审批。多数包装组件在无业务 Props 时显示内置演示，也提供 `*Raw` 与 `*Demo` 导出。
+回调需要连接业务逻辑；示例中的日志不会执行真实审批。普通导出默认渲染业务组件，无数据时请传入组件所需的业务 Props。演示请显式使用 `demo={true}` 或 `*Demo` 导出；`*Raw` 保留底层业务实现。
 
 ### CLI 与源码导出
 
@@ -142,7 +142,7 @@ npm run cli -- add agent-inbox --clean --dir ../my-app/src/components/ui
 npm run cli -- init --dir ../my-app/src/styles
 ```
 
-`add` 导出组件源码与类型声明；`init` 导出 CSS 变量、JSON Tokens 与 Tailwind preset。`add` 命令默认支持自动解析并导出组件依赖闭包（置于目标目录 `_engine/` 并重写导入），保证脱离本仓库独立运行；若宿主项目已安装 `@aether-ui/react`，亦可附加 `--package` 标志生成标准包轻量包装器。
+`add` 导出组件源码与类型声明；`init` 导出 CSS 变量、JSON Tokens 与 Tailwind preset。`add` 复制规范组件入口、类型契约、运行时适配器、CSS、Tokens 和本地字体，保持 `_engine/` 内的相对目录结构，并自动引用配套样式。宿主仍需安装 React 与 React DOM。使用 `--package` 则生成引用已安装包的轻量入口；请求不存在的 Clean 变体会直接报错。
 
 ### Design Tokens
 
@@ -187,7 +187,7 @@ npm run typecheck
 npm run test
 npm run verify
 
-# 独立构建组件库发布产物 (dist/lib/) 与展示站 (dist/)
+# 独立构建组件库发布产物 (dist/lib/) 与展示站 (dist/site/)
 npm run build:lib
 npm run build:site
 
@@ -200,14 +200,32 @@ npm run build:tokens
 
 </details>
 
-## 工程保障与质量标准
+## 行为迁移与验收范围
 
-AetherUI 经过严格的企业级工程整改与自动化验证：
+普通组件现在默认渲染业务实现。此前依赖 `<AgentInbox />` 自动播放演示的代码，需要改为：
 
-- **零 DOM 泄漏保障 (Node / SSR 兼容)**：根入口及全部导出通过无宿主 Node.js 及 `react-dom/server` (`renderToString`) 验证，彻底杜绝 `document is not defined`。
-- **类型系统可靠性**：全量 141 个 Classic 与 76 个 Clean 组件类型定义经 `tsc --noEmit` 校验，消除全部重复属性与无约束 `any`，`toast` 精确声明为具备 `.success()` / `.error()` 的函数对象。
-- **独立分发与 Standalone CLI**：CLI `add` 命令具备闭包解析与自包含导出能力，支持外部脱机独立运行与 `--package` 托管双模式。
-- **双模构建管线**：提供独立组件库构建（`build:lib`）与展示站构建（`build:site`），产物精简拆分，展示站入口由 1.02 MB 大幅收敛至 388 kB。
-- **CI / 质量守护**：配置 GitHub Actions 工作流，覆盖类型检查、自动化测试与双模构建全流程。
+```jsx
+import { AgentInbox, AgentInboxDemo } from "@aether-ui/react";
+
+// 两种显式演示写法，二选一
+<AgentInbox demo />;
+<AgentInboxDemo />;
+
+// 业务组件使用真实数据；样式属性不会改变模式
+<AgentInbox tasks={tasks} className="workspace-inbox" />;
+```
+
+需要必填数据的组件会在类型声明中约束输入；使用示例请查看工作台文档。组件子路径与聚合入口共用同一次库构建，不会产生独立的 Toast 状态。
+
+- **类型检查**：开启严格模式和声明文件检查；覆盖正确业务输入，以及错误状态、回调和组件属性的拒绝场景。
+- **SSR 回归**：217 个 Classic / Clean 入口按业务样例渲染，并逐一检查显式 Demo；不注入 `document` 或 `window`。这不等同于已验证所有服务端框架和所有业务数据组合。
+- **分发验收**：在仓库外新建 npm 项目安装打包产物，检查包入口、类型、共享状态及代表性 CLI 导出；全部变体检查本地依赖闭包。
+- **构建与 CI**：分别输出 `dist/lib` 与 `dist/site`。CI 按类型检查、库构建、测试、外部消费验收、展示站构建的顺序运行。异步步骤完成后才报告通过。
+
+## EdgeOne 部署
+
+仓库的 `edgeone.json` 已明确配置：安装 `npm ci`、构建 `npm run build:site`、输出 `dist/site`。从旧版本迁移时，请同步更新控制台原来的 `dist` 输出目录。无需为纯展示站设置业务密钥。
+
+本仓库配置不代表线上部署已验收；发布后仍需检查首页、组件详情和全屏页面的资源加载与交互。
 
 欢迎通过 [Issues](https://github.com/opxqo/AetherUI/issues) 提交具体场景、复现步骤与改进建议。

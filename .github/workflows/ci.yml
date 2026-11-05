@@ -38,7 +38,7 @@ jobs:
         run: npm run test
 
       - name: Comprehensive consumer verification
-        run: npm run verify
+        run: npm run verify -- --consumer-only
 
       - name: Build showcase portal
         run: npm run build:site

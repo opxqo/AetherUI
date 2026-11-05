@@ -1,38 +1,67 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
+import os from "node:os";
 import path from "node:path";
-import { execSync } from "node:child_process";
+import { execFileSync } from "node:child_process";
+import { build } from "esbuild";
+import React from "react";
+import { renderToString } from "react-dom/server";
+import { collectComponentFiles, exportComponent } from "../bin/lib/export-component.mjs";
+import { businessProps } from "./fixtures/business.mjs";
+const root = path.resolve(import.meta.dirname, "..");
+const manifest = JSON.parse(fs.readFileSync(path.join(root, "src/component-manifest.json")));
 
-test("Issue 1: CLI add exports standalone runnable components without broken @/affectui-engine imports", () => {
-  const targetDir = path.resolve(".test-tmp/cli-verify");
-  if (fs.existsSync(targetDir)) {
-    fs.rmSync(targetDir, { recursive: true, force: true });
+test("dependency closure resolves for every Classic and Clean variant", async () => {
+  let count = 0;
+  for (const item of manifest) for (const variant of ["classic", ...(item.clean ? ["clean"] : [])]) {
+    const entry = `src/components/ui/${variant === "clean" ? "clean/" : ""}${item.slug}.js`;
+    const files = await collectComponentFiles(root, entry);
+    assert.ok(files.has(entry));
+    assert.ok(files.has("src/styles.css"));
+    assert.ok([...files.keys()].some(name => name.endsWith(".woff2")), `${item.slug}: local font assets`);
+    count++;
   }
+  assert.equal(count, 217);
+});
 
-  // Execute CLI add
-  execSync(`node bin/cli.mjs add agent-inbox --clean --dir "${targetDir}"`, {
-    stdio: "pipe",
-  });
+test("representative standalone exports build with assets and render outside the repository", async () => {
+  const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "aether-cli-test-"));
+  // Runtime packages are external. Full npm installation is separately covered by verify-consumer.
+  fs.symlinkSync(path.join(root, "node_modules"), path.join(temporary, "node_modules"), "dir");
+  try {
+    for (const slug of ["button", "agent-inbox", "chat-composer", "toaster", "settings-preferences"]) {
+      const item = manifest.find(item => item.slug === slug);
+      for (const variant of ["classic", ...(item.clean ? ["clean"] : [])]) {
+        const target = path.join(temporary, variant, slug);
+        const { entry } = await exportComponent(root, item, variant, target);
+        const outfile = path.join(target, "server.mjs");
+        await build({ entryPoints: [entry], bundle: true, platform: "node", format: "esm", external: ["react", "react-dom", "react/jsx-runtime"], loader: { ".css": "empty" }, outfile, logLevel: "silent" });
+        const exported = await import(outfile);
+        const html = renderToString(React.createElement(exported.default, businessProps[slug] ?? {}));
+        assert.ok(html.length > 0, `${slug} ${variant}`);
+        if (slug === "button") assert.equal((html.match(/<button\b/g) ?? []).length, 1);
+        await build({ entryPoints: [entry], bundle: true, platform: "browser", format: "esm", external: ["react", "react-dom", "react/jsx-runtime"], loader: { ".woff": "file", ".woff2": "file" }, outdir: path.join(target, "browser"), logLevel: "silent" });
+        assert.ok(fs.statSync(path.join(target, "browser", `${slug}.css`)).size > 1000);
+      }
+    }
+  } finally { fs.rmSync(temporary, { recursive: true, force: true }); }
+});
 
-  const componentPath = path.join(targetDir, "agent-inbox.tsx");
-  assert.ok(fs.existsSync(componentPath), "agent-inbox.tsx must be generated");
+test("invalid variants and incomplete graphs fail before creating output", async () => {
+  const target = path.join(os.tmpdir(), `aether-invalid-${process.pid}`);
+  const result = (() => { try { execFileSync(process.execPath, ["bin/cli.mjs", "add", "world-map", "--clean", "--dir", target], { cwd: root, stdio: "pipe" }); return 0; } catch (error) { return error.status; } })();
+  assert.notEqual(result, 0);
+  assert.ok(!fs.existsSync(target));
+  await assert.rejects(collectComponentFiles(root, "src/components/ui/does-not-exist.js"));
+});
 
-  const content = fs.readFileSync(componentPath, "utf8");
-
-  // Check no broken @/affectui-engine/ imports
-  assert.doesNotMatch(
-    content,
-    /@\/affectui-engine\//,
-    "Standalone exported component must NOT import from @/affectui-engine/"
-  );
-
-  // Check _engine directory exists and contains necessary runtime files
-  const engineDir = path.join(targetDir, "_engine");
-  assert.ok(fs.existsSync(engineDir), "_engine closure directory must exist");
-  const engineFiles = fs.readdirSync(engineDir);
-  assert.ok(engineFiles.length > 0, "_engine directory must contain resolved runtime dependencies");
-
-  // Cleanup test artifacts
-  fs.rmSync(targetDir, { recursive: true, force: true });
+test("package wrappers preserve actual export names instead of display-name guesses", async () => {
+  const target = fs.mkdtempSync(path.join(os.tmpdir(), "aether-package-wrapper-"));
+  try {
+    const item = manifest.find(item => item.slug === "assistant-home");
+    await exportComponent(root, item, "classic", target, true);
+    assert.match(fs.readFileSync(path.join(target, `${item.slug}.tsx`), "utf8"), /@aether-ui\/react\/ui\/assistant-home/);
+    assert.ok(!fs.existsSync(path.join(target, "_engine")));
+  } finally { fs.rmSync(target, { recursive: true, force: true }); }
 });
