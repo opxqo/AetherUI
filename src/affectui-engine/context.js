@@ -1,9 +1,5 @@
-import * as React from "react";
+import { g as ScreenFullContext } from "./index-0fpbu-ki.js";
 
-/**
- * ScreenFullContext — Shared viewport fullscreen context
- */
-export const ScreenFullContext = React.createContext(false);
 export const SCREEN_WIDTH = 1440;
-
+export { ScreenFullContext };
 export default ScreenFullContext;

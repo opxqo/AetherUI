@@ -97,16 +97,28 @@ if (typeof document !== "undefined") {
   document.addEventListener("keydown", onGroupKeyDown);
   document.addEventListener("focusin", onGroupFocusIn);
 
-  // If accessed directly via legacy path (e.g. /screens/agent-run or /components/thinking-state),
+  // If accessed directly via path (e.g. /screens/integrations/full or /components/thinking-state),
   // sync the initial hash so the showcase opens straight to it.
   const path = window.location.pathname;
   if (path && path.length > 1 && !window.location.hash) {
-    const slug = path.split("/").filter(Boolean).pop();
-    if (slug) {
-      if (path.includes("screen")) {
-        window.location.hash = `#/fullscreen/${slug}`;
+    const segs = path.split("/").filter(Boolean);
+    if (segs.length > 0) {
+      if (segs[0] === "screens" && segs[1]) {
+        window.location.hash = `#/fullscreen/${segs[1]}`;
+      } else if (segs[0] === "components" && segs[1]) {
+        window.location.hash = `#/item/${segs[1]}`;
       } else {
-        window.location.hash = `#/item/${slug}`;
+        const slug =
+          segs[segs.length - 1] === "full" && segs.length > 1
+            ? segs[segs.length - 2]
+            : segs[segs.length - 1];
+        if (slug) {
+          if (path.includes("screen")) {
+            window.location.hash = `#/fullscreen/${slug}`;
+          } else {
+            window.location.hash = `#/item/${slug}`;
+          }
+        }
       }
     }
   }

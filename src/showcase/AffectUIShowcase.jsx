@@ -928,6 +928,54 @@ const CATALOG_TABS = [
   },
 ];
 
+const FOLDER_NAMES = ["Q3 Campaign", "Brand assets", "Hiring", "Research"];
+const SCREEN_NAV_MAP = {
+  "New chat": "assistant-home",
+  Folders: "files",
+  Integrations: "integrations",
+  Board: "kanban",
+  Chat: "agent-chat",
+  Companies: "crm",
+  Revenue: "analytics",
+  Analytics: "analytics",
+  Runs: "agent-run",
+  Evals: "evals",
+  Thread: "agent-thread",
+  Tasks: "agent-tasks",
+  Memory: "agent-memory",
+  Permissions: "agent-permissions",
+  Usage: "agent-usage",
+  Activity: "agent-activity",
+  Schedules: "agent-schedules",
+  "Agent Inbox": "inbox",
+  "Agent Orchestration": "agent-orchestration",
+  Settings: "settings-profile",
+  Profile: "settings-profile",
+  General: "settings-general",
+  Security: "settings-security",
+  Models: "settings-models",
+  Notifications: "settings-notifications",
+  Privacy: "settings-privacy",
+  Preferences: "settings-preferences",
+  Members: "settings-members",
+  Billing: "settings-subscription",
+  "Back to app": "assistant-home",
+  "Onboarding: Website": "onboarding-website",
+  "Onboarding: Brand": "onboarding-brand",
+  "Onboarding: Tone": "onboarding-tone",
+  "Onboarding: Ready": "onboarding-ready",
+};
+
+function resolveScreenSlug(dest) {
+  if (!dest) return null;
+  if (FOLDER_NAMES.includes(dest)) return "folder";
+  if (SCREEN_NAV_MAP[dest]) return SCREEN_NAV_MAP[dest];
+  const match = AFFECTUI_CATALOG.find(
+    (item) => item.slug === dest || item.name.toLowerCase() === dest.toLowerCase(),
+  );
+  return match ? match.slug : null;
+}
+
 export default function AffectUIShowcase() {
   const [pageMode, setPageMode] = useState("home"); // 'home' | 'cli' | 'skills'
   const [catalogTab, setCatalogTab] = useState("all");
@@ -1011,13 +1059,44 @@ export default function AffectUIShowcase() {
     });
   }, [triggerHaptic, showToast]);
 
-  // URL Hash Sync
+  // URL Routing Sync (Path + Hash + PopState)
   useEffect(() => {
-    const handleHash = () => {
-      const hash = window.location.hash.replace(/^#\/?/, "");
-      if (!hash) {
+    const handleLocationChange = () => {
+      const pathname = window.location.pathname;
+      const rawHash = window.location.hash;
+      const hash = rawHash.startsWith("#/")
+        ? rawHash.slice(2)
+        : rawHash.startsWith("#")
+          ? rawHash.slice(1)
+          : "";
+
+      // 1. Direct path routing: /screens/:slug/full or /screens/:slug
+      if (pathname.startsWith("/screens/")) {
+        const segs = pathname.split("/").filter(Boolean);
+        const slug = segs[1];
+        if (slug) {
+          const isFull =
+            pathname.endsWith("/full") ||
+            pathname.includes("/full/") ||
+            hash.startsWith("fullscreen/");
+          if (isFull) {
+            setFullscreenSlug(slug);
+            window.location.hash = `#/fullscreen/${slug}`;
+          } else {
+            setFullscreenSlug(null);
+            window.location.hash = `#/item/${slug}`;
+          }
+          setActiveSlug(slug);
+          setPageMode("home");
+          return;
+        }
+      }
+
+      // 2. Hash routing
+      if (!hash || hash === "") {
         setActiveSlug(null);
         setFullscreenSlug(null);
+        setPageMode("home");
         return;
       }
       if (hash === "cli") {
@@ -1036,6 +1115,7 @@ export default function AffectUIShowcase() {
         const slug = hash.replace("fullscreen/", "");
         setFullscreenSlug(slug);
         setActiveSlug(slug);
+        setPageMode("home");
       } else if (hash.startsWith("item/")) {
         const slug = hash.replace("item/", "");
         setActiveSlug(slug);
@@ -1047,6 +1127,8 @@ export default function AffectUIShowcase() {
         if (slug) {
           if (parts[0] === "screens" && hash.endsWith("/full")) {
             setFullscreenSlug(slug);
+          } else {
+            setFullscreenSlug(null);
           }
           setActiveSlug(slug);
           setPageMode("home");
@@ -1054,10 +1136,79 @@ export default function AffectUIShowcase() {
       }
     };
 
-    handleHash();
-    window.addEventListener("hashchange", handleHash);
-    return () => window.removeEventListener("hashchange", handleHash);
+    handleLocationChange();
+    window.addEventListener("hashchange", handleLocationChange);
+    window.addEventListener("popstate", handleLocationChange);
+    return () => {
+      window.removeEventListener("hashchange", handleLocationChange);
+      window.removeEventListener("popstate", handleLocationChange);
+    };
   }, []);
+
+  // Sync pathname when entering fullscreen so AffectUI's internal of() knows n === true
+  useEffect(() => {
+    if (fullscreenSlug) {
+      const expectedPath = `/screens/${fullscreenSlug}/full`;
+      if (window.location.pathname !== expectedPath) {
+        window.history.replaceState(
+          null,
+          "",
+          `${expectedPath}${window.location.search}`,
+        );
+      }
+    }
+  }, [fullscreenSlug]);
+
+  const handleScreenNavigate = useCallback(
+    (dest, query) => {
+      if (!dest) return;
+      const isFolder = FOLDER_NAMES.includes(dest);
+      const targetSlug = resolveScreenSlug(dest);
+      if (!targetSlug) return;
+
+      const params = new URLSearchParams({
+        ...(isFolder ? { folder: dest } : {}),
+        ...(query || {}),
+      }).toString();
+      const queryStr = params ? `?${params}` : "";
+
+      if (fullscreenSlug) {
+        setFullscreenSlug(targetSlug);
+        setActiveSlug(targetSlug);
+        window.history.pushState(
+          null,
+          "",
+          `/screens/${targetSlug}/full${queryStr}`,
+        );
+        window.location.hash = `#/fullscreen/${targetSlug}`;
+      } else {
+        setActiveSlug(targetSlug);
+        window.history.pushState(null, "", `/screens/${targetSlug}${queryStr}`);
+        window.location.hash = `#/item/${targetSlug}`;
+      }
+      window.dispatchEvent(new Event("screen-query"));
+    },
+    [fullscreenSlug],
+  );
+
+  const openFullscreen = useCallback(
+    (slug) => {
+      triggerHaptic("light");
+      setFullscreenSlug(slug);
+      window.history.replaceState(null, "", `/screens/${slug}/full`);
+      window.location.hash = `#/fullscreen/${slug}`;
+    },
+    [triggerHaptic],
+  );
+
+  const closeFullscreen = useCallback(() => {
+    triggerHaptic("light");
+    setFullscreenSlug(null);
+    if (window.location.pathname.startsWith("/screens/")) {
+      window.history.replaceState(null, "", "/");
+    }
+    window.location.hash = activeSlug ? `#/item/${activeSlug}` : "#/";
+  }, [activeSlug, triggerHaptic]);
 
   // Global ⌘K / Ctrl+K & Escape shortcut
   useEffect(() => {
@@ -1072,8 +1223,7 @@ export default function AffectUIShowcase() {
         if (cmdOpen) {
           setCmdOpen(false);
         } else if (fullscreenSlug) {
-          setFullscreenSlug(null);
-          window.location.hash = activeSlug ? `#/item/${activeSlug}` : "#/";
+          closeFullscreen();
         } else if (activeSlug) {
           setActiveSlug(null);
           window.location.hash = "#/";
@@ -1082,7 +1232,7 @@ export default function AffectUIShowcase() {
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [cmdOpen, fullscreenSlug, activeSlug, triggerHaptic]);
+  }, [cmdOpen, fullscreenSlug, activeSlug, triggerHaptic, closeFullscreen]);
 
   useEffect(() => {
     if (cmdOpen) {
@@ -1128,23 +1278,11 @@ export default function AffectUIShowcase() {
     triggerHaptic("light");
     setActiveSlug(null);
     setFullscreenSlug(null);
+    if (window.location.pathname.startsWith("/screens/")) {
+      window.history.replaceState(null, "", "/");
+    }
     window.location.hash = "#/";
   }, [triggerHaptic]);
-
-  const openFullscreen = useCallback(
-    (slug) => {
-      triggerHaptic("light");
-      setFullscreenSlug(slug);
-      window.location.hash = `#/fullscreen/${slug}`;
-    },
-    [triggerHaptic],
-  );
-
-  const closeFullscreen = useCallback(() => {
-    triggerHaptic("light");
-    setFullscreenSlug(null);
-    window.location.hash = activeSlug ? `#/item/${activeSlug}` : "#/";
-  }, [activeSlug, triggerHaptic]);
 
   // Tab counts
   const tabCounts = useMemo(() => {
@@ -1361,8 +1499,10 @@ export default function AffectUIShowcase() {
             type="button"
             className="af-fullscreen-exit"
             onClick={closeFullscreen}
+            title="Press Esc to exit fullscreen"
           >
-            {Icons.arrowLeft} Back to {BRAND_CONFIG.name} (Esc)
+            <span className="af-fullscreen-exit-key">Esc</span>
+            <span>Exit preview</span>
           </button>
           <ErrorBoundary>
             <Suspense
@@ -1373,11 +1513,12 @@ export default function AffectUIShowcase() {
               }
             >
               {fullscreenItem.kind === "screen" ? (
-                <div className="screen-full">
-                  <ScreenFullContext.Provider value={true}>
-                    <FullscreenComponent key={`fs-${refreshKey}`} onNavigate={() => {}} />
-                  </ScreenFullContext.Provider>
-                </div>
+                <ScreenFullContext.Provider value={true}>
+                  <FullscreenComponent
+                    key={`fs-${fullscreenItem.slug}-${refreshKey}`}
+                    onNavigate={handleScreenNavigate}
+                  />
+                </ScreenFullContext.Provider>
               ) : (
                 <div
                   className={
@@ -1734,12 +1875,12 @@ export default function AffectUIShowcase() {
                                 data-look={variant}
                                 key={`${activeItem.slug}:${variant}:${refreshKey}`}
                               >
-                                <StageComponent onNavigate={() => {}} />
+                                <StageComponent onNavigate={handleScreenNavigate} />
                               </div>
                             ) : (
                               <StageComponent
                                 key={`${activeItem.slug}:${variant}:${refreshKey}`}
-                                onNavigate={() => {}}
+                                onNavigate={handleScreenNavigate}
                               />
                             ))}
                         </ScreenFullContext.Provider>
