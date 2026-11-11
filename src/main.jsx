@@ -24,6 +24,38 @@ if (typeof window !== "undefined") {
   }
 }
 
+// Intercept history.pushState and history.replaceState to dispatch a global "locationchange" event
+// so that in-app client routers (AffectUI's Cc()) notify React router immediately.
+let isDispatchingLocation = false;
+if (typeof window !== "undefined" && window.history) {
+  const _pushState = window.history.pushState;
+  window.history.pushState = function (...args) {
+    const ret = _pushState.apply(this, args);
+    if (!isDispatchingLocation) {
+      isDispatchingLocation = true;
+      try {
+        window.dispatchEvent(new Event("locationchange"));
+      } finally {
+        isDispatchingLocation = false;
+      }
+    }
+    return ret;
+  };
+  const _replaceState = window.history.replaceState;
+  window.history.replaceState = function (...args) {
+    const ret = _replaceState.apply(this, args);
+    if (!isDispatchingLocation) {
+      isDispatchingLocation = true;
+      try {
+        window.dispatchEvent(new Event("locationchange"));
+      } finally {
+        isDispatchingLocation = false;
+      }
+    }
+    return ret;
+  };
+}
+
 // Roving tabindex support for radiogroup and tablist from affectUI design system
 let rovingBusy = false;
 const GROUP_SEL = '[role="radiogroup"], [role="tablist"]';

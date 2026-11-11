@@ -932,10 +932,12 @@ const FOLDER_NAMES = ["Q3 Campaign", "Brand assets", "Hiring", "Research"];
 const SCREEN_NAV_MAP = {
   "New chat": "assistant-home",
   Folders: "files",
+  Files: "files",
   Integrations: "integrations",
   Board: "kanban",
   Chat: "agent-chat",
   Companies: "crm",
+  CRM: "crm",
   Revenue: "analytics",
   Analytics: "analytics",
   Runs: "agent-run",
@@ -947,6 +949,7 @@ const SCREEN_NAV_MAP = {
   Usage: "agent-usage",
   Activity: "agent-activity",
   Schedules: "agent-schedules",
+  Inbox: "inbox",
   "Agent Inbox": "inbox",
   "Agent Orchestration": "agent-orchestration",
   Settings: "settings-profile",
@@ -964,6 +967,17 @@ const SCREEN_NAV_MAP = {
   "Onboarding: Brand": "onboarding-brand",
   "Onboarding: Tone": "onboarding-tone",
   "Onboarding: Ready": "onboarding-ready",
+  "My issues": "agent-tasks",
+  Projects: "files",
+  Problems: "kanban",
+  "Password reset emails failing": "agent-tasks",
+  "Payments failing for some users": "agent-tasks",
+  "Dashboard loads slowly": "agent-tasks",
+  Workflow: "workflow-builder",
+  "Workflow Builder": "workflow-builder",
+  "App Shell": "app-shell",
+  "App Shell Flat": "app-shell-flat",
+  Assistant: "assistant-home",
 };
 
 function resolveScreenSlug(dest) {
@@ -1139,9 +1153,13 @@ export default function AffectUIShowcase() {
     handleLocationChange();
     window.addEventListener("hashchange", handleLocationChange);
     window.addEventListener("popstate", handleLocationChange);
+    window.addEventListener("locationchange", handleLocationChange);
+    window.addEventListener("screen-query", handleLocationChange);
     return () => {
       window.removeEventListener("hashchange", handleLocationChange);
       window.removeEventListener("popstate", handleLocationChange);
+      window.removeEventListener("locationchange", handleLocationChange);
+      window.removeEventListener("screen-query", handleLocationChange);
     };
   }, []);
 
