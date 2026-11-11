@@ -445,3 +445,18 @@ businessProps['kpi-board'].data.week.focus = { title: 'Focus', metric: 'Revenue'
 businessProps['team-invite'] = { avatars: [1, 2, 3].map(i => ({ src: `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"/>`, name: `Member ${i}` })) };
 businessProps['agent-team'] = { members: [1, 2, 3].map(i => ({ avatar: `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"/>`, role: `Reviewer ${i}` })) };
 businessProps['text-reveal'] = { text: '验收内容' };
+businessProps['agent-trail'] = { steps: [] };
+businessProps['approval-gates'] = { gates: [] };
+businessProps['away-summary'] = { items: [] };
+businessProps['collaboration-stream'] = { agents: [], messages: [] };
+businessProps['decision-card'] = { decisions: [{ id: "queue", task: "Task", question: "Question?", options: [{ id: "opt", title: "Option" }] }] };
+businessProps['judge-bracket'] = { contenders: [] };
+businessProps['root-cause-tree'] = { failure: { id: "f1", title: "Failure", children: [] } };
+businessProps['select'] = { options: [] };
+businessProps['live-session'] = { agents: [{ id: "research", name: "Researcher" }], messages: [], steps: [], context: { limit: 200000, model: "Opus", parts: [] } };
+businessProps['mission-control'] = { since: Date.now() - 3600000, agents: [{ id: "support", name: "Support lead", model: "Sonnet", status: "running", task: "Answer tickets", started: Date.now() }], events: [{ id: "e1", agent: "support", at: Date.now(), kind: "failed", title: "Refund" }] };
+businessProps['mission-timeline'] = { since: Date.now() - 3600000, agents: [{ id: "support", name: "Support lead", model: "Sonnet", status: "running", task: "Answer tickets", started: Date.now(), tasks: [] }], events: [{ id: "e1", agent: "support", at: Date.now(), kind: "failed", title: "Refund" }] };
+businessProps['run-inspector'] = { run: { id: "main", name: "Orchestrator", kind: "agent", status: "running", start: 0, model: "Opus", task: "Launch", children: [] } };
+businessProps['running-now'] = { tasks: [] };
+businessProps['tag-input'] = { value: [] };
+

@@ -1,0 +1,2 @@
+var e = "// Canonical component API. Install the package, or use the CLI for a complete standalone export.\nimport \"@aether-ui/react/styles.css\";\nexport { ProviderConnection, ProviderConnectionRaw, ProviderConnectionDemo, type ProviderConnectionProps } from \"@aether-ui/react/ui/provider-connection\";\nexport { default } from \"@aether-ui/react/ui/provider-connection\";\n";
+export { e as default };

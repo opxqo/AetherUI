@@ -1,0 +1,1 @@
+var e="// Canonical component API. Install the package, or use the CLI for a complete standalone export.\nimport \"@aether-ui/react/styles.css\";\nexport { TagInput, TagInputRaw, TagInputDemo, type TagInputProps } from \"@aether-ui/react/ui/clean/tag-input\";\nexport { default } from \"@aether-ui/react/ui/clean/tag-input\";\n";export{e as default};

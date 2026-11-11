@@ -1,0 +1,1 @@
+var e="// Canonical component API. Install the package, or use the CLI for a complete standalone export.\nimport \"@aether-ui/react/styles.css\";\nexport { ApprovalGates, ApprovalGatesRaw, ApprovalGatesDemo, type ApprovalGatesProps } from \"@aether-ui/react/ui/approval-gates\";\nexport { default } from \"@aether-ui/react/ui/approval-gates\";\n";export{e as default};

@@ -1,0 +1,1 @@
+var e="// Canonical component API. Install the package, or use the CLI for a complete standalone export.\nimport \"@aether-ui/react/styles.css\";\nexport { Switch, SwitchRaw, SwitchDemo, type SwitchProps } from \"@aether-ui/react/ui/switch\";\nexport { default } from \"@aether-ui/react/ui/switch\";\n";export{e as default};

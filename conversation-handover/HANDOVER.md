@@ -25,9 +25,13 @@
    - 总结了 Classic（双层托盘触感工艺）与 Clean（单层亚像素极简工艺）的数学与光学差异、同心圆角公式、4 级表面明度阶梯、字阶规范、物理缓动曲线与 9 大 AI Agent 交互范式。
    - 产出了 W3C 标准 `design-tokens.json`、`variables.css`、`tailwind.preset.js` 与 `PROMPT-TEMPLATE.md`。
 5. **打造企业级可复用组件库并更名为 `AetherUI` (`@aether-ui/react`)**：
-   - 从全部 `demo-*.js` 与 `demo.clean-*.js` 中解包并导出了内部可受控组件（`__InnerComponent`），生成了 `src/components/ui/<slug>.js` + `.d.ts`（141 个）与 `src/components/ui/clean/<slug>.js` + `.d.ts`（76 个），以及主入口 `src/index.js`（470 个导出）和 `src/clean.js`（246 个导出）。
-   - 每个组件同时支持 **零配置演示模式**（`<AgentInbox />`）与 **受控业务 Props 模式**（`<AgentInbox tasks={[...]} onApprove={...} />`）。
+   - 从全部 `demo-*.js` 与 `demo.clean-*.js` 中解包并导出了内部可受控组件（`__InnerComponent`），生成了 `src/components/ui/<slug>.js` + `.d.ts` 与 `src/components/ui/clean/<slug>.js` + `.d.ts`。
+   - 每个组件同时支持 **零配置演示模式**（`<AgentInbox />`）与 **受控业务 Props模式**（`<AgentInbox tasks={[...]} onApprove={...} />`）。
    - 提供了 CLI 工具 `bin/cli.mjs`（`npx aether-ui list | info | add | init`）以及一键改名配置 `src/brand.config.js` + `scripts/rebrand.mjs`（`npm run rebrand`）。
+6. **全量同步远端最新版本（扩充至 183 元素 / 287 组件变体）**：
+   - 完整抓取了远端 177 个生产级元素（加扩展库共 183 项）：涵盖 99 个组件（104 个含 Clean 变体）、39 个全屏应用界面、11 个营销区块、26 个交互式场景插画、8 个动效原语。
+   - 同步更新了 114 个 Classic 组件与 86 个 Clean 组件的上游最新代码块，并额外补齐了 10 个新增的 Clean 风格变体（如 agent-gallery, app-directory, client-context, invoice-credit, kpi-board, logo-marquee, metrics-dashboard, pricing-plans, task-board, testimonial-wall）。所有 287 个导出变体均支持严格双模受控 props 和无侵入演示状态。
+   - 修复了 Node/SSR 环境下 `document` 与 `window` 全局对象缺失问题，完善了全部组件的无 `any` 严格类型契约与 SSR 业务属性桩，全套 15 项测试与端到端消费验证 100% 通过。
 
 ---
 

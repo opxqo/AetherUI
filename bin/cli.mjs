@@ -48,7 +48,7 @@ if (cmd === "info") {
   const slug = args[1];
   const item = AFFECTUI_CATALOG.find((x) => x.slug === slug);
   if (!item) {
-    console.error(`❌ Component "${slug}" not found. Run "npx ${BRAND_CONFIG.cliName} list" to see all 141 elements.`);
+    console.error(`❌ Component "${slug}" not found. Run "npx ${BRAND_CONFIG.cliName} list" to see all 183 elements.`);
     process.exit(1);
   }
   const docs = item.loadDocs ? await item.loadDocs() : null;

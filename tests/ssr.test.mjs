@@ -6,7 +6,7 @@ import { renderToString } from "react-dom/server";
 import { businessProps } from "./fixtures/business.mjs";
 const manifest = JSON.parse(fs.readFileSync(new URL("../src/component-manifest.json", import.meta.url)));
 
-test("all 217 public components and demos render in Node without browser globals", async () => {
+test("all 287 public components and demos render in Node without browser globals", async () => {
   assert.equal(typeof globalThis.document, "undefined");
   assert.equal(typeof globalThis.window, "undefined");
   const classic = await import("../dist/lib/index.js");
@@ -18,5 +18,5 @@ test("all 217 public components and demos render in Node without browser globals
     assert.doesNotThrow(() => renderToString(React.createElement(lib[`${item.primary}Demo`])), `${item.slug} ${variant} named demo`);
     count++;
   }
-  assert.equal(count, 217);
+  assert.equal(count, 287);
 });

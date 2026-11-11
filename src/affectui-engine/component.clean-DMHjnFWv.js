@@ -1,0 +1,1 @@
+var e="// Canonical component API. Install the package, or use the CLI for a complete standalone export.\nimport \"@aether-ui/react/styles.css\";\nexport { AgentTrail, AgentTrailRaw, AgentTrailDemo, type AgentTrailProps } from \"@aether-ui/react/ui/clean/agent-trail\";\nexport { default } from \"@aether-ui/react/ui/clean/agent-trail\";\n";export{e as default};

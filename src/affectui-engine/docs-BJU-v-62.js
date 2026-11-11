@@ -1,0 +1,16 @@
+var e={requirements:[`React 19`,`@hugeicons/react`,`@hugeicons/core-free-icons`,`Onboarding / Website (installed with it – frame, dashboard and agent mark come from there)`],whenToUse:[`The end of a setup flow – a calm look back at the answers before people start`,`When the product comes alive with what they just set up and that moment is worth showing`],whenNotToUse:[`Long summaries with many settings – link to Settings instead`,`Flows with one step – go straight to the product`],usage:`import { OnboardingReadyScreen } from "@/components/ui/onboarding-ready";
+
+export default function Page() {
+  return (
+    <OnboardingReadyScreen
+      domains={draft.domains}
+      brand={draft.names[0]}
+      name={draft.assistant.name}
+      tone={draft.assistant.tone}
+      length={draft.assistant.length}
+      handoverTo={draft.assistant.handover ? draft.assistant.email : undefined}
+      onEdit={(step) => router.push(["/onboarding/website", "/onboarding/brand", "/onboarding/tone"][step - 1])}
+      onFinish={() => api.publishAssistant().then(() => router.push("/"))}
+    />
+  );
+}`,props:[{name:`domains`,type:`string[]`,default:`["northwind.com"]`,description:`From the first step – the summary and the Knowledge count`},{name:`brand / aliases`,type:`string / string[]`,description:`From the second step; brand is derived from the first domain when left out`},{name:`name`,type:`string`,description:`The assistant's name from the third step – "<brand> Assistant" when left out`},{name:`tone`,type:`"friendly" | "neutral" | "formal"`,default:`"neutral"`,description:`From the third step`},{name:`length`,type:`"short" | "balanced" | "detailed"`,default:`"balanced"`,description:`From the third step`},{name:`handoverTo`,type:`string`,default:`"support@northwind.com"`,description:`Who it hands over to; an empty string reads "Nobody – it answers itself"`},{name:`onFinish`,type:`() => void`,description:`Open dashboard – the end of the flow`},{name:`onEdit`,type:`(step: 1 | 2 | 3) => void`,description:`Shows Edit on every row; called with the step that row came from`},{name:`onBack`,type:`() => void`,description:`Shows Back in the top bar`},{name:`autoFocus`,type:`boolean`,default:`false`,description:`Focus the first field when the step opens (Ready: Open dashboard) – turn it on in a real flow so the keyboard carries on from step to step`},{name:`step / steps`,type:`number`,default:`4 / 4`,description:`Where this step sits in the flow`},{name:`email, product, logo, layout, onLogout, className`,type:``,description:`As in Onboarding / Website`}],accessibility:[`The summary is a description list – each answer read with its label`,`Every Edit button names what it edits ("Edit voice")`,`The dashboard on the right is decoration and hidden from assistive tech`,`With prefers-reduced-motion the dashboard is live at once, without the glide`],responsive:[`Fills its container – give it the full viewport height`,`The title sits at the same height as in the other steps, so moving between them nothing jumps`,`Long answers end in an ellipsis instead of wrapping`,`Dark mode built in: switches when an ancestor (usually <html>) has the class dark or data-theme="dark"`]};export{e as docs};

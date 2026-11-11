@@ -13,7 +13,7 @@ export const BRAND_CONFIG = {
   /** CLI 命令名称 (用于 npx <cliName> add ...) */
   cliName: "aether-ui",
   /** 导航栏右上角徽章文案 */
-  badgeText: "141 Elements",
+  badgeText: "183 Elements",
   /** 核心品牌标语 */
   tagline: "Enterprise AI-First React UI Component Library & Design System",
   /** 仓库链接 */

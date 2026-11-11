@@ -25,7 +25,7 @@ try {
     npm(["install", "--ignore-scripts", "--no-audit", "--no-fund", path.join(consumer, pack.filename),
       `react@${version("react")}`, `react-dom@${version("react-dom")}`, `@types/react@${version("@types/react")}`, `@types/react-dom@${version("@types/react-dom")}`], consumer);
   });
-  await runStep("Installed package: 217 APIs, demos, state identity and SSR", () => {
+  await runStep("Installed package: 287 APIs, demos, state identity and SSR", () => {
     fs.copyFileSync(path.join(root, "tests/fixtures/business.mjs"), path.join(consumer, "business.mjs"));
     fs.writeFileSync(path.join(consumer, "check.mjs"), `
 import assert from "node:assert/strict";
@@ -45,7 +45,7 @@ for (const item of ${JSON.stringify(manifest)}) for (const lib of [classic, ...(
   renderToString(React.createElement(sub[item.primary], businessProps[item.slug] ?? {}));
   renderToString(React.createElement(sub[item.primary + "Demo"]));
 }
-console.log("217 installed APIs and demos rendered successfully.");
+console.log("287 installed APIs and demos rendered successfully.");
 `);
     execFileSync(process.execPath, [path.join(consumer, "check.mjs")], { cwd: consumer, stdio: "pipe" });
   });

@@ -22,7 +22,7 @@ test("dependency closure resolves for every Classic and Clean variant", async ()
     assert.ok([...files.keys()].some(name => name.endsWith(".woff2")), `${item.slug}: local font assets`);
     count++;
   }
-  assert.equal(count, 217);
+  assert.equal(count, 287);
 });
 
 test("representative standalone exports build with assets and render outside the repository", async () => {

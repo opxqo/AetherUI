@@ -1,0 +1,1 @@
+var e="// Canonical component API. Install the package, or use the CLI for a complete standalone export.\nimport \"@aether-ui/react/styles.css\";\nexport { TextField, TextFieldRaw, TextFieldDemo, type TextFieldProps } from \"@aether-ui/react/ui/clean/text-field\";\nexport { default } from \"@aether-ui/react/ui/clean/text-field\";\n";export{e as default};

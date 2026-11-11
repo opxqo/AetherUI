@@ -1,11 +1,11 @@
 ---
 name: aetherui-design-system
-description: Enterprise AI-First UI Design System & Component Library (@aether-ui/react). Use this skill whenever designing, building, or refactoring React UI components, AI agent interfaces, dashboards, or marketing blocks to match the AetherUI (Classic Double-Tray Tactile & Clean Subpixel Precision) design language, or when consuming the 141 built-in components from @aether-ui/react.
+description: Enterprise AI-First UI Design System & Component Library (@aether-ui/react). Use this skill whenever designing, building, or refactoring React UI components, AI agent interfaces, dashboards, or marketing blocks to match the AetherUI (Classic Double-Tray Tactile & Clean Subpixel Precision) design language, or when consuming the 183 built-in components from @aether-ui/react.
 ---
 
 # AetherUI Design System & Component Library Skill (`@aether-ui/react`)
 
-Use this skill to build interfaces matching the **AetherUI** design language or to integrate any of the **141 production elements** (76 dual-style components, 22 full screens, 11 blocks, 24 interactive illustrations, 8 motion primitives) included in this repository.
+Use this skill to build interfaces matching the **AetherUI** design language or to integrate any of the **183 production elements** (99 components with 104 dual-style Clean variants, 39 full screens, 11 blocks, 26 interactive illustrations, 8 motion primitives, 287 public component variants total) included in this repository.
 
 ## 1. Key Reference Files in This Workspace
 
@@ -16,8 +16,8 @@ Use this skill to build interfaces matching the **AetherUI** design language or 
 - **Tailwind CSS Preset**: `design-system/tokens/tailwind.preset.js`
 - **Brand Configuration**: `src/brand.config.js` (or run `npm run rebrand -- --name "..."`)
 - **Component Barrel Exports**:
-  - Classic Style (141 items): `src/index.js` (`@aether-ui/react`)
-  - Clean Style (76 items): `src/clean.js` (`@aether-ui/react/clean`)
+  - Classic Style (183 items): `src/index.js` (`@aether-ui/react`)
+  - Clean Style (94 items): `src/clean.js` (`@aether-ui/react/clean`)
   - Individual Tree-Shakeable Modules: `src/components/ui/<slug>.js` & `.d.ts`
 
 ## 2. Core Visual Rules (Quick Reference)

@@ -21,7 +21,7 @@ const name = getArg("--name", "AetherUI");
 const slug = getArg("--slug", name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""));
 const packageName = getArg("--pkg", `@${slug}/react`);
 const cliName = getArg("--cli", slug);
-const badgeText = getArg("--badge", "141 Elements");
+const badgeText = getArg("--badge", "183 Elements");
 const tagline = getArg("--tagline", "Enterprise AI-First React UI Component Library & Design System");
 
 // 1. Update src/brand.config.js

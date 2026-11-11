@@ -5,8 +5,8 @@
     "kind": "component",
     "primary": "AIAnswer",
     "exports": [],
-    "classic": "demo-DBAxVX0U.js",
-    "clean": "demo.clean-ZdfWqiDN.js"
+    "classic": "demo-CpVh0BBh.js",
+    "clean": "demo.clean-PK236kiq.js"
   },
   {
     "slug": "chat-composer",
@@ -14,8 +14,8 @@
     "kind": "component",
     "primary": "ChatComposer",
     "exports": [],
-    "classic": "demo-ap1FpgjI.js",
-    "clean": "demo.clean-DX9zRbTo.js"
+    "classic": "demo-DpacwbXU.js",
+    "clean": "demo.clean-A-oeZpjQ.js"
   },
   {
     "slug": "thinking-state",
@@ -23,8 +23,8 @@
     "kind": "component",
     "primary": "ThinkingState",
     "exports": [],
-    "classic": "demo-C-mWQewT.js",
-    "clean": "demo.clean-CD8Bwm6R.js"
+    "classic": "demo-bnQAOF43.js",
+    "clean": "demo.clean-CM_9mFhI.js"
   },
   {
     "slug": "writing-assistant",
@@ -32,8 +32,8 @@
     "kind": "component",
     "primary": "WritingAssistant",
     "exports": [],
-    "classic": "demo-DeFFCGcX.js",
-    "clean": "demo.clean-CXx2yr1v.js"
+    "classic": "demo-u-AXeZLK.js",
+    "clean": "demo.clean-DijU78C9.js"
   },
   {
     "slug": "thinking-loader",
@@ -41,8 +41,8 @@
     "kind": "component",
     "primary": "ThinkingLoader",
     "exports": [],
-    "classic": "demo-BKj0WRzp.js",
-    "clean": "demo.clean-CrWsmROu.js"
+    "classic": "demo-DxiBnTyJ.js",
+    "clean": "demo.clean-Lm8i9Egb.js"
   },
   {
     "slug": "combobox",
@@ -50,8 +50,8 @@
     "kind": "component",
     "primary": "Combobox",
     "exports": [],
-    "classic": "demo-DqZv_kIm.js",
-    "clean": "demo.clean-BBOmnWT8.js"
+    "classic": "demo-BBOcCWiR.js",
+    "clean": "demo.clean-CHYLZsWP.js"
   },
   {
     "slug": "command-menu",
@@ -59,8 +59,8 @@
     "kind": "component",
     "primary": "CommandMenu",
     "exports": [],
-    "classic": "demo-BloxR6eN.js",
-    "clean": "demo.clean-BY6TallM.js"
+    "classic": "demo-CiJB1UBz.js",
+    "clean": "demo.clean-B3_7efYR.js"
   },
   {
     "slug": "date-range-picker",
@@ -68,8 +68,8 @@
     "kind": "component",
     "primary": "DateRangePicker",
     "exports": [],
-    "classic": "demo-BFXVVPt-.js",
-    "clean": "demo.clean-Ce4Bm5uX.js"
+    "classic": "demo-CoiMphF3.js",
+    "clean": "demo.clean-DUmEKRq1.js"
   },
   {
     "slug": "dropzone",
@@ -77,8 +77,8 @@
     "kind": "component",
     "primary": "Dropzone",
     "exports": [],
-    "classic": "demo-BaVYNLv-.js",
-    "clean": "demo.clean-DOYCsrp4.js"
+    "classic": "demo-cbp3aGLs.js",
+    "clean": "demo.clean-D08RwgwY.js"
   },
   {
     "slug": "otp-input",
@@ -88,8 +88,8 @@
     "exports": [
       "OTPInput"
     ],
-    "classic": "demo-DNDBlImO.js",
-    "clean": "demo.clean-C1n1pYzg.js"
+    "classic": "demo-DoNMsZca.js",
+    "clean": "demo.clean-c6StDqjR.js"
   },
   {
     "slug": "segmented-control",
@@ -97,8 +97,8 @@
     "kind": "component",
     "primary": "SegmentedControl",
     "exports": [],
-    "classic": "demo-Dm6BxvlO.js",
-    "clean": "demo.clean-C-Z6yZbv.js"
+    "classic": "demo-BjMrrUhs.js",
+    "clean": "demo.clean-BFdoUKH8.js"
   },
   {
     "slug": "stepper-form",
@@ -112,8 +112,8 @@
       "StepperChoices",
       "StepperReview"
     ],
-    "classic": "demo-DnMvqnaQ.js",
-    "clean": "demo.clean-CbPQYZdO.js",
+    "classic": "demo-BF4XrW9-.js",
+    "clean": "demo.clean-C9DeseCI.js",
     "secondary": {
       "classic": {
         "StepperField": "StepperField",
@@ -137,8 +137,8 @@
     "kind": "component",
     "primary": "Toaster",
     "exports": [],
-    "classic": "demo-BnJ2hi23.js",
-    "clean": "demo.clean-Nl_cej3R.js"
+    "classic": "demo-MeG5IsHV.js",
+    "clean": "demo.clean-ChOxoGil.js"
   },
   {
     "slug": "usage-meter",
@@ -146,8 +146,8 @@
     "kind": "component",
     "primary": "UsageMeter",
     "exports": [],
-    "classic": "demo-D5XENR7-.js",
-    "clean": "demo.clean-_yTJ3G4b.js"
+    "classic": "demo-CQxN16Rm.js",
+    "clean": "demo.clean-BbzIey38.js"
   },
   {
     "slug": "agent-checkpoints",
@@ -155,8 +155,8 @@
     "kind": "component",
     "primary": "AgentCheckpoints",
     "exports": [],
-    "classic": "demo-Dy8kRkE4.js",
-    "clean": "demo.clean-rMzZE8NQ.js"
+    "classic": "demo-BDCbv2Qz.js",
+    "clean": "demo.clean-BV1X5Vbx.js"
   },
   {
     "slug": "agent-cursors",
@@ -166,8 +166,8 @@
     "exports": [
       "acceptSuggestion"
     ],
-    "classic": "demo-T2vp62ci.js",
-    "clean": "demo.clean-DNQWXEXh.js",
+    "classic": "demo-qTp6JAZX.js",
+    "clean": "demo.clean-DBVXvAyd.js",
     "secondary": {
       "classic": {
         "acceptSuggestion": "acceptSuggestion"
@@ -183,8 +183,8 @@
     "kind": "component",
     "primary": "AgentFindings",
     "exports": [],
-    "classic": "demo-oWyfFMeM.js",
-    "clean": "demo.clean-CqT5aPHC.js"
+    "classic": "demo-BTHopYuV.js",
+    "clean": "demo.clean-CovbvhzF.js"
   },
   {
     "slug": "agent-fleet",
@@ -192,8 +192,8 @@
     "kind": "component",
     "primary": "AgentFleet",
     "exports": [],
-    "classic": "demo-DIZ2E5-o.js",
-    "clean": "demo.clean-2xe35V7E.js"
+    "classic": "demo-DpCq4tAe.js",
+    "clean": "demo.clean-cyL8Twm-.js"
   },
   {
     "slug": "agent-graph",
@@ -201,8 +201,8 @@
     "kind": "component",
     "primary": "AgentGraph",
     "exports": [],
-    "classic": "demo-BbHNVcxq.js",
-    "clean": "demo.clean-BNT_FJcc.js"
+    "classic": "demo-Cd5-eOlA.js",
+    "clean": "demo.clean-DuaIKN58.js"
   },
   {
     "slug": "agent-handoff",
@@ -210,8 +210,8 @@
     "kind": "component",
     "primary": "AgentHandoff",
     "exports": [],
-    "classic": "demo-CW_0t88D.js",
-    "clean": "demo.clean-T_nZpskz.js"
+    "classic": "demo-CT7xfpHY.js",
+    "clean": "demo.clean-DRFPU4Aa.js"
   },
   {
     "slug": "agent-inbox",
@@ -219,8 +219,8 @@
     "kind": "component",
     "primary": "AgentInbox",
     "exports": [],
-    "classic": "demo-Ck6EJPHF.js",
-    "clean": "demo.clean-kiCHizEx.js"
+    "classic": "demo-DaWeBFGp.js",
+    "clean": "demo.clean-v71InTn0.js"
   },
   {
     "slug": "agent-lanes",
@@ -228,8 +228,8 @@
     "kind": "component",
     "primary": "AgentLanes",
     "exports": [],
-    "classic": "demo-D2be2q7n.js",
-    "clean": "demo.clean-UqHmaqVc.js"
+    "classic": "demo-BTM0pUar.js",
+    "clean": "demo.clean-T4NhElhL.js"
   },
   {
     "slug": "agent-ledger",
@@ -237,8 +237,8 @@
     "kind": "component",
     "primary": "AgentLedger",
     "exports": [],
-    "classic": "demo-CGzh0xx5.js",
-    "clean": "demo.clean-D4kEyDST.js"
+    "classic": "demo-BRH3UO1t.js",
+    "clean": "demo.clean-C4ArxQfu.js"
   },
   {
     "slug": "agent-monitor",
@@ -246,8 +246,8 @@
     "kind": "component",
     "primary": "AgentMonitor",
     "exports": [],
-    "classic": "demo-BbTawgt2.js",
-    "clean": "demo.clean-C6Ab9LLt.js"
+    "classic": "demo-rSHyMdLq.js",
+    "clean": "demo.clean-CGCPW227.js"
   },
   {
     "slug": "agent-queue",
@@ -255,8 +255,8 @@
     "kind": "component",
     "primary": "AgentQueue",
     "exports": [],
-    "classic": "demo-CRKNaMKk.js",
-    "clean": "demo.clean-YsG62-iJ.js"
+    "classic": "demo-D5CQhGYL.js",
+    "clean": "demo.clean-Dxk4Qru0.js"
   },
   {
     "slug": "agent-recap",
@@ -264,8 +264,8 @@
     "kind": "component",
     "primary": "AgentRecap",
     "exports": [],
-    "classic": "demo-CC5Qxjh3.js",
-    "clean": "demo.clean-DmExF8_a.js"
+    "classic": "demo-fNpbxfT2.js",
+    "clean": "demo.clean-Dm8BDP_N.js"
   },
   {
     "slug": "agent-steering",
@@ -273,8 +273,8 @@
     "kind": "component",
     "primary": "AgentSteering",
     "exports": [],
-    "classic": "demo-BlCEXjmy.js",
-    "clean": "demo.clean-DfiZ4T3_.js"
+    "classic": "demo-Cd4EkyUG.js",
+    "clean": "demo.clean-CpWeouhZ.js"
   },
   {
     "slug": "agent-tree",
@@ -282,8 +282,8 @@
     "kind": "component",
     "primary": "AgentTree",
     "exports": [],
-    "classic": "demo-B_JQedQ8.js",
-    "clean": "demo.clean-DEOk3i7u.js"
+    "classic": "demo-Us8dh7Be.js",
+    "clean": "demo.clean-DV2b8YvT.js"
   },
   {
     "slug": "autonomy-dial",
@@ -291,8 +291,8 @@
     "kind": "component",
     "primary": "AutonomyDial",
     "exports": [],
-    "classic": "demo-D1Cm2Y4U.js",
-    "clean": "demo.clean-CTbI3YEC.js"
+    "classic": "demo-DZ9dZCgT.js",
+    "clean": "demo.clean-DKxKkWdc.js"
   },
   {
     "slug": "cited-answer",
@@ -300,8 +300,8 @@
     "kind": "component",
     "primary": "CitedAnswer",
     "exports": [],
-    "classic": "demo-Dvsf4FXI.js",
-    "clean": "demo.clean-Be9rfp7V.js"
+    "classic": "demo-RhOXafJL.js",
+    "clean": "demo.clean-85DphDe1.js"
   },
   {
     "slug": "compact-breakdown",
@@ -309,8 +309,8 @@
     "kind": "component",
     "primary": "CompactBreakdown",
     "exports": [],
-    "classic": "demo-v8zKTRWM.js",
-    "clean": "demo.clean-BuMLWdOS.js"
+    "classic": "demo-DsRrPxyj.js",
+    "clean": "demo.clean-zPEomtxH.js"
   },
   {
     "slug": "conflict-radar",
@@ -318,8 +318,8 @@
     "kind": "component",
     "primary": "ConflictRadar",
     "exports": [],
-    "classic": "demo-C8n-KhXq.js",
-    "clean": "demo.clean-kYvZQLYS.js"
+    "classic": "demo-wVMmcTLe.js",
+    "clean": "demo.clean-Iyd1HMem.js"
   },
   {
     "slug": "context-map",
@@ -327,8 +327,8 @@
     "kind": "component",
     "primary": "ContextMap",
     "exports": [],
-    "classic": "demo-B9Q3KRp_.js",
-    "clean": "demo.clean-SLNT61_6.js"
+    "classic": "demo-GAEWZb5P.js",
+    "clean": "demo.clean-B335XCiQ.js"
   },
   {
     "slug": "context-window",
@@ -336,8 +336,8 @@
     "kind": "component",
     "primary": "ContextWindow",
     "exports": [],
-    "classic": "demo-C8rgC34B.js",
-    "clean": "demo.clean-GouX_aPH.js"
+    "classic": "demo-CNxN7X2f.js",
+    "clean": "demo.clean-DmCwST4T.js"
   },
   {
     "slug": "cost-waterfall",
@@ -345,8 +345,8 @@
     "kind": "component",
     "primary": "CostWaterfall",
     "exports": [],
-    "classic": "demo-j3eWk5E0.js",
-    "clean": "demo.clean-DuC4pAFW.js"
+    "classic": "demo-zGx1CXQ0.js",
+    "clean": "demo.clean-D5iiRRQ6.js"
   },
   {
     "slug": "decision-tree",
@@ -354,8 +354,8 @@
     "kind": "component",
     "primary": "DecisionTree",
     "exports": [],
-    "classic": "demo-BCVR2Hhf.js",
-    "clean": "demo.clean-B0whtqPR.js"
+    "classic": "demo-DuDpUSvO.js",
+    "clean": "demo.clean-U-JpF4Kw.js"
   },
   {
     "slug": "delegate-board",
@@ -363,8 +363,8 @@
     "kind": "component",
     "primary": "DelegateBoard",
     "exports": [],
-    "classic": "demo-DHNjSsE4.js",
-    "clean": "demo.clean-DbZzI48W.js"
+    "classic": "demo-Bh-Yea16.js",
+    "clean": "demo.clean-D-XSZgLL.js"
   },
   {
     "slug": "experiment-card",
@@ -372,8 +372,8 @@
     "kind": "component",
     "primary": "ExperimentCard",
     "exports": [],
-    "classic": "demo-DBtQYhoC.js",
-    "clean": "demo.clean-EEcBFQIL.js"
+    "classic": "demo-DQPzpbGb.js",
+    "clean": "demo.clean-7vRSEqNi.js"
   },
   {
     "slug": "fallback-chain",
@@ -381,8 +381,8 @@
     "kind": "component",
     "primary": "FallbackChain",
     "exports": [],
-    "classic": "demo-Cr3cCxya.js",
-    "clean": "demo.clean-CkD71wWL.js"
+    "classic": "demo-BeALUqia.js",
+    "clean": "demo.clean-B4KTxzcd.js"
   },
   {
     "slug": "fan-out-grid",
@@ -392,8 +392,8 @@
     "exports": [
       "FanOutGrid"
     ],
-    "classic": "demo-BFd3gKrI.js",
-    "clean": "demo.clean-Dh8J8jM5.js"
+    "classic": "demo-B6Q5tWKf.js",
+    "clean": "demo.clean-BCcAKUyJ.js"
   },
   {
     "slug": "integration-picker",
@@ -401,8 +401,8 @@
     "kind": "component",
     "primary": "IntegrationPicker",
     "exports": [],
-    "classic": "demo-BbtxcaBE.js",
-    "clean": "demo.clean-DCl4YOmS.js"
+    "classic": "demo-Cdb-Mur0.js",
+    "clean": "demo.clean-pF7MsO_u.js"
   },
   {
     "slug": "integration-settings",
@@ -410,8 +410,8 @@
     "kind": "component",
     "primary": "IntegrationSettings",
     "exports": [],
-    "classic": "demo-BSW5akXq.js",
-    "clean": "demo.clean-BjW5KB4-.js"
+    "classic": "demo-2r6OX4bI.js",
+    "clean": "demo.clean-Cm73jtjq.js"
   },
   {
     "slug": "kpi-chart",
@@ -421,8 +421,8 @@
     "exports": [
       "KPIChart"
     ],
-    "classic": "demo-CDO93-eN.js",
-    "clean": "demo.clean-RZZ7XV1q.js"
+    "classic": "demo-CH-UKWOO.js",
+    "clean": "demo.clean-Bimzgeme.js"
   },
   {
     "slug": "memory-panel",
@@ -430,8 +430,8 @@
     "kind": "component",
     "primary": "MemoryPanel",
     "exports": [],
-    "classic": "demo-Dzop4bhP.js",
-    "clean": "demo.clean-BNHrnTlu.js"
+    "classic": "demo-CN3r04Mn.js",
+    "clean": "demo.clean-DsCdnc_F.js"
   },
   {
     "slug": "message-actions",
@@ -441,8 +441,8 @@
     "exports": [
       "MessageText"
     ],
-    "classic": "demo-DrVDkZ74.js",
-    "clean": "demo.clean-ulTm4Y9p.js",
+    "classic": "demo-BczKSrOH.js",
+    "clean": "demo.clean-MFgj0FDc.js",
     "secondary": {
       "classic": {
         "MessageText": "MessageText"
@@ -458,8 +458,8 @@
     "kind": "component",
     "primary": "ModelPicker",
     "exports": [],
-    "classic": "demo-ousVLbdn.js",
-    "clean": "demo.clean-COPIA0pP.js"
+    "classic": "demo-DtJQn6Am.js",
+    "clean": "demo.clean-D0BTyExG.js"
   },
   {
     "slug": "parallel-attempts",
@@ -467,8 +467,8 @@
     "kind": "component",
     "primary": "ParallelAttempts",
     "exports": [],
-    "classic": "demo-DNq6dj3m.js",
-    "clean": "demo.clean-BhWfxUkE.js"
+    "classic": "demo-BrFWNG3i.js",
+    "clean": "demo.clean-BuDjpk-a.js"
   },
   {
     "slug": "permission-request",
@@ -476,8 +476,8 @@
     "kind": "component",
     "primary": "PermissionRequest",
     "exports": [],
-    "classic": "demo-277u-kzk.js",
-    "clean": "demo.clean-D8ufAHnn.js"
+    "classic": "demo-BbXvtVIr.js",
+    "clean": "demo.clean-S-LCjHjs.js"
   },
   {
     "slug": "plan-vs-actual",
@@ -485,8 +485,8 @@
     "kind": "component",
     "primary": "PlanVsActual",
     "exports": [],
-    "classic": "demo.clean-wzchKI2C.js",
-    "clean": "demo.clean-wzchKI2C.js"
+    "classic": "demo.clean-D_dJBniA.js",
+    "clean": "demo.clean-D_dJBniA.js"
   },
   {
     "slug": "profile-menu",
@@ -497,8 +497,8 @@
       "SettingsIcon",
       "LogoutIcon"
     ],
-    "classic": "demo-Dk3NEbkP.js",
-    "clean": "demo.clean-CPL7IiHS.js",
+    "classic": "demo-X7Pi5P75.js",
+    "clean": "demo.clean-BrotRo47.js",
     "secondary": {
       "classic": {
         "SettingsIcon": "SettingsIcon",
@@ -516,8 +516,8 @@
     "kind": "component",
     "primary": "ProjectCard",
     "exports": [],
-    "classic": "demo-mVJMtnH2.js",
-    "clean": "demo.clean-C-cDjx5G.js"
+    "classic": "demo-DCuGCYJ8.js",
+    "clean": "demo.clean-alsg2cN7.js"
   },
   {
     "slug": "prompt-library",
@@ -525,8 +525,8 @@
     "kind": "component",
     "primary": "PromptLibrary",
     "exports": [],
-    "classic": "demo-Dag7eJtM.js",
-    "clean": "demo.clean-CkmyfNZK.js"
+    "classic": "demo-CGs-iUD7.js",
+    "clean": "demo.clean-Cj16OBtC.js"
   },
   {
     "slug": "review-center",
@@ -534,8 +534,8 @@
     "kind": "component",
     "primary": "ReviewCenter",
     "exports": [],
-    "classic": "demo-ocpQ0Pxs.js",
-    "clean": "demo.clean-CfzVMkMh.js"
+    "classic": "demo-CtfWC__n.js",
+    "clean": "demo.clean-CNm5nz0D.js"
   },
   {
     "slug": "scheduled-runs",
@@ -543,8 +543,8 @@
     "kind": "component",
     "primary": "ScheduledRuns",
     "exports": [],
-    "classic": "demo-At8-ozCe.js",
-    "clean": "demo.clean-BvPoXlne.js"
+    "classic": "demo-DrONbvDa.js",
+    "clean": "demo.clean-DvDugLau.js"
   },
   {
     "slug": "tips-panel",
@@ -554,8 +554,8 @@
     "exports": [
       "TipsPanel"
     ],
-    "classic": "demo-CeNLDeWD.js",
-    "clean": "demo.clean-EtdM2R2t.js"
+    "classic": "demo-Ckv7v-un.js",
+    "clean": "demo.clean-BkdjO055.js"
   },
   {
     "slug": "tool-access-map",
@@ -563,8 +563,8 @@
     "kind": "component",
     "primary": "ToolAccessMap",
     "exports": [],
-    "classic": "demo-Cp187cyY.js",
-    "clean": "demo.clean-DjnGlKv0.js"
+    "classic": "demo-Cb-GdJ1M.js",
+    "clean": "demo.clean-CAYdb2p3.js"
   },
   {
     "slug": "tool-call-card",
@@ -574,8 +574,8 @@
     "exports": [
       "ToolCallGroup"
     ],
-    "classic": "demo-BanY3X-P.js",
-    "clean": "demo.clean-Bc3dcFVh.js",
+    "classic": "demo-C6k6kpYM.js",
+    "clean": "demo.clean-BKdb86Ik.js",
     "secondary": {
       "classic": {
         "ToolCallGroup": "ToolCallGroup"
@@ -591,8 +591,8 @@
     "kind": "component",
     "primary": "TraceWaterfall",
     "exports": [],
-    "classic": "demo-OLdSLdLw.js",
-    "clean": "demo.clean-DfqKG4h-.js"
+    "classic": "demo-Dc4lTBAb.js",
+    "clean": "demo.clean-BtQku89Q.js"
   },
   {
     "slug": "approval-card",
@@ -600,8 +600,8 @@
     "kind": "component",
     "primary": "ApprovalCard",
     "exports": [],
-    "classic": "demo-BzZHOI57.js",
-    "clean": "demo.clean-CHh134hb.js"
+    "classic": "demo-b7pzzUDp.js",
+    "clean": "demo.clean-CFHLzQO4.js"
   },
   {
     "slug": "breakdown-chart",
@@ -609,8 +609,8 @@
     "kind": "component",
     "primary": "BreakdownChart",
     "exports": [],
-    "classic": "demo-_DBbejj2.js",
-    "clean": "demo.clean-BWVKmfqY.js"
+    "classic": "demo-uuEVNxOP.js",
+    "clean": "demo.clean-fsCbenyU.js"
   },
   {
     "slug": "button",
@@ -618,8 +618,8 @@
     "kind": "component",
     "primary": "Button",
     "exports": [],
-    "classic": "demo-DFP8ePHp.js",
-    "clean": "demo.clean-fXLK9gWq.js"
+    "classic": "demo-DVhWa7Ha.js",
+    "clean": "demo.clean-CtNokjWZ.js"
   },
   {
     "slug": "data-table",
@@ -630,8 +630,8 @@
       "TextColumnIcon",
       "TagColumnIcon"
     ],
-    "classic": "demo-BKUB9d_p.js",
-    "clean": "demo.clean-7-VzSUWm.js",
+    "classic": "demo-DvWjSSbi.js",
+    "clean": "demo.clean-wkh1Cz07.js",
     "secondary": {
       "classic": {
         "TextColumnIcon": "TextColumnIcon",
@@ -649,8 +649,8 @@
     "kind": "component",
     "primary": "FilterMenu",
     "exports": [],
-    "classic": "demo-BDtChEC0.js",
-    "clean": "demo.clean-C_wFoPI4.js"
+    "classic": "demo-DaS1A0kh.js",
+    "clean": "demo.clean-DDYx5Eiw.js"
   },
   {
     "slug": "reaction-bar",
@@ -658,8 +658,8 @@
     "kind": "component",
     "primary": "ReactionBar",
     "exports": [],
-    "classic": "demo-x4AxvLaI.js",
-    "clean": "demo.clean-BwU0t77A.js"
+    "classic": "demo-uwhhsq0M.js",
+    "clean": "demo.clean-Cn6T2WNV.js"
   },
   {
     "slug": "smart-recommendation",
@@ -667,8 +667,8 @@
     "kind": "component",
     "primary": "SmartRecommendation",
     "exports": [],
-    "classic": "demo-Bmw88bzb.js",
-    "clean": "demo.clean-CxJAxhV_.js"
+    "classic": "demo-BSvp3qLT.js",
+    "clean": "demo.clean-BEEFAfFR.js"
   },
   {
     "slug": "agent-plan",
@@ -676,8 +676,8 @@
     "kind": "component",
     "primary": "AgentPlan",
     "exports": [],
-    "classic": "demo-BF7ciLLI.js",
-    "clean": "demo.clean-7-boHMGq.js"
+    "classic": "demo-CoUXDaco.js",
+    "clean": "demo.clean-B74Z6sGM.js"
   },
   {
     "slug": "billing-schedule",
@@ -685,8 +685,8 @@
     "kind": "component",
     "primary": "BillingSchedule",
     "exports": [],
-    "classic": "demo-COJAGeNk.js",
-    "clean": "demo.clean-tbaHea_K.js"
+    "classic": "demo-C4FlAkHB.js",
+    "clean": "demo.clean-B93U20fC.js"
   },
   {
     "slug": "change-summary",
@@ -694,8 +694,8 @@
     "kind": "component",
     "primary": "ChangeSummary",
     "exports": [],
-    "classic": "demo-IBGa6B_0.js",
-    "clean": "demo.clean-Cw1zxurv.js"
+    "classic": "demo-CLo8tHKt.js",
+    "clean": "demo.clean-BwTcSjTx.js"
   },
   {
     "slug": "comments-panel",
@@ -703,8 +703,8 @@
     "kind": "component",
     "primary": "CommentsPanel",
     "exports": [],
-    "classic": "demo-Ioffv_GL.js",
-    "clean": "demo.clean-CnjHsWNN.js"
+    "classic": "demo-BbmNLIO1.js",
+    "clean": "demo.clean-BVtrxcZz.js"
   },
   {
     "slug": "email-draft",
@@ -712,8 +712,8 @@
     "kind": "component",
     "primary": "EmailDraft",
     "exports": [],
-    "classic": "demo-BqE2nm6j.js",
-    "clean": "demo.clean-CmPMxC4Y.js"
+    "classic": "demo-ClD6MoDp.js",
+    "clean": "demo.clean-Dxg_91Ql.js"
   },
   {
     "slug": "progress-tracker",
@@ -721,8 +721,8 @@
     "kind": "component",
     "primary": "ProgressTracker",
     "exports": [],
-    "classic": "demo-CRM2yhps.js",
-    "clean": "demo.clean-DEuHi6CX.js"
+    "classic": "demo-ChAqxITs.js",
+    "clean": "demo.clean-CB7AbMad.js"
   },
   {
     "slug": "comment-thread",
@@ -732,8 +732,8 @@
     "exports": [
       "CommentThread"
     ],
-    "classic": "demo-ElZs8qP_.js",
-    "clean": "demo.clean-C7QEyQUW.js"
+    "classic": "demo-YP56D6b8.js",
+    "clean": "demo.clean-CpbyoFW1.js"
   },
   {
     "slug": "inline-diff",
@@ -741,8 +741,8 @@
     "kind": "component",
     "primary": "InlineDiff",
     "exports": [],
-    "classic": "demo-bn5f6BmC.js",
-    "clean": "demo.clean-1BCd75XO.js"
+    "classic": "demo-mwB6Qf6k.js",
+    "clean": "demo.clean-C5ZPlQ_W.js"
   },
   {
     "slug": "setup-guide",
@@ -750,8 +750,8 @@
     "kind": "component",
     "primary": "SetupGuide",
     "exports": [],
-    "classic": "demo-BBQFFf2i.js",
-    "clean": "demo.clean-Djp5LeyI.js"
+    "classic": "demo-DcidSEwB.js",
+    "clean": "demo.clean-C_Bk1pMF.js"
   },
   {
     "slug": "decision-inbox",
@@ -759,8 +759,8 @@
     "kind": "component",
     "primary": "DecisionInbox",
     "exports": [],
-    "classic": "demo-BTRtmfz4.js",
-    "clean": "demo.clean-BDDT1Pea.js"
+    "classic": "demo-BzdiDI-C.js",
+    "clean": "demo.clean-Dhm4X0Lr.js"
   },
   {
     "slug": "notification-stack",
@@ -768,8 +768,8 @@
     "kind": "component",
     "primary": "NotificationStack",
     "exports": [],
-    "classic": "demo-B6G7VOmY.js",
-    "clean": "demo.clean-D8SAlH2y.js"
+    "classic": "demo-ComIbU8n.js",
+    "clean": "demo.clean-jN3TCamo.js"
   },
   {
     "slug": "app-shell-flat",
@@ -779,7 +779,7 @@
     "exports": [
       "WorkspacePanel"
     ],
-    "classic": "demo-DUhSwzhW.js",
+    "classic": "demo-lKJSlyz4.js",
     "clean": null,
     "secondary": {
       "classic": {
@@ -795,7 +795,7 @@
     "exports": [
       "WorkspacePanel"
     ],
-    "classic": "demo-Br2EPuwn.js",
+    "classic": "demo-iQ_bYuOR.js",
     "clean": null,
     "secondary": {
       "classic": {
@@ -811,7 +811,7 @@
     "exports": [
       "AssistantHome"
     ],
-    "classic": "demo-CT4L5yLv.js",
+    "classic": "demo-D2EDa4Yv.js",
     "clean": null
   },
   {
@@ -822,7 +822,7 @@
     "exports": [
       "AgentChat"
     ],
-    "classic": "demo-9NZ5oo05.js",
+    "classic": "demo-ToxzeNBT.js",
     "clean": null
   },
   {
@@ -833,7 +833,7 @@
     "exports": [
       "AgentRun"
     ],
-    "classic": "demo-DcCU7oPV.js",
+    "classic": "demo-BlXLMrSx.js",
     "clean": null
   },
   {
@@ -844,7 +844,7 @@
     "exports": [
       "Files"
     ],
-    "classic": "demo-B7zbJYh5.js",
+    "classic": "demo-CrM0Cj7D.js",
     "clean": null
   },
   {
@@ -855,7 +855,7 @@
     "exports": [
       "Folder"
     ],
-    "classic": "demo-DZ-lI8Eb.js",
+    "classic": "demo-Huu_6nZJ.js",
     "clean": null
   },
   {
@@ -866,7 +866,7 @@
     "exports": [
       "Integrations"
     ],
-    "classic": "demo-tSofIbN8.js",
+    "classic": "demo-DhQ4GTKu.js",
     "clean": null
   },
   {
@@ -877,7 +877,7 @@
     "exports": [
       "Crm"
     ],
-    "classic": "demo-BTdzblYw.js",
+    "classic": "demo-D5fSvFe9.js",
     "clean": null
   },
   {
@@ -888,7 +888,7 @@
     "exports": [
       "Kanban"
     ],
-    "classic": "demo-BRSYeTDM.js",
+    "classic": "demo-dixlXPvz.js",
     "clean": null
   },
   {
@@ -899,7 +899,7 @@
     "exports": [
       "Analytics"
     ],
-    "classic": "demo-DqPXaheB.js",
+    "classic": "demo-CiSGw3ks.js",
     "clean": null
   },
   {
@@ -910,7 +910,7 @@
     "exports": [
       "Onboarding"
     ],
-    "classic": "demo-BZKijLCU.js",
+    "classic": "demo-Czgv1feR.js",
     "clean": null
   },
   {
@@ -921,7 +921,7 @@
     "exports": [
       "Evals"
     ],
-    "classic": "demo-C75c5UD6.js",
+    "classic": "demo-C390SntX.js",
     "clean": null
   },
   {
@@ -932,7 +932,7 @@
     "exports": [
       "SettingsPreferences"
     ],
-    "classic": "demo-mRChABp9.js",
+    "classic": "demo-Arv9dbQP.js",
     "clean": null
   },
   {
@@ -943,7 +943,7 @@
     "exports": [
       "SettingsNotifications"
     ],
-    "classic": "demo-BVNs823U.js",
+    "classic": "demo-Cp7zEXkx.js",
     "clean": null
   },
   {
@@ -954,7 +954,7 @@
     "exports": [
       "SettingsPrivacy"
     ],
-    "classic": "demo-Bx6K_V5F.js",
+    "classic": "demo-rNtP-BBQ.js",
     "clean": null
   },
   {
@@ -965,7 +965,7 @@
     "exports": [
       "SettingsSubscription"
     ],
-    "classic": "demo-CVegJkmk.js",
+    "classic": "demo-zlABabNg.js",
     "clean": null
   },
   {
@@ -976,7 +976,7 @@
     "exports": [
       "SettingsGeneral"
     ],
-    "classic": "demo-CvriwZ5d.js",
+    "classic": "demo-BwxU4TSq.js",
     "clean": null
   },
   {
@@ -987,7 +987,7 @@
     "exports": [
       "SettingsProfile"
     ],
-    "classic": "demo-DSMBQ3nl.js",
+    "classic": "demo-gVa1JG5C.js",
     "clean": null
   },
   {
@@ -998,7 +998,7 @@
     "exports": [
       "SettingsMembers"
     ],
-    "classic": "demo-B27uonNG.js",
+    "classic": "demo-BtLHfXvu.js",
     "clean": null
   },
   {
@@ -1009,7 +1009,7 @@
     "exports": [
       "SettingsModels"
     ],
-    "classic": "demo-BtJme0MP.js",
+    "classic": "demo-S0uh1LPg.js",
     "clean": null
   },
   {
@@ -1020,7 +1020,7 @@
     "exports": [
       "SettingsSecurity"
     ],
-    "classic": "demo-CtVTw0eN.js",
+    "classic": "demo-B50xtz0i.js",
     "clean": null
   },
   {
@@ -1029,8 +1029,8 @@
     "kind": "block",
     "primary": "ClientContext",
     "exports": [],
-    "classic": "demo-borEBI1Z.js",
-    "clean": null
+    "classic": "demo-B9lwQPW5.js",
+    "clean": "demo.clean-0QK8PpH2.js"
   },
   {
     "slug": "invoice-credit",
@@ -1038,8 +1038,8 @@
     "kind": "block",
     "primary": "InvoiceCredit",
     "exports": [],
-    "classic": "demo-C-iCHBJN.js",
-    "clean": null
+    "classic": "demo-BigQhQX9.js",
+    "clean": "demo.clean-Nn-qY6d6.js"
   },
   {
     "slug": "logo-marquee",
@@ -1047,8 +1047,8 @@
     "kind": "block",
     "primary": "LogoMarquee",
     "exports": [],
-    "classic": "demo-dPDkooNn.js",
-    "clean": null
+    "classic": "demo-B4aq_k_s.js",
+    "clean": "demo.clean-BlKpL6q_.js"
   },
   {
     "slug": "metrics-dashboard",
@@ -1056,8 +1056,8 @@
     "kind": "block",
     "primary": "MetricsDashboard",
     "exports": [],
-    "classic": "demo-Coprs2Jd.js",
-    "clean": null
+    "classic": "demo-DvV_UZua.js",
+    "clean": "demo.clean-maiYLI3b.js"
   },
   {
     "slug": "pricing-plans",
@@ -1065,8 +1065,8 @@
     "kind": "block",
     "primary": "PricingPlans",
     "exports": [],
-    "classic": "demo-CGLaBJBw.js",
-    "clean": null
+    "classic": "demo-BQ1zEC-t.js",
+    "clean": "demo.clean-DXbI8ecy.js"
   },
   {
     "slug": "task-board",
@@ -1074,8 +1074,8 @@
     "kind": "block",
     "primary": "TaskBoard",
     "exports": [],
-    "classic": "demo-CmolVFYq.js",
-    "clean": null
+    "classic": "demo-Bf8S6mqB.js",
+    "clean": "demo.clean-gUhb_Bq2.js"
   },
   {
     "slug": "testimonial-wall",
@@ -1083,8 +1083,8 @@
     "kind": "block",
     "primary": "TestimonialWall",
     "exports": [],
-    "classic": "demo-BOeM0CYP.js",
-    "clean": null
+    "classic": "demo-BitQbbDD.js",
+    "clean": "demo.clean-Dw54vmBn.js"
   },
   {
     "slug": "ai-workspace",
@@ -1103,8 +1103,8 @@
     "kind": "block",
     "primary": "AppDirectory",
     "exports": [],
-    "classic": "demo-S9qKZHRx.js",
-    "clean": null
+    "classic": "demo-BfjxPOuX.js",
+    "clean": "demo.clean-DoGWUXk2.js"
   },
   {
     "slug": "kpi-board",
@@ -1114,8 +1114,8 @@
     "exports": [
       "KPIBoard"
     ],
-    "classic": "demo-DVOt8T4-.js",
-    "clean": null
+    "classic": "demo-RYiSpMzW.js",
+    "clean": "demo.clean-Btvg9GZZ.js"
   },
   {
     "slug": "agent-gallery",
@@ -1123,8 +1123,8 @@
     "kind": "block",
     "primary": "AgentGallery",
     "exports": [],
-    "classic": "demo-zt7AXopF.js",
-    "clean": null
+    "classic": "demo-_XcYRoY8.js",
+    "clean": "demo.clean-Bfn_cDeV.js"
   },
   {
     "slug": "cover-flow",
@@ -1141,7 +1141,7 @@
     "kind": "illustration",
     "primary": "FrostCloud",
     "exports": [],
-    "classic": "demo-DrDu-VuE.js",
+    "classic": "demo-CGdNq_NO.js",
     "clean": null
   },
   {
@@ -1150,7 +1150,7 @@
     "kind": "illustration",
     "primary": "GlowCloud",
     "exports": [],
-    "classic": "demo-Cm8kSHcX.js",
+    "classic": "demo-aOXhhcGV.js",
     "clean": null
   },
   {
@@ -1168,7 +1168,7 @@
     "kind": "illustration",
     "primary": "IntegrationBeam",
     "exports": [],
-    "classic": "demo-JIg3CWgz.js",
+    "classic": "demo-DYA-Dznp.js",
     "clean": null
   },
   {
@@ -1186,7 +1186,7 @@
     "kind": "illustration",
     "primary": "ModelWheel",
     "exports": [],
-    "classic": "demo-BpHzZoNS.js",
+    "classic": "demo-DGwniYWe.js",
     "clean": null
   },
   {
@@ -1296,7 +1296,7 @@
     "kind": "illustration",
     "primary": "GlassFolder",
     "exports": [],
-    "classic": "demo-BDApkIlc.js",
+    "classic": "demo-B8fX4uR4.js",
     "clean": null
   },
   {
@@ -1332,7 +1332,7 @@
     "kind": "illustration",
     "primary": "AgentTeam",
     "exports": [],
-    "classic": "demo-BioXBQfc.js",
+    "classic": "demo-CAnavOmF.js",
     "clean": null
   },
   {
@@ -1422,6 +1422,418 @@
     "primary": "TiltCard",
     "exports": [],
     "classic": "demo-BijqyLh8.js",
+    "clean": null
+  },
+  {
+    "slug": "dialog",
+    "name": "Dialog",
+    "kind": "component",
+    "primary": "Dialog",
+    "exports": [],
+    "classic": "dialog.js",
+    "clean": null
+  },
+  {
+    "slug": "model-catalog",
+    "name": "Model Catalog",
+    "kind": "component",
+    "primary": "ModelCatalog",
+    "exports": [],
+    "classic": "model-catalog.js",
+    "clean": null
+  },
+  {
+    "slug": "provider-panel",
+    "name": "Provider Panel",
+    "kind": "component",
+    "primary": "ProviderPanel",
+    "exports": [],
+    "classic": "provider-panel.js",
+    "clean": null
+  },
+  {
+    "slug": "provider-connection",
+    "name": "Provider Connection",
+    "kind": "component",
+    "primary": "ProviderConnection",
+    "exports": [],
+    "classic": "provider-connection.js",
+    "clean": null
+  },
+  {
+    "slug": "model-toggle-list",
+    "name": "Model Toggle List",
+    "kind": "component",
+    "primary": "ModelToggleList",
+    "exports": [],
+    "classic": "model-toggle-list.js",
+    "clean": null
+  },
+  {
+    "slug": "agent-trail",
+    "name": "Agent Trail",
+    "kind": "component",
+    "primary": "AgentTrail",
+    "exports": [],
+    "classic": "demo-jvck1s8x.js",
+    "clean": "demo.clean-BOZQRtt3.js"
+  },
+  {
+    "slug": "approval-gates",
+    "name": "Approval Gates",
+    "kind": "component",
+    "primary": "ApprovalGates",
+    "exports": [],
+    "classic": "demo-BNhM00W0.js",
+    "clean": "demo.clean-IvddJAUX.js"
+  },
+  {
+    "slug": "away-summary",
+    "name": "Away Summary",
+    "kind": "component",
+    "primary": "AwaySummary",
+    "exports": [],
+    "classic": "demo-DkGeQJm9.js",
+    "clean": "demo.clean-Cf642Ucv.js"
+  },
+  {
+    "slug": "checkbox",
+    "name": "Checkbox",
+    "kind": "component",
+    "primary": "Checkbox",
+    "exports": [],
+    "classic": "demo-BvZtubNY.js",
+    "clean": "demo.clean-eT-wfovU.js"
+  },
+  {
+    "slug": "collaboration-stream",
+    "name": "Collaboration Stream",
+    "kind": "component",
+    "primary": "CollaborationStream",
+    "exports": [],
+    "classic": "demo-Da38aptE.js",
+    "clean": "demo.clean-C4cgsV8F.js"
+  },
+  {
+    "slug": "decision-card",
+    "name": "Decision Card",
+    "kind": "component",
+    "primary": "DecisionCard",
+    "exports": [],
+    "classic": "demo-CRxdoIMg.js",
+    "clean": "demo.clean-Crfsu0Zq.js"
+  },
+  {
+    "slug": "judge-bracket",
+    "name": "Judge Bracket",
+    "kind": "component",
+    "primary": "JudgeBracket",
+    "exports": [],
+    "classic": "demo-kCzfR_W-.js",
+    "clean": "demo.clean-DLxTchoa.js"
+  },
+  {
+    "slug": "root-cause-tree",
+    "name": "Root Cause Tree",
+    "kind": "component",
+    "primary": "RootCauseTree",
+    "exports": [],
+    "classic": "demo-Dw13RPQo.js",
+    "clean": "demo.clean-lq9gjld8.js"
+  },
+  {
+    "slug": "running-now",
+    "name": "Running Now",
+    "kind": "component",
+    "primary": "RunningNow",
+    "exports": [],
+    "classic": "demo-BJNCLivN.js",
+    "clean": "demo.clean-BSkUYURg.js"
+  },
+  {
+    "slug": "select",
+    "name": "Select",
+    "kind": "component",
+    "primary": "Select",
+    "exports": [],
+    "classic": "demo-WDjsWnuk.js",
+    "clean": "demo.clean-B0UeMZ7i.js"
+  },
+  {
+    "slug": "switch",
+    "name": "Switch",
+    "kind": "component",
+    "primary": "Switch",
+    "exports": [],
+    "classic": "demo-B6UauOT8.js",
+    "clean": "demo.clean-V_7hWhek.js"
+  },
+  {
+    "slug": "tag-input",
+    "name": "Tag Input",
+    "kind": "component",
+    "primary": "TagInput",
+    "exports": [],
+    "classic": "demo-5VO-GL_Z.js",
+    "clean": "demo.clean-Dmxp2Yem.js"
+  },
+  {
+    "slug": "text-area",
+    "name": "Text Area",
+    "kind": "component",
+    "primary": "TextArea",
+    "exports": [],
+    "classic": "demo-DvD1qX0p.js",
+    "clean": "demo.clean-CfjU0xtT.js"
+  },
+  {
+    "slug": "text-field",
+    "name": "Text Field",
+    "kind": "component",
+    "primary": "TextField",
+    "exports": [],
+    "classic": "demo-BMgg3mb0.js",
+    "clean": "demo.clean-B1VUQ60c.js"
+  },
+  {
+    "slug": "live-session",
+    "name": "Live Session",
+    "kind": "component",
+    "primary": "LiveSession",
+    "exports": [],
+    "classic": "demo-D7ZJD-T_.js",
+    "clean": "demo.clean-DwDuKKv2.js"
+  },
+  {
+    "slug": "mission-control",
+    "name": "Mission Control",
+    "kind": "component",
+    "primary": "MissionControl",
+    "exports": [],
+    "classic": "demo-Djwi_Ox1.js",
+    "clean": "demo.clean-DjPeWG_V.js"
+  },
+  {
+    "slug": "mission-timeline",
+    "name": "Mission Timeline",
+    "kind": "component",
+    "primary": "MissionTimeline",
+    "exports": [],
+    "classic": "demo--BLoUX-y.js",
+    "clean": "demo.clean-BcFQKSOU.js"
+  },
+  {
+    "slug": "run-inspector",
+    "name": "Run Inspector",
+    "kind": "component",
+    "primary": "RunInspector",
+    "exports": [],
+    "classic": "demo-CLxqArVY.js",
+    "clean": "demo.clean-BCx0F1ko.js"
+  },
+  {
+    "slug": "inspect-agent-card",
+    "name": "Inspect Agent Card",
+    "kind": "illustration",
+    "primary": "InspectAgentCard",
+    "exports": [],
+    "classic": "demo-CSeXopaI.js",
+    "clean": null
+  },
+  {
+    "slug": "inspect-composer",
+    "name": "Inspect Composer",
+    "kind": "illustration",
+    "primary": "InspectComposer",
+    "exports": [],
+    "classic": "demo-CJOZI6uO.js",
+    "clean": null
+  },
+  {
+    "slug": "agent-activity",
+    "name": "Agent / Activity",
+    "kind": "screen",
+    "primary": "AgentActivityScreen",
+    "exports": [
+      "AgentActivity"
+    ],
+    "classic": "demo-C7WsrzKw.js",
+    "clean": null
+  },
+  {
+    "slug": "agent-chat-progress",
+    "name": "AI Chat / Progress",
+    "kind": "screen",
+    "primary": "AgentChatProgressScreen",
+    "exports": [
+      "AgentChatProgress"
+    ],
+    "classic": "demo-CWzkI9x5.js",
+    "clean": null
+  },
+  {
+    "slug": "agent-chat-rail",
+    "name": "AI Chat / Double Sidebar",
+    "kind": "screen",
+    "primary": "AgentChatRailScreen",
+    "exports": [
+      "AgentChatRail"
+    ],
+    "classic": "demo-DKyl2v72.js",
+    "clean": null
+  },
+  {
+    "slug": "agent-memory",
+    "name": "Agent / Memory",
+    "kind": "screen",
+    "primary": "AgentMemoryScreen",
+    "exports": [
+      "AgentMemory"
+    ],
+    "classic": "demo-Cd2Yjm_1.js",
+    "clean": null
+  },
+  {
+    "slug": "agent-orchestration",
+    "name": "Agent / Orchestration",
+    "kind": "screen",
+    "primary": "AgentOrchestrationScreen",
+    "exports": [
+      "AgentOrchestration"
+    ],
+    "classic": "demo-DVT6Pk18.js",
+    "clean": null
+  },
+  {
+    "slug": "agent-permissions",
+    "name": "Agent / Permissions",
+    "kind": "screen",
+    "primary": "AgentPermissionsScreen",
+    "exports": [
+      "AgentPermissions"
+    ],
+    "classic": "demo-SHAVVcC3.js",
+    "clean": null
+  },
+  {
+    "slug": "agent-schedules",
+    "name": "Agent / Schedules",
+    "kind": "screen",
+    "primary": "AgentSchedulesScreen",
+    "exports": [
+      "AgentSchedules"
+    ],
+    "classic": "demo-CeaFbS0E.js",
+    "clean": null
+  },
+  {
+    "slug": "agent-tasks",
+    "name": "Agent / Tasks",
+    "kind": "screen",
+    "primary": "AgentTasksScreen",
+    "exports": [
+      "AgentTasks"
+    ],
+    "classic": "demo-BHUc4czl.js",
+    "clean": null
+  },
+  {
+    "slug": "agent-thread",
+    "name": "Agent / Thread",
+    "kind": "screen",
+    "primary": "AgentThreadScreen",
+    "exports": [
+      "AgentThread"
+    ],
+    "classic": "demo-xnRzgFd4.js",
+    "clean": null
+  },
+  {
+    "slug": "agent-usage",
+    "name": "Agent / Usage",
+    "kind": "screen",
+    "primary": "AgentUsageScreen",
+    "exports": [
+      "AgentUsage"
+    ],
+    "classic": "demo-BHrI348z.js",
+    "clean": null
+  },
+  {
+    "slug": "assistant-overview",
+    "name": "AI Chat / Overview",
+    "kind": "screen",
+    "primary": "AssistantOverviewScreen",
+    "exports": [
+      "AssistantOverview"
+    ],
+    "classic": "demo-DQSyvY-H.js",
+    "clean": null
+  },
+  {
+    "slug": "inbox",
+    "name": "Agent / Inbox",
+    "kind": "screen",
+    "primary": "InboxScreen",
+    "exports": [
+      "Inbox"
+    ],
+    "classic": "demo-CgB223NM.js",
+    "clean": null
+  },
+  {
+    "slug": "onboarding-brand",
+    "name": "Onboarding / Brand",
+    "kind": "screen",
+    "primary": "OnboardingBrandScreen",
+    "exports": [
+      "OnboardingBrand"
+    ],
+    "classic": "demo-Oflgsu2j.js",
+    "clean": null
+  },
+  {
+    "slug": "onboarding-ready",
+    "name": "Onboarding / Ready",
+    "kind": "screen",
+    "primary": "OnboardingReadyScreen",
+    "exports": [
+      "OnboardingReady"
+    ],
+    "classic": "demo-C1POnxLN.js",
+    "clean": null
+  },
+  {
+    "slug": "onboarding-tone",
+    "name": "Onboarding / Tone",
+    "kind": "screen",
+    "primary": "OnboardingToneScreen",
+    "exports": [
+      "OnboardingTone"
+    ],
+    "classic": "demo-BKodF2uO.js",
+    "clean": null
+  },
+  {
+    "slug": "onboarding-website",
+    "name": "Onboarding / Website",
+    "kind": "screen",
+    "primary": "OnboardingWebsiteScreen",
+    "exports": [
+      "OnboardingWebsite"
+    ],
+    "classic": "demo-xSHI4FTH.js",
+    "clean": null
+  },
+  {
+    "slug": "workflow-builder",
+    "name": "Workflow Builder",
+    "kind": "screen",
+    "primary": "WorkflowBuilderScreen",
+    "exports": [
+      "WorkflowBuilder"
+    ],
+    "classic": "demo-yYJlD65g.js",
     "clean": null
   }
 ]

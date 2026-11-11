@@ -114,7 +114,9 @@ export interface WorkspaceTool { id: string; label: string; icon?: React.ReactNo
 export interface WorkspaceSource { id: string; title: string; source: string; mark?: React.ReactNode }
 export interface RunStep { id: string; title: string; detail?: string; tool?: string; toolCalls?: { name: string; summary: string; icon?: React.ReactNode; args?: unknown; result?: unknown; duration?: number }[]; approval?: { title: string; description: string; risk: "low" | "medium" | "high"; details?: { label: string; value: React.ReactNode }[] } }
 export interface OnboardingValues { workspace: string; slug: string; teamSize: string; tools: string[]; invites: string[]; role: string; template: string }
-export interface ProviderModel { id: string; name: string; kind: "chat" | "image"; on: boolean; access: string; description?: string }
+/** 模型行右侧下拉框的一个选项。不传 accessOptions 时用库默认的「谁能用」选项。logo 优先于 icon。 */
+export interface ProviderModelAccessOption { label: string; icon?: unknown; logo?: import("react").ReactNode }
+export interface ProviderModel { id: string; name: string; kind: "chat" | "image" | "video" | "audio"; on: boolean; access: string; description?: string; accessOptions?: ProviderModelAccessOption[] }
 export interface Provider { id: string; name: string; region: "eu" | "global" | "custom"; logo?: React.ReactNode; models: ProviderModel[] }
 export interface PreferenceValues { chatModel?: string; imageModel?: string; language?: string; theme?: "light" | "dark" | "system"; appActions?: boolean; chatTools?: string[]; instructions?: { on: boolean; about: string; style: string }; memories?: Memory[] }
 export interface NotificationValues { digest?: boolean; digestTime?: string; weekly?: boolean; types?: { id: string; title: string; note?: string; channel: "both" | "email" | "mobile" | "inbox" }[]; quiet?: boolean; from?: string; to?: string }
