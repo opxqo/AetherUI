@@ -10,6 +10,8 @@ import React, {
 import { AFFECTUI_CATALOG } from "../affectui-engine/catalog.js";
 import { ScreenFullContext } from "../affectui-engine/context.js";
 import { BRAND_CONFIG } from "../brand.config.js";
+import { DesignSystemPage } from "../affectui-engine/DesignSystemPage-BE6RKG9E.js";
+import { K as AUI_DESIGN_SYSTEM_PAGES, kt as AUI_TOKENS_LIST } from "../affectui-engine/index-0fpbu-ki.js";
 import "./showcase.css";
 
 /* ============================================================================
@@ -869,6 +871,347 @@ function SkillsSubpage({ showToast, triggerHaptic }) {
 }
 
 /* ============================================================================
+   5c. Design System Subpage (Pixel-Perfect 1:1 Engine & Real-World Integration)
+   ============================================================================ */
+function DesignSystemSubpage({
+  subpage,
+  onSelectSubpage,
+  showToast,
+  triggerHaptic,
+  variant,
+  onSwitchVariant,
+  onOpenPrimitive,
+}) {
+  const [tokenSearch, setTokenSearch] = useState("");
+  const [tokenGroup, setTokenGroup] = useState("all");
+  const [copiedId, setCopiedId] = useState(null);
+
+  const currentPageObj = useMemo(() => {
+    return (
+      AUI_DESIGN_SYSTEM_PAGES.find((p) => p.slug === (subpage || "")) ||
+      AUI_DESIGN_SYSTEM_PAGES[0]
+    );
+  }, [subpage]);
+
+  const handleCopy = (text, id) => {
+    triggerHaptic("success");
+    navigator.clipboard?.writeText(text);
+    setCopiedId(id);
+    showToast("Copied to clipboard");
+    setTimeout(() => setCopiedId(null), 1800);
+  };
+
+  const groups = useMemo(() => {
+    const set = new Set(AUI_TOKENS_LIST.map((t) => t.group));
+    return ["all", ...Array.from(set)];
+  }, []);
+
+  const filteredTokens = useMemo(() => {
+    return AUI_TOKENS_LIST.filter((t) => {
+      const matchGroup = tokenGroup === "all" || t.group === tokenGroup;
+      if (!matchGroup) return false;
+      if (!tokenSearch.trim()) return true;
+      const q = tokenSearch.toLowerCase();
+      return (
+        t.name.toLowerCase().includes(q) ||
+        t.group.toLowerCase().includes(q) ||
+        t.use.toLowerCase().includes(q)
+      );
+    });
+  }, [tokenSearch, tokenGroup]);
+
+  const SUB_TABS = [
+    { slug: "", label: "Overview" },
+    { slug: "colors", label: "Colors (28)" },
+    { slug: "typography", label: "Typography (2)" },
+    { slug: "radius", label: "Radius (3)" },
+    { slug: "shadows", label: "Shadows (2)" },
+    { slug: "integration", label: "实际开发接入 (SDK)" },
+  ];
+
+  const PRIMITIVES = [
+    { slug: "button", name: "Button", desc: "Tactile actions with focus rings" },
+    { slug: "text-field", name: "Text Field", desc: "Single-line form inputs" },
+    { slug: "text-area", name: "Text Area", desc: "Multi-line expandable input" },
+    { slug: "select", name: "Select", desc: "Accessible dropdown selector" },
+    { slug: "combobox", name: "Combobox", desc: "Searchable autocomplete list" },
+    { slug: "checkbox", name: "Checkbox", desc: "Dual-look checked boxes" },
+    { slug: "switch", name: "Switch", desc: "Spring-animated toggles" },
+    { slug: "segmented-control", name: "Segmented Control", desc: "Multi-option inline tabs" },
+    { slug: "tag-input", name: "Tag Input", desc: "Multi-tag chip input with chips" },
+    { slug: "otp-input", name: "OTP Input", desc: "Pin code and verification boxes" },
+  ];
+
+  return (
+    <div className="am-ds-wrapper">
+      {/* Top Island Subnav */}
+      <div className="am-ds-subnav-bar">
+        <div className="am-ds-pills">
+          {SUB_TABS.map((tab) => (
+            <button
+              key={tab.slug}
+              type="button"
+              className="am-ds-pill-btn"
+              data-active={(subpage || "") === tab.slug}
+              onClick={() => {
+                triggerHaptic("light");
+                onSelectSubpage(tab.slug);
+              }}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Style look toggle on page */}
+        <div className="am-look-pill" title="Toggle Classic / Clean visual engine">
+          <button
+            type="button"
+            className="am-look-pill__btn"
+            data-active={variant === "classic"}
+            onClick={() => {
+              triggerHaptic("light");
+              onSwitchVariant("classic");
+              showToast("Classic tactile style active");
+            }}
+          >
+            Classic
+          </button>
+          <button
+            type="button"
+            className="am-look-pill__btn"
+            data-active={variant === "clean"}
+            onClick={() => {
+              triggerHaptic("light");
+              onSwitchVariant("clean");
+              showToast("Clean subpixel style active");
+            }}
+          >
+            Clean
+          </button>
+        </div>
+      </div>
+
+      {/* View router: Official Design System Page vs Integration Guide */}
+      {subpage !== "integration" ? (
+        <DesignSystemPage page={currentPageObj} />
+      ) : (
+        <div className="am-ds-integration-box">
+          <div className="am-ds-hero-card">
+            <h2 className="am-ds-hero-title">AetherUI / AffectUI 实际开发接入指南</h2>
+            <p className="am-ds-hero-desc">
+              本设计系统基于 36 项核心 CSS 变量契约构建，完全解耦组件 DOM 与视觉表现。
+              您可以将这套工业级标准无缝应用到 Next.js、Vite React、Remix 或任何基于 Tailwind CSS 的生产项目当中。
+            </p>
+          </div>
+
+          {/* Quickstart 3 steps */}
+          <div className="am-ds-hero-card">
+            <h3 style={{ fontSize: 16, fontWeight: 600, margin: "0 0 12px", color: "var(--am-fg)" }}>
+              第一步：安装与引入 CSS 变量
+            </h3>
+            <p style={{ fontSize: 13, color: "var(--am-muted-fg)", margin: "0 0 8px" }}>
+              在项目中安装 <code>@aether-ui/react</code>，并在入口文件（如 <code>app/layout.tsx</code> 或 <code>src/index.css</code>）中引入：
+            </p>
+            <div className="am-ds-code-block">
+              <code>npm install @aether-ui/react</code>
+              <button
+                type="button"
+                className="am-shell-copy-btn"
+                onClick={() => handleCopy("npm install @aether-ui/react", "npm-install")}
+              >
+                {copiedId === "npm-install" ? "Copied" : "Copy"}
+              </button>
+            </div>
+            <div className="am-ds-code-block">
+              <code>@import "@aether-ui/react/tokens.css";</code>
+              <button
+                type="button"
+                className="am-shell-copy-btn"
+                onClick={() => handleCopy('@import "@aether-ui/react/tokens.css";', "css-import")}
+              >
+                {copiedId === "css-import" ? "Copied" : "Copy"}
+              </button>
+            </div>
+          </div>
+
+          {/* Tailwind Configuration */}
+          <div className="am-ds-hero-card">
+            <h3 style={{ fontSize: 16, fontWeight: 600, margin: "0 0 12px", color: "var(--am-fg)" }}>
+              第二步：配置 Tailwind CSS 预设 (tailwind.config.js)
+            </h3>
+            <p style={{ fontSize: 13, color: "var(--am-muted-fg)", margin: "0 0 8px" }}>
+              引入官方预设即可直接使用 <code>bg-aui-surface</code>、<code>text-aui-ink</code>、<code>rounded-aui</code>、<code>shadow-aui-card</code> 等语义类名：
+            </p>
+            <div className="am-ds-code-block" style={{ flexDirection: "column", alignItems: "stretch", gap: 8 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <span style={{ fontSize: 11, color: "var(--am-muted-fg)" }}>tailwind.config.js</span>
+                <button
+                  type="button"
+                  className="am-shell-copy-btn"
+                  onClick={() =>
+                    handleCopy(
+                      `import auiPreset from "@aether-ui/react/tailwind";\n\nexport default {\n  presets: [auiPreset],\n  content: ["./src/**/*.{js,ts,jsx,tsx}"],\n};`,
+                      "tailwind-cfg"
+                    )
+                  }
+                >
+                  {copiedId === "tailwind-cfg" ? "Copied" : "Copy"}
+                </button>
+              </div>
+              <pre style={{ margin: 0, fontSize: 12, lineHeight: 1.5 }}>
+{`import auiPreset from "@aether-ui/react/tailwind";
+
+export default {
+  presets: [auiPreset],
+  content: ["./src/**/*.{js,ts,jsx,tsx}", "./app/**/*.{js,ts,jsx,tsx}"],
+};`}
+              </pre>
+            </div>
+          </div>
+
+          {/* 10 Primitives Grid */}
+          <div className="am-ds-hero-card">
+            <h3 style={{ fontSize: 16, fontWeight: 600, margin: "0 0 12px", color: "var(--am-fg)" }}>
+              第三步：消费 10 大基础原子基元 (Foundation Primitives)
+            </h3>
+            <p style={{ fontSize: 13, color: "var(--am-muted-fg)", margin: "0 0 16px" }}>
+              所有上层高阶组件均严格构建在这 10 个可访问性基元之上。点击任意基元可直接跳转至独立交互文档与源码：
+            </p>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: 10 }}>
+              {PRIMITIVES.map((prim) => (
+                <div
+                  key={prim.slug}
+                  onClick={() => onOpenPrimitive(prim.slug)}
+                  style={{
+                    padding: "12px 14px",
+                    borderRadius: 10,
+                    border: "1px solid var(--am-border, rgba(0,0,0,0.08))",
+                    background: "var(--am-well-bg, rgba(0,0,0,0.02))",
+                    cursor: "pointer",
+                    transition: "all 0.15s ease",
+                  }}
+                  className="dsx-link"
+                >
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                    <span style={{ fontWeight: 600, fontSize: 13.5, color: "var(--am-fg)" }}>
+                      {prim.name}
+                    </span>
+                    <span style={{ fontSize: 11, color: "var(--accent, #0060e2)", fontWeight: 500 }}>
+                      Inspect →
+                    </span>
+                  </div>
+                  <div style={{ fontSize: 12, color: "var(--am-muted-fg)", marginTop: 4 }}>
+                    {prim.desc}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Token Directory & Search */}
+          <div className="am-ds-hero-card">
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14, flexWrap: "wrap", gap: 10 }}>
+              <div>
+                <h3 style={{ fontSize: 16, fontWeight: 600, margin: 0, color: "var(--am-fg)" }}>
+                  36 项核心设计变量契约查询表 (Token Directory)
+                </h3>
+                <p style={{ fontSize: 12.5, color: "var(--am-muted-fg)", margin: "4px 0 0" }}>
+                  点击任意变量名可一键复制 CSS 代码。
+                </p>
+              </div>
+
+              {/* Search input */}
+              <input
+                type="text"
+                placeholder="搜索变量名或用途..."
+                value={tokenSearch}
+                onChange={(e) => setTokenSearch(e.target.value)}
+                style={{
+                  height: 32,
+                  padding: "0 12px",
+                  fontSize: 12.5,
+                  borderRadius: 8,
+                  border: "1px solid var(--am-border, rgba(0,0,0,0.1))",
+                  background: "var(--am-well-bg, rgba(0,0,0,0.04))",
+                  color: "var(--am-fg, inherit)",
+                  outline: "none",
+                }}
+              />
+            </div>
+
+            {/* Group Filter pills */}
+            <div style={{ display: "flex", gap: 6, marginBottom: 16, overflowX: "auto", paddingBottom: 4 }}>
+              {groups.map((grp) => (
+                <button
+                  key={grp}
+                  type="button"
+                  onClick={() => {
+                    triggerHaptic("light");
+                    setTokenGroup(grp);
+                  }}
+                  className="am-ds-pill-btn"
+                  data-active={tokenGroup === grp}
+                  style={{ height: 24, fontSize: 11.5 }}
+                >
+                  {grp === "all" ? "全部 (36)" : grp}
+                </button>
+              ))}
+            </div>
+
+            {/* Table */}
+            <div style={{ overflowX: "auto" }}>
+              <table className="am-ds-token-table">
+                <thead>
+                  <tr>
+                    <th>Token 变量</th>
+                    <th>分类</th>
+                    <th>用途说明</th>
+                    <th>Classic 模式</th>
+                    <th>Clean 模式</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {filteredTokens.map((t) => {
+                    const classicVal = t.classic?.light ?? "";
+                    const cleanVal = t.clean?.light ?? "";
+                    return (
+                      <tr key={t.name}>
+                        <td>
+                          <code
+                            className="am-ds-token-name"
+                            onClick={() => handleCopy(`var(${t.name})`, t.name)}
+                            title="点击复制 var(...) 代码"
+                          >
+                            {copiedId === t.name ? "Copied!" : t.name}
+                          </code>
+                        </td>
+                        <td>
+                          <span style={{ fontSize: 11.5, opacity: 0.85 }}>{t.group}</span>
+                        </td>
+                        <td style={{ fontSize: 12, color: "var(--am-muted-fg)" }}>
+                          {t.use}
+                        </td>
+                        <td style={{ fontSize: 11.5, fontFamily: "var(--font-mono, monospace)" }}>
+                          {classicVal}
+                        </td>
+                        <td style={{ fontSize: 11.5, fontFamily: "var(--font-mono, monospace)" }}>
+                          {cleanVal}
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ============================================================================
    6. Main Portal Showcase Application (AffectUIShowcase)
    ============================================================================ */
 const CATALOG_TABS = [
@@ -991,7 +1334,8 @@ function resolveScreenSlug(dest) {
 }
 
 export default function AffectUIShowcase() {
-  const [pageMode, setPageMode] = useState("home"); // 'home' | 'cli' | 'skills'
+  const [pageMode, setPageMode] = useState("home"); // 'home' | 'cli' | 'skills' | 'design-system'
+  const [designSystemSubpage, setDesignSystemSubpage] = useState(""); // '' | 'colors' | 'typography' | 'radius' | 'shadows' | 'integration'
   const [catalogTab, setCatalogTab] = useState("all");
   const [subCategory, setSubCategory] = useState("all");
   const [activeSlug, setActiveSlug] = useState(null);
@@ -1083,6 +1427,47 @@ export default function AffectUIShowcase() {
         : rawHash.startsWith("#")
           ? rawHash.slice(1)
           : "";
+
+      // 0. Direct or Hash routing for Design System
+      const isDsPath = pathname.startsWith("/design-system");
+      const isDsHash = hash.startsWith("design-system");
+      if (isDsPath || isDsHash) {
+        let sub = "";
+        if (isDsPath) {
+          const parts = pathname.split("/").filter(Boolean);
+          sub = parts[1] || "";
+        } else {
+          const parts = hash.split("/").filter(Boolean);
+          sub = parts[1] || "";
+        }
+        setDesignSystemSubpage(sub);
+        setPageMode("design-system");
+        setActiveSlug(null);
+        setFullscreenSlug(null);
+        return;
+      }
+
+      // 0b. Support clicking primitives (/components/:slug) from Design System
+      if (pathname.startsWith("/components/")) {
+        const segs = pathname.split("/").filter(Boolean);
+        const slug = segs[1];
+        if (slug) {
+          setActiveSlug(slug);
+          setFullscreenSlug(null);
+          setPageMode("home");
+          window.location.hash = `#/item/${slug}`;
+          return;
+        }
+      }
+
+      // 0c. Support clicking /docs/agent-skill from "Make it yours"
+      if (pathname.startsWith("/docs/agent-skill") || hash === "docs/agent-skill") {
+        setPageMode("skills");
+        window.location.hash = "#/skills";
+        setActiveSlug(null);
+        setFullscreenSlug(null);
+        return;
+      }
 
       // 1. Direct path routing: /screens/:slug/full or /screens/:slug
       if (pathname.startsWith("/screens/")) {
@@ -1453,6 +1838,7 @@ export default function AffectUIShowcase() {
   const activeNavKey = useMemo(() => {
     if (pageMode === "cli") return "cli";
     if (pageMode === "skills") return "skills";
+    if (pageMode === "design-system") return "design-system";
     if (catalogTab === "screens") return "screens";
     if (catalogTab === "blocks") return "blocks";
     return "components";
@@ -1469,6 +1855,11 @@ export default function AffectUIShowcase() {
     } else if (key === "skills") {
       setPageMode("skills");
       window.location.hash = "#/skills";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (key === "design-system") {
+      setPageMode("design-system");
+      setDesignSystemSubpage("");
+      window.location.hash = "#/design-system";
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else if (key === "screens") {
       setPageMode("home");
@@ -1502,6 +1893,7 @@ export default function AffectUIShowcase() {
     setActiveSlug(null);
     setFullscreenSlug(null);
     setPageMode("home");
+    setDesignSystemSubpage("");
     setCatalogTab("all");
     setSubCategory("all");
     window.location.hash = "#/";
@@ -1601,6 +1993,7 @@ export default function AffectUIShowcase() {
                 { key: "components", label: "Components" },
                 { key: "screens", label: "Screens" },
                 { key: "blocks", label: "Blocks" },
+                { key: "design-system", label: "Design System" },
                 { key: "cli", label: "CLI" },
                 { key: "skills", label: "Skills" },
               ].map((item) => (
@@ -1628,6 +2021,10 @@ export default function AffectUIShowcase() {
                 onClick={() => {
                   triggerHaptic("light");
                   setVariant("classic");
+                  window.__AFFECTUI_SET_LOOK__?.("classic");
+                  document.documentElement.setAttribute("data-style", "classic");
+                  document.documentElement.classList.add("classic");
+                  document.documentElement.classList.remove("clean");
                   showToast("Classic tactile style active");
                 }}
               >
@@ -1640,6 +2037,10 @@ export default function AffectUIShowcase() {
                 onClick={() => {
                   triggerHaptic("light");
                   setVariant("clean");
+                  window.__AFFECTUI_SET_LOOK__?.("clean");
+                  document.documentElement.setAttribute("data-style", "clean");
+                  document.documentElement.classList.add("clean");
+                  document.documentElement.classList.remove("classic");
                   showToast("Clean subpixel style active");
                 }}
               >
@@ -1710,6 +2111,38 @@ export default function AffectUIShowcase() {
           <CliSubpage showToast={showToast} triggerHaptic={triggerHaptic} />
         ) : pageMode === "skills" ? (
           <SkillsSubpage showToast={showToast} triggerHaptic={triggerHaptic} />
+        ) : pageMode === "design-system" ? (
+          <DesignSystemSubpage
+            subpage={designSystemSubpage}
+            onSelectSubpage={(sub) => {
+              setDesignSystemSubpage(sub);
+              window.location.hash = sub ? `#/design-system/${sub}` : "#/design-system";
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+            showToast={showToast}
+            triggerHaptic={triggerHaptic}
+            variant={variant}
+            onSwitchVariant={(v) => {
+              setVariant(v);
+              window.__AFFECTUI_SET_LOOK__?.(v);
+              document.documentElement.setAttribute("data-style", v);
+              if (v === "clean") {
+                document.documentElement.classList.add("clean");
+                document.documentElement.classList.remove("classic");
+              } else {
+                document.documentElement.classList.add("classic");
+                document.documentElement.classList.remove("clean");
+              }
+            }}
+            onOpenPrimitive={(slug) => {
+              triggerHaptic("light");
+              setActiveSlug(slug);
+              setFullscreenSlug(null);
+              setPageMode("home");
+              window.location.hash = `#/item/${slug}`;
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+          />
         ) : activeItem ? (
           /* ==================================================================
              1:1 Amicro ChartDetailPage View

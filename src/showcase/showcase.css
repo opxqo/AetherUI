@@ -1944,3 +1944,162 @@ html::-webkit-scrollbar-thumb:hover {
     display: none;
   }
 }
+
+/* ============================================================================
+   Design System Showcase & Integration Subpage
+   ============================================================================ */
+.am-ds-wrapper {
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 36px 20px 96px;
+  display: flex;
+  flex-direction: column;
+}
+
+.am-ds-subnav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 28px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--am-border, rgba(0, 0, 0, 0.08));
+  flex-wrap: wrap;
+}
+
+.am-ds-pills {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px;
+  background: var(--am-well-bg, rgba(0, 0, 0, 0.04));
+  border: 1px solid var(--am-border-soft, rgba(0, 0, 0, 0.06));
+  border-radius: 10px;
+}
+
+.am-ds-pill-btn {
+  height: 28px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--am-muted-fg, #737373);
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.am-ds-pill-btn:hover {
+  color: var(--am-fg, #171717);
+  background: rgba(0, 0, 0, 0.03);
+}
+
+:is(.dark, [data-theme="dark"]) .am-ds-pill-btn:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.am-ds-pill-btn[data-active="true"] {
+  background: var(--am-card-bg, #ffffff);
+  color: var(--am-fg, #171717);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(0, 0, 0, 0.04);
+}
+
+:is(.dark, [data-theme="dark"]) .am-ds-pill-btn[data-active="true"] {
+  background: var(--am-card-bg, #1e1e20);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.am-ds-integration-box {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.am-ds-hero-card {
+  padding: 24px 28px;
+  background: var(--am-card-bg, #ffffff);
+  border: 1px solid var(--am-border, rgba(0, 0, 0, 0.08));
+  border-radius: 14px;
+  box-shadow: var(--shadow-card);
+}
+
+.am-ds-hero-title {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--am-fg);
+  margin: 0 0 6px;
+}
+
+.am-ds-hero-desc {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--am-muted-fg);
+  margin: 0;
+}
+
+.am-ds-code-block {
+  margin: 12px 0;
+  padding: 12px 14px;
+  background: var(--am-well-bg, #0d0d0e);
+  color: #ededed;
+  border-radius: 8px;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow-x: auto;
+}
+
+.am-ds-token-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 12.5px;
+  border: 1px solid var(--am-border, rgba(0, 0, 0, 0.08));
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--am-card-bg);
+}
+
+.am-ds-token-table th {
+  padding: 10px 14px;
+  background: var(--am-well-bg, rgba(0, 0, 0, 0.02));
+  color: var(--am-muted-fg);
+  font-weight: 500;
+  text-align: left;
+  border-bottom: 1px solid var(--am-border);
+}
+
+.am-ds-token-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--am-border-soft, rgba(0, 0, 0, 0.04));
+  color: var(--am-fg);
+  vertical-align: middle;
+}
+
+.am-ds-token-table tr:last-child td {
+  border-bottom: none;
+}
+
+.am-ds-token-name {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 12px;
+  color: var(--accent, #0060e2);
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: var(--am-well-bg);
+  display: inline-block;
+  transition: all 0.15s ease;
+}
+
+.am-ds-token-name:hover {
+  background: var(--am-border);
+}

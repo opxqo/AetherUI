@@ -1,14 +1,15 @@
 /* ==========================================================================
-   AffectUI Design System — Core CSS Custom Properties & Atomic Primitives
-   Extracted 1:1 from AffectUI Production Engine
+   AetherUI / AffectUI Design System — Core CSS Custom Properties & Atomic Tokens
+   1:1 Parity Contract across Classic & Clean Dual Look Engines (36 Tokens)
    ========================================================================== */
 
+/* --------------------------------------------------------------------------
+   1. Root Default (Classic Look · Light Theme)
+   -------------------------------------------------------------------------- */
 :root {
-  /* 1. Typography */
+  /* Legacy/convenience fallbacks */
   --font-sans: "Inter", "InterVariable", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: "JetBrains Mono", "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-
-  /* 2. Surface Hierarchy (Light Mode) */
   --bg: #f5f5f5;
   --panel: #fcfcfc;
   --card: #ffffff;
@@ -16,63 +17,68 @@
   --ui-tray: #f0f0f0;
   --muted-bg: rgba(0, 0, 0, 0.04);
   --hover-bg: rgba(0, 0, 0, 0.05);
-
-  /* 3. Ink & Text Hierarchy (Solid & Alpha) */
-  --text: #0a0a0a;
+  --text: #171717;
   --text-body: #404040;
-  --text-muted: #737373;
+  --text-muted: #8f8f8f;
   --text-subtle: rgba(0, 0, 0, 0.4);
-  --ui-clean-ink: rgba(0, 0, 0, 0.88);
-  --ui-clean-text: rgba(0, 0, 0, 0.61);
-  --ui-clean-muted: rgba(0, 0, 0, 0.45);
-  --ui-clean-faint: rgba(0, 0, 0, 0.27);
-
-  /* 4. Borders & Hairlines */
-  --border: #e5e5e5;
-  --border-soft: rgba(10, 10, 10, 0.1);
+  --border: #e6e6e8;
+  --border-strong: #d4d4d8;
   --card-stroke: rgba(10, 10, 10, 0.055);
   --panel-stroke: #ececec;
-  --ui-clean-line: rgba(0, 0, 0, 0.06);
 
-  /* 5. Brand, Accent & Agent Semantic Colors */
-  --primary: #171717;
-  --primary-fg: #ffffff;
-  --accent: #2f6bff;
-  --accent-clean: #0060e2;
-  --accent-soft: rgba(47, 107, 255, 0.1);
-  --status-ok: #0f9f6e;
-  --status-ok-bg: rgba(16, 185, 129, 0.12);
-  --status-warn: #b86e00;
-  --status-warn-bg: rgba(245, 158, 11, 0.14);
-  --status-danger: #c2331f;
-  --status-danger-bg: #fdecea;
-  --pro-bg: #fdf2f8;
-  --pro-from: #dd0674;
-  --pro-to: #5e3ee0;
+  /* Official 36 Tokens (Classic Light) */
+  --aui-font: "Inter", "InterVariable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --aui-font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --aui-radius: 10px;
+  --aui-radius-sm: 7px;
+  --aui-radius-lg: 16px;
+  --aui-ink: #171717;
+  --aui-muted: #8f8f8f;
+  --aui-placeholder: #b5b5b5;
+  --aui-surface: #ffffff;
+  --aui-subtle: #f0f0f0;
+  --aui-overlay: #ffffff;
+  --aui-border: #e6e6e8;
+  --aui-border-strong: #d4d4d8;
+  --aui-primary: #171717;
+  --aui-on-primary: #ffffff;
+  --aui-focus: rgba(0, 96, 226, 0.7);
+  --aui-danger: #c4320a;
+  --aui-danger-soft: rgba(240, 68, 56, 0.1);
+  --aui-warning: #b25e00;
+  --aui-warning-soft: rgba(242, 138, 46, 0.12);
+  --aui-success: #1e8a4f;
+  --aui-success-soft: rgba(95, 200, 138, 0.14);
+  --aui-info: #0070d6;
+  --aui-info-soft: rgba(1, 144, 254, 0.1);
+  --aui-blue: #0190fe;
+  --aui-green: #5fc88a;
+  --aui-amber: #e8b000;
+  --aui-orange: #f28a2e;
+  --aui-red: #f04438;
+  --aui-pink: #ee3e9e;
+  --aui-purple: #a651f0;
+  --aui-teal: #13b3a0;
+  --aui-cyan: #14b3f0;
+  --aui-shadow-card: 0 0 0 1px #ececec, 0 1px 2px rgba(0, 0, 0, 0.04);
+  --aui-shadow-popover: 0 0 0 1px rgba(0, 0, 0, 0.06), 0 18px 40px -12px rgba(0, 0, 0, 0.18), 0 4px 12px -4px rgba(0, 0, 0, 0.06);
+  --aui-ease: cubic-bezier(0.22, 1, 0.36, 1);
 
-  /* 6. Focus Ring */
-  --focus-ring: #a1a1a6;
-  --focus-ring-soft: rgba(0, 0, 0, 0.06);
-  --focus-ring-accent: rgba(47, 107, 255, 0.35);
+  /* Semantic Aliases */
+  --aui-card: var(--aui-surface);
+  --aui-panel: var(--aui-subtle);
 
-  /* 7. Concentric Border Radii */
+  /* Concentric radii */
   --radius-panel: 18px;
   --radius-tray: 16px;
-  --radius-card: 14px;
-  --radius-surface: 12px;
+  --radius-card: var(--aui-radius-lg);
+  --radius-surface: var(--aui-radius);
   --radius-preview: 10px;
-  --radius-control: 9px;
-  --radius-token: 6px;
+  --radius-control: var(--aui-radius);
+  --radius-token: var(--aui-radius-sm);
   --radius-pill: 999px;
 
-  /* 8. Optical Shadows & Hairline Elevations */
-  --panel-shadow: 0 1px 0 rgba(0, 0, 0, 0.04), 0 2px 1px -1px rgba(0, 0, 0, 0.05);
-  --shadow-card: 0 1px 1.5px rgba(0, 0, 0, 0.04), inset 0 -1px 0 rgba(0, 0, 0, 0.06);
-  --shadow-classic-inner: 0 0 0 1px #ececec, 0 1px 2px rgba(0, 0, 0, 0.04);
-  --shadow-clean-surface: 0 0 0 0.5px rgba(0, 0, 0, 0.06), 0 1px 1px -1px rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-pop: 0 4px 42px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.06);
-
-  /* 9. Tactile Button Tokens */
+  /* Button tactile tokens */
   --dark-btn-top: #323137;
   --dark-btn-bottom: #201e25;
   --dark-btn-top-hover: #3c3b42;
@@ -80,16 +86,13 @@
   --dark-btn-ring: #0d0d0d;
   --dark-btn-text: #fafafa;
 
-  /* 10. Motion & Easing */
-  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-  --ease-snappy: cubic-bezier(0.32, 0.72, 0.24, 1);
-  --duration: 0.18s;
-
   color-scheme: light;
 }
 
-/* Dark Mode Token Overrides */
-:where(.dark, [data-theme="dark"]) {
+/* --------------------------------------------------------------------------
+   2. Dark Theme (Classic Look · Dark Theme)
+   -------------------------------------------------------------------------- */
+:is(:root.dark, [data-theme="dark"], .dark) {
   --bg: #0c0c0d;
   --panel: #121213;
   --card: #19191b;
@@ -97,45 +100,52 @@
   --ui-tray: #232326;
   --muted-bg: rgba(255, 255, 255, 0.05);
   --hover-bg: rgba(255, 255, 255, 0.07);
-
   --text: #ededed;
   --text-body: #c4c4c4;
-  --text-muted: #8f8f8f;
+  --text-muted: #8b8b92;
   --text-subtle: rgba(255, 255, 255, 0.4);
-  --ui-clean-ink: rgba(255, 255, 255, 0.92);
-  --ui-clean-text: rgba(255, 255, 255, 0.64);
-  --ui-clean-muted: rgba(255, 255, 255, 0.44);
-  --ui-clean-faint: rgba(255, 255, 255, 0.26);
-
-  --border: #262628;
-  --border-soft: rgba(255, 255, 255, 0.07);
+  --border: #2a2a2e;
+  --border-strong: #3a3a40;
   --card-stroke: rgba(255, 255, 255, 0.05);
   --panel-stroke: #222224;
-  --ui-clean-line: rgba(255, 255, 255, 0.07);
 
-  --primary: #ededed;
-  --primary-fg: #121213;
-  --accent: #7aa2ff;
-  --accent-clean: #5899ff;
-  --accent-soft: rgba(122, 162, 255, 0.14);
-  --status-ok: #34d399;
-  --status-ok-bg: rgba(52, 211, 153, 0.14);
-  --status-warn: #f5b544;
-  --status-warn-bg: rgba(245, 181, 68, 0.16);
-  --status-danger: #f87171;
-  --status-danger-bg: rgba(248, 113, 113, 0.14);
-  --pro-bg: rgba(221, 6, 116, 0.14);
-  --pro-from: #f472b6;
-  --pro-to: #a78bfa;
-
-  --focus-ring: #6b6b70;
-  --focus-ring-soft: rgba(255, 255, 255, 0.07);
-
-  --panel-shadow: 0 1px 0 rgba(0, 0, 0, 0.45), 0 2px 1px -1px rgba(0, 0, 0, 0.5);
-  --shadow-card: 0 1px 1.5px rgba(0, 0, 0, 0.3), inset 0 -1px 0 rgba(255, 255, 255, 0.04);
-  --shadow-classic-inner: 0 0 0 1px rgba(255, 255, 255, 0.07), 0 1px 2px rgba(0, 0, 0, 0.35);
-  --shadow-clean-surface: 0 0 0 0.5px rgba(255, 255, 255, 0.08), 0 1px 2px 0 rgba(0, 0, 0, 0.4);
-  --shadow-pop: 0 4px 42px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  /* Official 36 Tokens (Classic Dark) */
+  --aui-font: "Inter", "InterVariable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --aui-font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --aui-radius: 10px;
+  --aui-radius-sm: 7px;
+  --aui-radius-lg: 16px;
+  --aui-ink: #ededed;
+  --aui-muted: #8b8b92;
+  --aui-placeholder: #5c5c63;
+  --aui-surface: #19191b;
+  --aui-subtle: #111113;
+  --aui-overlay: #19191b;
+  --aui-border: #2a2a2e;
+  --aui-border-strong: #3a3a40;
+  --aui-primary: #ededed;
+  --aui-on-primary: #161618;
+  --aui-focus: rgba(77, 141, 255, 0.8);
+  --aui-danger: #ff8a7a;
+  --aui-danger-soft: rgba(255, 107, 95, 0.14);
+  --aui-warning: #ffb35c;
+  --aui-warning-soft: rgba(242, 161, 92, 0.14);
+  --aui-success: #7dcf9f;
+  --aui-success-soft: rgba(125, 207, 159, 0.14);
+  --aui-info: #4fb0fe;
+  --aui-info-soft: rgba(79, 176, 254, 0.14);
+  --aui-blue: #4fb0fe;
+  --aui-green: #7dcf9f;
+  --aui-amber: #e6c24d;
+  --aui-orange: #f2a15c;
+  --aui-red: #ff6b5f;
+  --aui-pink: #f06db5;
+  --aui-purple: #b98af0;
+  --aui-teal: #4fc3b4;
+  --aui-cyan: #5cc6ee;
+  --aui-shadow-card: 0 0 0 1px #2a2a2e, 0 1px 2px rgba(0, 0, 0, 0.2);
+  --aui-shadow-popover: 0 0 0 1px rgba(255, 255, 255, 0.06), 0 18px 40px -12px rgba(0, 0, 0, 0.6);
+  --aui-ease: cubic-bezier(0.22, 1, 0.36, 1);
 
   --dark-btn-top: #f4f4f5;
   --dark-btn-bottom: #e4e4e7;
@@ -147,58 +157,121 @@
   color-scheme: dark;
 }
 
-/* ==========================================================================
-   Reusable Architectural Primitives
-   ========================================================================== */
+/* --------------------------------------------------------------------------
+   3. Clean Look Engine · Light Theme ([data-style="clean"])
+   -------------------------------------------------------------------------- */
+:is([data-style="clean"], .clean) {
+  --aui-font: "Inter", "InterVariable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --aui-font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --aui-radius: 7px;
+  --aui-radius-sm: 5px;
+  --aui-radius-lg: 10px;
+  --aui-ink: rgba(0, 0, 0, 0.88);
+  --aui-muted: rgba(0, 0, 0, 0.45);
+  --aui-placeholder: rgba(0, 0, 0, 0.3);
+  --aui-surface: #ffffff;
+  --aui-subtle: rgba(0, 0, 0, 0.03);
+  --aui-overlay: #ffffff;
+  --aui-border: rgba(0, 0, 0, 0.08);
+  --aui-border-strong: rgba(0, 0, 0, 0.13);
+  --aui-primary: rgba(0, 0, 0, 0.88);
+  --aui-on-primary: #ffffff;
+  --aui-focus: rgba(0, 96, 226, 0.7);
+  --aui-danger: #c4320a;
+  --aui-danger-soft: rgba(240, 68, 56, 0.1);
+  --aui-warning: #b25e00;
+  --aui-warning-soft: rgba(242, 138, 46, 0.12);
+  --aui-success: #1e8a4f;
+  --aui-success-soft: rgba(95, 200, 138, 0.14);
+  --aui-info: #0070d6;
+  --aui-info-soft: rgba(1, 144, 254, 0.1);
+  --aui-blue: #0190fe;
+  --aui-green: #5fc88a;
+  --aui-amber: #e8b000;
+  --aui-orange: #f28a2e;
+  --aui-red: #f04438;
+  --aui-pink: #ee3e9e;
+  --aui-purple: #a651f0;
+  --aui-teal: #13b3a0;
+  --aui-cyan: #14b3f0;
+  --aui-shadow-card: 0 0 0 0.5px rgba(0, 0, 0, 0.06), 0 1px 1px -1px rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --aui-shadow-popover: 0 0 0 0.5px rgba(0, 0, 0, 0.08), 0 8px 24px -6px rgba(0, 0, 0, 0.14), 0 2px 6px -2px rgba(0, 0, 0, 0.06);
+  --aui-ease: cubic-bezier(0.22, 1, 0.36, 1);
 
-/* 1. Classic Double-Tray Container */
-.af-ds-tray {
+  --card: var(--aui-surface);
+  --text: var(--aui-ink);
+  --text-muted: var(--aui-muted);
+  --border: var(--aui-border);
+  --border-strong: var(--aui-border-strong);
+}
+
+/* --------------------------------------------------------------------------
+   4. Clean Look Engine · Dark Theme ([data-style="clean"][data-theme="dark"])
+   -------------------------------------------------------------------------- */
+:is([data-style="clean"], .clean):is(:root.dark, [data-theme="dark"], .dark),
+:is(:root.dark, [data-theme="dark"], .dark) :is([data-style="clean"], .clean) {
+  --aui-font: "Inter", "InterVariable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --aui-font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --aui-radius: 7px;
+  --aui-radius-sm: 5px;
+  --aui-radius-lg: 10px;
+  --aui-ink: rgba(255, 255, 255, 0.9);
+  --aui-muted: rgba(255, 255, 255, 0.46);
+  --aui-placeholder: rgba(255, 255, 255, 0.3);
+  --aui-surface: #1c1c1e;
+  --aui-subtle: rgba(255, 255, 255, 0.04);
+  --aui-overlay: #1f1f22;
+  --aui-border: rgba(255, 255, 255, 0.14);
+  --aui-border-strong: rgba(255, 255, 255, 0.2);
+  --aui-primary: rgba(255, 255, 255, 0.9);
+  --aui-on-primary: #161618;
+  --aui-focus: rgba(77, 141, 255, 0.8);
+  --aui-danger: #ff8a7a;
+  --aui-danger-soft: rgba(255, 107, 95, 0.14);
+  --aui-warning: #ffb35c;
+  --aui-warning-soft: rgba(242, 161, 92, 0.14);
+  --aui-success: #7dcf9f;
+  --aui-success-soft: rgba(125, 207, 159, 0.14);
+  --aui-info: #4fb0fe;
+  --aui-info-soft: rgba(79, 176, 254, 0.14);
+  --aui-blue: #4fb0fe;
+  --aui-green: #7dcf9f;
+  --aui-amber: #e6c24d;
+  --aui-orange: #f2a15c;
+  --aui-red: #ff6b5f;
+  --aui-pink: #f06db5;
+  --aui-purple: #b98af0;
+  --aui-teal: #4fc3b4;
+  --aui-cyan: #5cc6ee;
+  --aui-shadow-card: 0 0 0 0.5px rgba(255, 255, 255, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+  --aui-shadow-popover: 0 0 0 0.5px rgba(255, 255, 255, 0.12), 0 12px 32px -8px rgba(0, 0, 0, 0.6);
+  --aui-ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --card: var(--aui-surface);
+  --text: var(--aui-ink);
+  --text-muted: var(--aui-muted);
+  --border: var(--aui-border);
+  --border-strong: var(--aui-border-strong);
+}
+
+/* --------------------------------------------------------------------------
+   5. Enterprise Real-World Utility Classes
+   -------------------------------------------------------------------------- */
+.aui-tray {
   padding: 4px;
-  border-radius: var(--radius-tray);
-  background: var(--ui-tray);
+  border-radius: var(--aui-radius-lg);
+  background: var(--aui-subtle);
 }
-.af-ds-tray__card {
-  border-radius: var(--radius-surface);
-  background: var(--card);
-  box-shadow: var(--shadow-classic-inner);
+.aui-card {
+  border-radius: var(--aui-radius);
+  background: var(--aui-surface);
+  box-shadow: var(--aui-shadow-card);
 }
-
-/* 2. Clean Subpixel Surface Container */
-.af-ds-clean-card {
-  border-radius: var(--radius-surface);
-  background: var(--card);
-  box-shadow: var(--shadow-clean-surface);
-  font-size: 13px;
-  line-height: 20px;
-  color: var(--ui-clean-text);
+.aui-popover {
+  border-radius: var(--aui-radius-lg);
+  background: var(--aui-overlay);
+  box-shadow: var(--aui-shadow-popover);
 }
-
-/* 3. Tactile Primary Button */
-.af-ds-btn-tactile {
-  height: 30px;
-  padding: 0 12px;
-  border: 0;
-  border-radius: var(--radius-control);
-  background: linear-gradient(180deg, var(--dark-btn-top) 0%, var(--dark-btn-bottom) 100%);
-  color: var(--dark-btn-text);
-  font-family: var(--font-sans);
-  font-size: 12.5px;
-  font-weight: 500;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  cursor: pointer;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.12);
-  transition: background var(--duration) var(--ease-out), transform 120ms ease;
-}
-.af-ds-btn-tactile:hover {
-  background: linear-gradient(180deg, var(--dark-btn-top-hover) 0%, var(--dark-btn-bottom-hover) 100%);
-}
-.af-ds-btn-tactile:active {
-  transform: scale(0.985);
-}
-
-/* 4. Tabular Numeric Utility */
-.af-ds-tabular {
+.aui-tabular {
   font-variant-numeric: tabular-nums;
 }

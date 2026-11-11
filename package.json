@@ -1,7 +1,7 @@
 {
   "name": "@aether-ui/react",
   "version": "1.0.0",
-  "description": "AetherUI \u2014 Enterprise AI-First React UI Component Library & Design System",
+  "description": "AetherUI — Enterprise AI-First React UI Component Library & Design System",
   "type": "module",
   "main": "./dist/lib/index.js",
   "module": "./dist/lib/index.js",
@@ -45,7 +45,12 @@
       "default": "./design-system/tokens/variables.css"
     },
     "./tokens.json": "./design-system/tokens/design-tokens.json",
-    "./tailwind": "./design-system/tokens/tailwind.preset.js"
+    "./tailwind": "./design-system/tokens/tailwind.preset.js",
+    "./tokens": {
+      "types": "./design-system/tokens/index.d.ts",
+      "import": "./design-system/tokens/index.js",
+      "default": "./design-system/tokens/index.js"
+    }
   },
   "files": [
     "dist/lib",

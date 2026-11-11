@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import "./affectui-engine/index.css";
 import "./affectui-engine/all-demos.css";
+import "./affectui-engine/DesignSystemPage-CoHTDvX1.css";
 import AffectUIShowcase from "./showcase/AffectUIShowcase.jsx";
 
 // Safe matchMedia polyfill for components calling bare matchMedia

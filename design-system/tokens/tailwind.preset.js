@@ -1,32 +1,66 @@
 /**
- * AffectUI Design System — Tailwind CSS Preset
+ * AetherUI / AffectUI Design System — Tailwind CSS Preset
+ * Production-ready token mapping for Next.js, Vite, Remix and Astro
+ *
  * Usage in tailwind.config.js:
- *   import affectuiPreset from './design-system/tokens/tailwind.preset.js';
- *   export default { presets: [affectuiPreset], ... }
+ *   import auiPreset from "./design-system/tokens/tailwind.preset.js";
+ *   export default { presets: [auiPreset], content: [...] };
  */
 
 export default {
-  darkMode: ["class", '[data-theme="dark"]'],
+  darkMode: ["class", "[data-theme="dark"]"],
   theme: {
     extend: {
       fontFamily: {
         sans: [
-          '"Inter"',
-          '"InterVariable"',
+          "var(--aui-font)",
+          ""Inter"",
+          ""InterVariable"",
           "ui-sans-serif",
           "system-ui",
           "-apple-system",
           "sans-serif",
         ],
         mono: [
-          '"JetBrains Mono"',
-          '"Geist Mono"',
+          "var(--aui-font-mono)",
+          ""JetBrains Mono"",
+          ""Geist Mono"",
           "ui-monospace",
-          "SFMono-Regular",
           "monospace",
         ],
       },
       colors: {
+        aui: {
+          ink: "var(--aui-ink)",
+          muted: "var(--aui-muted)",
+          placeholder: "var(--aui-placeholder)",
+          surface: "var(--aui-surface)",
+          subtle: "var(--aui-subtle)",
+          overlay: "var(--aui-overlay)",
+          border: "var(--aui-border)",
+          "border-strong": "var(--aui-border-strong)",
+          primary: "var(--aui-primary)",
+          "on-primary": "var(--aui-on-primary)",
+          focus: "var(--aui-focus)",
+          danger: "var(--aui-danger)",
+          "danger-soft": "var(--aui-danger-soft)",
+          warning: "var(--aui-warning)",
+          "warning-soft": "var(--aui-warning-soft)",
+          success: "var(--aui-success)",
+          "success-soft": "var(--aui-success-soft)",
+          info: "var(--aui-info)",
+          "info-soft": "var(--aui-info-soft)",
+          blue: "var(--aui-blue)",
+          green: "var(--aui-green)",
+          amber: "var(--aui-amber)",
+          orange: "var(--aui-orange)",
+          red: "var(--aui-red)",
+          pink: "var(--aui-pink)",
+          purple: "var(--aui-purple)",
+          teal: "var(--aui-teal)",
+          cyan: "var(--aui-cyan)",
+        },
+        // Backwards compatibility alias
         af: {
           bg: "var(--bg)",
           panel: "var(--panel)",
@@ -34,38 +68,31 @@ export default {
           preview: "var(--preview)",
           tray: "var(--ui-tray)",
           text: "var(--text)",
-          body: "var(--text-body)",
           muted: "var(--text-muted)",
-          subtle: "var(--text-subtle)",
           border: "var(--border)",
-          "border-soft": "var(--border-soft)",
           accent: "var(--accent)",
-          "accent-clean": "var(--accent-clean)",
           ok: "var(--status-ok)",
           warn: "var(--status-warn)",
           danger: "var(--status-danger)",
         },
       },
       borderRadius: {
-        "af-panel": "var(--radius-panel)",     // 18px
-        "af-tray": "var(--radius-tray)",       // 16px
-        "af-card": "var(--radius-card)",       // 14px
-        "af-surface": "var(--radius-surface)", // 12px
-        "af-preview": "var(--radius-preview)", // 10px
-        "af-control": "var(--radius-control)", // 9px
-        "af-token": "var(--radius-token)",     // 6px
-        "af-pill": "var(--radius-pill)",       // 999px
+        "aui-sm": "var(--aui-radius-sm)",
+        aui: "var(--aui-radius)",
+        "aui-lg": "var(--aui-radius-lg)",
+        "af-panel": "var(--radius-panel)",
+        "af-tray": "var(--radius-tray)",
+        "af-card": "var(--radius-card)",
       },
       boxShadow: {
+        "aui-card": "var(--aui-shadow-card)",
+        "aui-popover": "var(--aui-shadow-popover)",
         "af-panel": "var(--panel-shadow)",
         "af-card": "var(--shadow-card)",
-        "af-classic": "var(--shadow-classic-inner)",
-        "af-clean": "var(--shadow-clean-surface)",
-        "af-pop": "var(--shadow-pop)",
       },
       transitionTimingFunction: {
+        "aui-ease": "var(--aui-ease)",
         "af-out": "cubic-bezier(0.22, 1, 0.36, 1)",
-        "af-snappy": "cubic-bezier(0.32, 0.72, 0.24, 1)",
       },
     },
   },
